@@ -1,0 +1,1606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Superpowers | Transform Your Data Into Intelligence</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #F97316;
+            --deep-orange: #EA580C;
+            --burnt-orange: #C2410C;
+            --peach: #FED7AA;
+            --light-peach: #FFF7ED;
+            --cream: #FFFBEB;
+            --navy: #1E293B;
+            --dark-navy: #0F172A;
+            --gray: #64748B;
+            --light-gray: #F8FAFC;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation - Minimal */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: transparent;
+            z-index: 1000;
+            padding: 24px 0;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(255,255,255,0.98);
+            padding: 16px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--white);
+            transition: color 0.3s;
+        }
+
+        nav.scrolled .logo {
+            color: var(--navy);
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--gray);
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        .nav-cta {
+            background: var(--orange) !important;
+            color: white !important;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            background: var(--deep-orange) !important;
+        }
+
+        /* Hero - Full Screen Gradient */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 50%, var(--deep-orange) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .hero-text {
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(249,115,22,0.2);
+            color: var(--orange);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            border: 1px solid rgba(249,115,22,0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-text h1 .highlight {
+            background: linear-gradient(90deg, var(--orange), var(--peach));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 520px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(249,115,22,0.3);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .btn-ghost:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Dashboard Visualization */
+        .hero-visual {
+            position: relative;
+        }
+
+        .dashboard-mock {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 24px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dashboard-title {
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .dashboard-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background: #EF4444; }
+        .dot-yellow { background: #EAB308; }
+        .dot-green { background: #22C55E; }
+
+        /* Animated Line Chart */
+        .line-chart {
+            height: 180px;
+            position: relative;
+            margin-bottom: 24px;
+        }
+
+        .chart-line {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+        }
+
+        .chart-line svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .chart-path {
+            fill: none;
+            stroke: var(--orange);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-dasharray: 500;
+            stroke-dashoffset: 500;
+            animation: drawLine 2s ease-out forwards;
+        }
+
+        .chart-area {
+            fill: url(#orangeGradient);
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1s forwards;
+        }
+
+        @keyframes drawLine {
+            to { stroke-dashoffset: 0; }
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 0.3; }
+        }
+
+        .chart-grid {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .grid-line {
+            height: 1px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Mini Stats in Dashboard */
+        .mini-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .mini-stat {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .mini-stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .mini-stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 4px;
+        }
+
+        /* Problem Stats Section */
+        .problem-stats {
+            padding: 120px 0;
+            background: var(--white);
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            margin-bottom: 24px;
+            max-width: 700px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 60px;
+        }
+
+        /* Animated Counter Cards */
+        .counter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .counter-card {
+            text-align: center;
+            padding: 40px 24px;
+            background: var(--light-peach);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .counter-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--peach));
+        }
+
+        .counter-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--orange);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .counter-label {
+            font-size: 1rem;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .counter-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin-top: 8px;
+        }
+
+        /* Visual Comparison Section */
+        .comparison-section {
+            padding: 120px 0;
+            background: var(--navy);
+            color: white;
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .comparison-header .section-title {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .comparison-visual {
+            display: grid;
+            grid-template-columns: 1fr 100px 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .comparison-side {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .comparison-side h3 {
+            font-size: 1.5rem;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comparison-side h3 .icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .comparison-side.before h3 .icon {
+            background: rgba(239,68,68,0.2);
+        }
+
+        .comparison-side.after h3 .icon {
+            background: rgba(34,197,94,0.2);
+        }
+
+        /* Horizontal Bar Comparison */
+        .h-bar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .h-bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .h-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .h-bar-track {
+            height: 24px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .h-bar-fill {
+            height: 100%;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            animation: barExpand 1s ease-out forwards;
+        }
+
+        @keyframes barExpand {
+            from { width: 0; }
+        }
+
+        .h-bar-fill.bad { background: linear-gradient(90deg, #DC2626, #EF4444); }
+        .h-bar-fill.good { background: linear-gradient(90deg, var(--deep-orange), var(--orange)); }
+
+        .comparison-arrow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--orange);
+        }
+
+        /* Services Accordion */
+        .services-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .services-layout {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .services-intro {
+            position: sticky;
+            top: 120px;
+        }
+
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .service-accordion {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-accordion:hover {
+            border-color: var(--orange);
+        }
+
+        .service-accordion.active {
+            border-color: var(--orange);
+            box-shadow: 0 10px 40px rgba(249,115,22,0.15);
+        }
+
+        .accordion-header {
+            padding: 24px 32px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .accordion-number {
+            width: 48px;
+            height: 48px;
+            background: var(--light-peach);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--orange);
+        }
+
+        .accordion-title h3 {
+            font-size: 1.25rem;
+        }
+
+        .accordion-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--light-peach);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+            font-size: 1.25rem;
+            transition: transform 0.3s;
+        }
+
+        .service-accordion.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .service-accordion.active .accordion-content {
+            max-height: 500px;
+        }
+
+        .accordion-inner {
+            padding: 0 32px 32px;
+        }
+
+        .accordion-inner p {
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        .accordion-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .accordion-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .feature-check {
+            width: 20px;
+            height: 20px;
+            background: var(--light-peach);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange);
+            font-size: 0.7rem;
+        }
+
+        /* Donut Chart Section */
+        .outcomes-section {
+            padding: 120px 0;
+            background: linear-gradient(180deg, var(--white) 0%, var(--light-peach) 100%);
+        }
+
+        .outcomes-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .donut-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .donut-chart {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .donut-segment {
+            fill: none;
+            stroke-width: 40;
+            stroke-linecap: round;
+            stroke-dasharray: 0 1000;
+            animation: donutFill 1.5s ease-out forwards;
+        }
+
+        @keyframes donutFill {
+            to { stroke-dasharray: var(--dash) 1000; }
+        }
+
+        .donut-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .donut-center-value {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--navy);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .donut-center-label {
+            color: var(--gray);
+        }
+
+        .donut-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-top: 40px;
+        }
+
+        .legend-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        .legend-text {
+            flex: 1;
+        }
+
+        .legend-value {
+            font-weight: 600;
+            color: var(--navy);
+        }
+
+        .outcomes-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .outcomes-list {
+            list-style: none;
+            margin-top: 32px;
+        }
+
+        .outcomes-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .outcome-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .outcome-text h4 {
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+        }
+
+        .outcome-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Industries Marquee */
+        .industries-section {
+            padding: 80px 0;
+            background: var(--navy);
+            overflow: hidden;
+        }
+
+        .industries-header {
+            text-align: center;
+            margin-bottom: 60px;
+            color: white;
+        }
+
+        .industries-header h2 {
+            font-size: 2rem;
+        }
+
+        .marquee-container {
+            display: flex;
+            gap: 32px;
+            animation: marquee 30s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .industry-pill {
+            background: rgba(255,255,255,0.1);
+            padding: 16px 32px;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            white-space: nowrap;
+            color: white;
+            font-weight: 500;
+        }
+
+        .industry-pill .emoji {
+            font-size: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 120px 0;
+            background: var(--orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            bottom: -150px;
+            left: -150px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, transparent 70%);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+        }
+
+        .cta-content p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--orange);
+        }
+
+        .btn-white:hover {
+            background: var(--cream);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-white {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+
+        .btn-outline-white:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            color: white;
+            padding: 80px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr repeat(3, 1fr);
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.95rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                display: none;
+            }
+
+            .counter-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison-visual {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-arrow {
+                transform: rotate(90deg);
+            }
+
+            .services-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .services-intro {
+                position: static;
+            }
+
+            .outcomes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .counter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .counter-number {
+                font-size: 3rem;
+            }
+
+            .accordion-features {
+                grid-template-columns: 1fr;
+            }
+
+            .donut-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .cta-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .nav-links a:not(.nav-cta) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-content">
+            <div class="logo">AI<span>Superpowers</span></div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#outcomes">Results</a>
+                <a href="#cta" class="nav-cta">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">Data-First AI Solutions</div>
+                    <h1>Turn Messy Data Into <span class="highlight">Business Intelligence</span></h1>
+                    <p>Most AI projects fail because they start with the wrong foundation. We make your data AI-ready first, then build solutions that actually work.</p>
+                    <div class="hero-buttons">
+                        <a href="#cta" class="btn btn-primary">Start Assessment →</a>
+                        <a href="#services" class="btn btn-ghost">See How It Works</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="dashboard-mock">
+                        <div class="dashboard-header">
+                            <div class="dashboard-title">Data Quality Score</div>
+                            <div class="dashboard-dots">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+                        </div>
+                        <div class="line-chart">
+                            <div class="chart-grid">
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                                <div class="grid-line"></div>
+                            </div>
+                            <div class="chart-line">
+                                <svg viewBox="0 0 400 180" preserveAspectRatio="none">
+                                    <defs>
+                                        <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                                            <stop offset="0%" style="stop-color:#F97316;stop-opacity:0.5" />
+                                            <stop offset="100%" style="stop-color:#F97316;stop-opacity:0" />
+                                        </linearGradient>
+                                    </defs>
+                                    <path class="chart-area" d="M0,150 L50,130 L100,140 L150,100 L200,110 L250,70 L300,50 L350,30 L400,20 L400,180 L0,180 Z"/>
+                                    <path class="chart-path" d="M0,150 L50,130 L100,140 L150,100 L200,110 L250,70 L300,50 L350,30 L400,20"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="mini-stats">
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">94%</div>
+                                <div class="mini-stat-label">Accuracy</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">2.3s</div>
+                                <div class="mini-stat-label">Response</div>
+                            </div>
+                            <div class="mini-stat">
+                                <div class="mini-stat-value">↑ 47%</div>
+                                <div class="mini-stat-label">Efficiency</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Stats Section -->
+    <section class="problem-stats">
+        <div class="container">
+            <div class="section-label">The Problem</div>
+            <h2 class="section-title">Why Most AI Projects Never Deliver Results</h2>
+            <p class="section-subtitle">The data shows a clear pattern: it's not the AI that fails, it's the foundation it's built on.</p>
+
+            <div class="counter-grid">
+                <div class="counter-card">
+                    <div class="counter-number">70%</div>
+                    <div class="counter-label">AI Projects Fail</div>
+                    <div class="counter-desc">Before reaching production</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">80%</div>
+                    <div class="counter-label">Time on Data</div>
+                    <div class="counter-desc">Spent cleaning, not building</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">3x</div>
+                    <div class="counter-label">Budget Overruns</div>
+                    <div class="counter-desc">Due to data surprises</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">6mo</div>
+                    <div class="counter-label">Average Delay</div>
+                    <div class="counter-desc">From data issues alone</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison-section">
+        <div class="container">
+            <div class="comparison-header">
+                <div class="section-label" style="color: var(--orange)">The Difference</div>
+                <h2 class="section-title" style="color: white">Traditional Approach vs. Data-First</h2>
+            </div>
+
+            <div class="comparison-visual">
+                <div class="comparison-side before">
+                    <h3><span class="icon">❌</span> Without Data Foundation</h3>
+                    <div class="h-bar-group">
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>Data Preparation</span>
+                                <span>70%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill bad" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>AI Development</span>
+                                <span>20%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill bad" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>Deployment & Testing</span>
+                                <span>10%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill bad" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>Success Rate</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill bad" style="width: 30%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-arrow">→</div>
+
+                <div class="comparison-side after">
+                    <h3><span class="icon">✓</span> With Our Approach</h3>
+                    <div class="h-bar-group">
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>Data Preparation</span>
+                                <span>25%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill good" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>AI Development</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill good" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>Deployment & Testing</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill good" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="h-bar-item">
+                            <div class="h-bar-label">
+                                <span>Success Rate</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="h-bar-track">
+                                <div class="h-bar-fill good" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Accordion Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="services-layout">
+                <div class="services-intro">
+                    <div class="section-label">How We Work</div>
+                    <h2 class="section-title">Three Phases to AI Success</h2>
+                    <p class="section-subtitle">Each phase builds on the last, reducing risk and ensuring measurable results before moving forward.</p>
+                </div>
+
+                <div class="services-list">
+                    <div class="service-accordion active">
+                        <div class="accordion-header">
+                            <div class="accordion-title">
+                                <div class="accordion-number">01</div>
+                                <h3>Data Readiness Assessment</h3>
+                            </div>
+                            <div class="accordion-icon">+</div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>A comprehensive audit of your data landscape. We identify what you have, what's missing, and exactly what needs to happen before AI can work effectively.</p>
+                                <div class="accordion-features">
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Data quality analysis</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>System integration mapping</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>AI opportunity scoring</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Implementation roadmap</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>ROI projections</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Executive presentation</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-accordion">
+                        <div class="accordion-header">
+                            <div class="accordion-title">
+                                <div class="accordion-number">02</div>
+                                <h3>AI Integration</h3>
+                            </div>
+                            <div class="accordion-icon">+</div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>We build the data infrastructure and AI solutions that connect your existing systems without replacing them. Security-first deployment on your terms.</p>
+                                <div class="accordion-features">
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Data pipeline development</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Custom AI model training</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Legacy system integration</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>On-premise deployment</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Team training & handoff</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>90-day support included</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="service-accordion">
+                        <div class="accordion-header">
+                            <div class="accordion-title">
+                                <div class="accordion-number">03</div>
+                                <h3>Ongoing Optimization</h3>
+                            </div>
+                            <div class="accordion-icon">+</div>
+                        </div>
+                        <div class="accordion-content">
+                            <div class="accordion-inner">
+                                <p>AI systems need continuous care to stay accurate. We monitor, retrain, and expand your solutions as your business evolves.</p>
+                                <div class="accordion-features">
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Performance monitoring</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Model retraining</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Feature expansion</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Dedicated support team</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Quarterly business reviews</span>
+                                    </div>
+                                    <div class="accordion-feature">
+                                        <div class="feature-check">✓</div>
+                                        <span>Priority issue resolution</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outcomes Section with Donut Chart -->
+    <section class="outcomes-section" id="outcomes">
+        <div class="container">
+            <div class="outcomes-grid">
+                <div class="donut-container">
+                    <svg class="donut-chart" viewBox="0 0 200 200">
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#E2E8F0" stroke-width="40"/>
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#F97316" stroke-width="40"
+                                class="donut-segment" style="--dash: 201"/>
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#1E293B" stroke-width="40"
+                                class="donut-segment" style="--dash: 151; animation-delay: 0.3s"
+                                stroke-dashoffset="-201"/>
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#FED7AA" stroke-width="40"
+                                class="donut-segment" style="--dash: 101; animation-delay: 0.6s"
+                                stroke-dashoffset="-352"/>
+                        <circle cx="100" cy="100" r="80" fill="none" stroke="#64748B" stroke-width="40"
+                                class="donut-segment" style="--dash: 50; animation-delay: 0.9s"
+                                stroke-dashoffset="-453"/>
+                    </svg>
+                    <div class="donut-center">
+                        <div class="donut-center-value">100%</div>
+                        <div class="donut-center-label">Effort Allocation</div>
+                    </div>
+                    <div class="donut-legend">
+                        <div class="legend-row">
+                            <div class="legend-color" style="background: #F97316"></div>
+                            <div class="legend-text">AI Development</div>
+                            <div class="legend-value">40%</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color" style="background: #1E293B"></div>
+                            <div class="legend-text">Data Foundation</div>
+                            <div class="legend-value">30%</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color" style="background: #FED7AA"></div>
+                            <div class="legend-text">Integration & Testing</div>
+                            <div class="legend-value">20%</div>
+                        </div>
+                        <div class="legend-row">
+                            <div class="legend-color" style="background: #64748B"></div>
+                            <div class="legend-text">Training & Handoff</div>
+                            <div class="legend-value">10%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="outcomes-content">
+                    <div class="section-label">What You Get</div>
+                    <h2>Results That Actually Matter</h2>
+                    <p class="section-subtitle">Our clients see measurable improvements within the first quarter.</p>
+
+                    <ul class="outcomes-list">
+                        <li>
+                            <div class="outcome-icon">⏱️</div>
+                            <div class="outcome-text">
+                                <h4>80% Reduction in Manual Work</h4>
+                                <p>Automate repetitive tasks so your team focuses on high-value work</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="outcome-icon">🎯</div>
+                            <div class="outcome-text">
+                                <h4>100% Data Accuracy</h4>
+                                <p>Eliminate human error from data entry and processing</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="outcome-icon">⚡</div>
+                            <div class="outcome-text">
+                                <h4>3x Faster Decisions</h4>
+                                <p>Get insights in minutes instead of days</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Marquee -->
+    <section class="industries-section">
+        <div class="industries-header">
+            <div class="container">
+                <h2>Industries We Serve</h2>
+            </div>
+        </div>
+        <div class="marquee-container">
+            <div class="industry-pill"><span class="emoji">📡</span> Telecommunications</div>
+            <div class="industry-pill"><span class="emoji">💼</span> Financial Services</div>
+            <div class="industry-pill"><span class="emoji">🏭</span> B2B Operations</div>
+            <div class="industry-pill"><span class="emoji">🏛️</span> Government & Public Sector</div>
+            <div class="industry-pill"><span class="emoji">🏥</span> Healthcare</div>
+            <div class="industry-pill"><span class="emoji">🚚</span> Logistics & Supply Chain</div>
+            <div class="industry-pill"><span class="emoji">📡</span> Telecommunications</div>
+            <div class="industry-pill"><span class="emoji">💼</span> Financial Services</div>
+            <div class="industry-pill"><span class="emoji">🏭</span> B2B Operations</div>
+            <div class="industry-pill"><span class="emoji">🏛️</span> Government & Public Sector</div>
+            <div class="industry-pill"><span class="emoji">🏥</span> Healthcare</div>
+            <div class="industry-pill"><span class="emoji">🚚</span> Logistics & Supply Chain</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Fix Your Data Foundation?</h2>
+                <p>Book a free 30-minute consultation. We'll discuss your data challenges and show you exactly what's possible.</p>
+                <div class="cta-buttons">
+                    <a href="mailto:contact@aisuperpowers.com" class="btn btn-white">Book Free Consultation</a>
+                    <a href="#services" class="btn btn-outline-white">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">AI<span>Superpowers</span></div>
+                    <p>We make your messy data AI-ready without replacing what you already have. Security-first, results-focused.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Data Assessment</a></li>
+                        <li><a href="#services">AI Integration</a></li>
+                        <li><a href="#services">Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@aisuperpowers.com">contact@aisuperpowers.com</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>© 2026 AI Superpowers. All rights reserved.</span>
+                <span>Privacy Policy | Terms of Service</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', function() {
+                const accordion = this.parentElement;
+                const wasActive = accordion.classList.contains('active');
+
+                // Close all accordions
+                document.querySelectorAll('.service-accordion').forEach(acc => {
+                    acc.classList.remove('active');
+                });
+
+                // Open clicked one if it wasn't active
+                if (!wasActive) {
+                    accordion.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Superpowers - Website Preview Versions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            min-height: 100vh;
+            padding: 60px 24px;
+            color: white;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .logo span {
+            color: #F97316;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        header p {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .versions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .version-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .version-card:hover {
+            transform: translateY(-8px);
+            border-color: #F97316;
+            box-shadow: 0 20px 40px rgba(249,115,22,0.2);
+        }
+
+        .version-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.3);
+        }
+
+        .version-card:nth-child(1) .version-preview {
+            background: linear-gradient(135deg, #FFF7ED 0%, #FED7AA 100%);
+            color: rgba(249,115,22,0.3);
+        }
+
+        .version-card:nth-child(2) .version-preview {
+            background: linear-gradient(135deg, #1E293B 0%, #EA580C 100%);
+        }
+
+        .version-card:nth-child(3) .version-preview {
+            background: linear-gradient(135deg, #0F172A 0%, #F97316 100%);
+        }
+
+        .version-content {
+            padding: 24px;
+        }
+
+        .version-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .version-content p {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .version-features {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .version-features li {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .version-features li::before {
+            content: '•';
+            color: #F97316;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: #F97316;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: #EA580C;
+        }
+
+        .feedback-section {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .feedback-section h2 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .feedback-section p {
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 24px;
+        }
+
+        .feedback-options {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .feedback-btn {
+            padding: 12px 24px;
+            border: 2px solid rgba(255,255,255,0.2);
+            background: transparent;
+            color: white;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .feedback-btn:hover {
+            border-color: #F97316;
+            background: rgba(249,115,22,0.1);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: rgba(255,255,255,0.4);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 900px) {
+            .versions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">AI<span>Superpowers</span></div>
+            <h1>Website Preview</h1>
+            <p>Review all three design directions and share your feedback. Click on any version to see the full website.</p>
+        </header>
+
+        <div class="versions-grid">
+            <div class="version-card">
+                <div class="version-preview">V1</div>
+                <div class="version-content">
+                    <h3>Version 1 - Clean Corporate</h3>
+                    <p>Minimal, professional design with focus on content clarity</p>
+                    <ul class="version-features">
+                        <li>White background hero</li>
+                        <li>Side-by-side layout</li>
+                        <li>Abstract AI animation</li>
+                        <li>Horizontal process flow</li>
+                        <li>Card-based services</li>
+                    </ul>
+                    <a href="v1.html" class="btn">View Version 1</a>
+                </div>
+            </div>
+
+            <div class="version-card">
+                <div class="version-preview">V2</div>
+                <div class="version-content">
+                    <h3>Version 2 - Data Driven</h3>
+                    <p>Analytics-focused with charts and visual data storytelling</p>
+                    <ul class="version-features">
+                        <li>Split hero with pie chart</li>
+                        <li>Animated bar charts</li>
+                        <li>Stacked comparisons</li>
+                        <li>Zigzag timeline</li>
+                        <li>Radial progress indicators</li>
+                    </ul>
+                    <a href="v2.html" class="btn">View Version 2</a>
+                </div>
+            </div>
+
+            <div class="version-card">
+                <div class="version-preview">V3</div>
+                <div class="version-content">
+                    <h3>Version 3 - Modern SaaS</h3>
+                    <p>Interactive design with dashboard elements and animations</p>
+                    <ul class="version-features">
+                        <li>Gradient hero with dashboard</li>
+                        <li>Line chart animation</li>
+                        <li>Interactive accordion</li>
+                        <li>Donut chart breakdown</li>
+                        <li>Scrolling industry marquee</li>
+                    </ul>
+                    <a href="v3.html" class="btn">View Version 3</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="feedback-section">
+            <h2>Share Your Preference</h2>
+            <p>Which direction resonates most with our brand and target audience?</p>
+            <div class="feedback-options">
+                <button class="feedback-btn">Prefer V1</button>
+                <button class="feedback-btn">Prefer V2</button>
+                <button class="feedback-btn">Prefer V3</button>
+                <button class="feedback-btn">Mix Elements</button>
+            </div>
+        </div>
+
+        <footer>
+            AI Superpowers - Internal Preview | February 2026
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI SPOWERS - Make Your Data AI-Ready</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: #1E293B;
+            background: #FFFFFF;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.125rem;
+            color: #64748B;
+            margin-bottom: 1rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #E5E7EB;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1E293B;
+        }
+
+        .logo span {
+            color: #F97316;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid #F97316;
+        }
+
+        .btn-primary {
+            background: #F97316;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #EA580C;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #F97316;
+        }
+
+        .btn-secondary:hover {
+            background: #FFF7ED;
+        }
+
+        .hero-visual {
+            background: linear-gradient(135deg, #FFF7ED 0%, #FFFFFF 100%);
+            border-radius: 1rem;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(249, 115, 22, 0.05) 10px,
+                rgba(249, 115, 22, 0.05) 20px
+            );
+            animation: flow 20s linear infinite;
+        }
+
+        @keyframes flow {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .flow-text {
+            font-size: 5rem;
+            font-weight: 700;
+            color: #F97316;
+            opacity: 0.3;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-alt {
+            background: #FAFAF9;
+        }
+
+        .section-orange {
+            background: #EA580C;
+            color: white;
+        }
+
+        .section-orange h2,
+        .section-orange h3,
+        .section-orange p {
+            color: white;
+        }
+
+        /* Problem Section */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #E5E7EB;
+            text-align: center;
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card h3 {
+            color: #1E293B;
+            margin-bottom: 1rem;
+        }
+
+        .problem-card p {
+            font-size: 1rem;
+            text-align: left;
+        }
+
+        .closing-statement {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1E293B;
+        }
+
+        /* Three Phase */
+        .three-phase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+            position: relative;
+        }
+
+        .phase-card {
+            background: white;
+            border: 2px solid #F97316;
+            border-radius: 0.75rem;
+            padding: 2.5rem;
+            text-align: center;
+        }
+
+        .phase-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .phase-duration {
+            font-style: italic;
+            color: #64748B;
+            margin-bottom: 1rem;
+        }
+
+        .phase-card ul {
+            text-align: left;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .phase-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .phase-card li::before {
+            content: "•";
+            color: #F97316;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .phase-investment {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #F97316;
+            margin-top: 1rem;
+        }
+
+        /* Pillars */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pillar-card {
+            background: #FFF7ED;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            text-align: center;
+        }
+
+        .pillar-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-tagline {
+            font-style: italic;
+            color: #F97316;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .pillar-card ul {
+            text-align: left;
+            list-style: none;
+        }
+
+        .pillar-card li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pillar-card li::before {
+            content: "•";
+            color: #F97316;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Case Study */
+        .case-study {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .case-study h3 {
+            margin-bottom: 1rem;
+        }
+
+        .case-study ul {
+            list-style: none;
+        }
+
+        .case-study li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .case-study li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+        }
+
+        .results-box {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .result-item {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+        }
+
+        .result-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        /* Industries */
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .industry-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            border: 1px solid #E5E7EB;
+            text-align: center;
+        }
+
+        .industry-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .industry-card ul {
+            text-align: left;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .industry-card li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .profile-box {
+            background: #FFF7ED;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            margin-top: 3rem;
+        }
+
+        .profile-box h3 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .profile-box ul {
+            list-style: none;
+            columns: 2;
+            gap: 2rem;
+        }
+
+        .profile-box li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .profile-box li::before {
+            content: "✓";
+            color: #F97316;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #F97316;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .stat-context {
+            font-size: 1.125rem;
+            color: #64748B;
+        }
+
+        .closing-message {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1E293B;
+        }
+
+        /* CTA Section */
+        .cta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .cta-card {
+            background: white;
+            border: 2px solid #F97316;
+            border-radius: 0.75rem;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .cta-card h3 {
+            color: #1E293B;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-card p {
+            margin-bottom: 1rem;
+        }
+
+        .cta-card ul {
+            list-style: none;
+            margin: 1.5rem 0;
+            text-align: left;
+        }
+
+        .cta-card li {
+            margin-bottom: 0.75rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cta-card li::before {
+            content: "✓";
+            color: #F97316;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .cta-price {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #F97316;
+            margin: 1.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #0F172A;
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-column a {
+            color: #94A3B8;
+            text-decoration: none;
+        }
+
+        .footer-column a:hover {
+            color: #F97316;
+        }
+
+        .newsletter-input {
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            border: 1px solid #334155;
+            background: #1E293B;
+            color: white;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-newsletter {
+            width: 100%;
+            background: #F97316;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-newsletter:hover {
+            background: #EA580C;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #64748B;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .case-study {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-box ul {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">AI <span>SPOWERS</span></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container" style="display: contents;">
+            <div class="hero-content">
+                <h1>Most AI Projects Fail Because the Data Isn't Ready</h1>
+                <p>We fix your data first. Then we build AI that actually works.</p>
+                <p style="font-weight: 600; color: #1E293B;">Proven with Lukman: 470 hours saved in 100 days.</p>
+                <div class="hero-buttons">
+                    <a href="#cta" class="btn btn-primary">Book Data Assessment</a>
+                    <a href="#proof" class="btn btn-secondary">See How We Did It</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="flow-text">AI</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section-alt">
+        <div class="container">
+            <h2>You Want AI. But Your Data Isn't Ready.</h2>
+            <div class="problem-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">🗂️</div>
+                    <h3>Scattered Systems</h3>
+                    <p>Data trapped in ERP, CRM, Excel, and emails. No single source of truth. Can't get a full picture of your business.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⚠️</div>
+                    <h3>Quality Issues</h3>
+                    <p>Duplicates, errors, missing values. Inconsistent formats across systems. "Garbage in, garbage out"</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🔒</div>
+                    <h3>Security Concerns</h3>
+                    <p>Can't use cloud AI with sensitive data. Compliance requirements (GDPR, industry-specific). Need air-gapped or private solutions.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">💸</div>
+                    <h3>Rip-and-Replace Fear</h3>
+                    <p>Existing systems work (mostly). Can't afford to rebuild everything. Too risky to replace core infrastructure.</p>
+                </div>
+            </div>
+            <p class="closing-statement">Most AI vendors ignore these problems. We start by fixing them.</p>
+        </div>
+    </section>
+
+    <!-- What We Do -->
+    <section>
+        <div class="container">
+            <h2>We Make Your Data AI-Ready — Without Replacing What You Have</h2>
+            <div class="three-phase">
+                <div class="phase-card">
+                    <div class="phase-icon">🔍</div>
+                    <h3>Data Readiness Assessment</h3>
+                    <p class="phase-duration">Duration: 2 weeks</p>
+                    <p><strong>What We Do:</strong></p>
+                    <ul>
+                        <li>Audit your current data systems</li>
+                        <li>Identify quality issues and gaps</li>
+                        <li>Map AI opportunities with ROI projections</li>
+                    </ul>
+                    <p><strong>What You Get:</strong></p>
+                    <ul>
+                        <li>Detailed assessment report</li>
+                        <li>Prioritized roadmap</li>
+                        <li>Business case for your board</li>
+                    </ul>
+                    <div class="phase-investment">€10,000–€15,000</div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-icon">🔧</div>
+                    <h3>AI Integration</h3>
+                    <p class="phase-duration">Duration: 3-6 months</p>
+                    <p><strong>What We Do:</strong></p>
+                    <ul>
+                        <li>Fix data quality issues</li>
+                        <li>Build AI layer on your existing systems</li>
+                        <li>Deploy first use case</li>
+                        <li>Train your team</li>
+                    </ul>
+                    <p><strong>What You Get:</strong></p>
+                    <ul>
+                        <li>Working AI system</li>
+                        <li>Documentation & training</li>
+                        <li>90 days post-launch support</li>
+                    </ul>
+                    <div class="phase-investment">€40,000–€120,000</div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-icon">📈</div>
+                    <h3>Ongoing Optimization</h3>
+                    <p class="phase-duration">Duration: Ongoing</p>
+                    <p><strong>What We Do:</strong></p>
+                    <ul>
+                        <li>Add new AI capabilities</li>
+                        <li>Train models on fresh data</li>
+                        <li>Continuous improvement & support</li>
+                    </ul>
+                    <p><strong>What You Get:</strong></p>
+                    <ul>
+                        <li>Expanding AI capabilities</li>
+                        <li>Model refinement</li>
+                        <li>Ongoing technical support</li>
+                    </ul>
+                    <div class="phase-investment">€5,000–€15,000/month</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Do It -->
+    <section class="section-alt">
+        <div class="container">
+            <h2>Secure, Scalable, Built on What You Already Have</h2>
+            <div class="pillars-grid">
+                <div class="pillar-card">
+                    <div class="pillar-icon">🛡️</div>
+                    <h3>Security-First Approach</h3>
+                    <p class="pillar-tagline">"Your data stays in YOUR environment"</p>
+                    <ul>
+                        <li>Deploy on your servers or private cloud</li>
+                        <li>No external API calls for sensitive data</li>
+                        <li>Industry compliance (GDPR, HIPAA, financial regs)</li>
+                        <li>Air-gapped options available</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">🔗</div>
+                    <h3>Integration, Not Replacement</h3>
+                    <p class="pillar-tagline">"We work with your existing systems"</p>
+                    <ul>
+                        <li>Connect to PostgreSQL, SAP, Salesforce, Excel — whatever you have</li>
+                        <li>No expensive rip-and-replace</li>
+                        <li>Faster implementation (months, not years)</li>
+                        <li>Lower risk, proven approach</li>
+                    </ul>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-icon">📊</div>
+                    <h3>Proven Methodology</h3>
+                    <p class="pillar-tagline">"We've done this before"</p>
+                    <ul>
+                        <li>100-day implementation track record (Lukman)</li>
+                        <li>Repeatable framework, not custom chaos</li>
+                        <li>Data quality → AI deployment → Business results</li>
+                        <li>Built for mid-market (50-500 employees)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proof - Case Study -->
+    <section id="proof" class="section-orange">
+        <div class="container">
+            <h2>Real Results: Lukman (Telecom/ISP)</h2>
+            <div class="case-study">
+                <div>
+                    <h3>Challenge:</h3>
+                    <ul>
+                        <li>Manual reporting: 40+ hours/month wasted</li>
+                        <li>Billing errors costing revenue</li>
+                        <li>No visibility into customer churn</li>
+                        <li>Multiple legacy systems (PostgreSQL, disparate databases)</li>
+                    </ul>
+                    <h3 style="margin-top: 2rem;">Solution:</h3>
+                    <ul>
+                        <li>100-day Data + AI Implementation</li>
+                        <li>Built AI reporting platform on existing systems</li>
+                        <li>Predictive churn analytics</li>
+                        <li>Automated workflows — no system replacement</li>
+                    </ul>
+                </div>
+                <div class="results-box">
+                    <h3>Results:</h3>
+                    <div class="result-item">
+                        <span class="result-number">✅ 470 hours</span>
+                        saved annually
+                    </div>
+                    <div class="result-item">
+                        <span class="result-number">✅ 100% accuracy</span>
+                        eliminated billing errors
+                    </div>
+                    <div class="result-item">
+                        <span class="result-number">✅ 100 days</span>
+                        from start to production
+                    </div>
+                    <div class="result-item">
+                        <span class="result-number">✅ 30-day advance</span>
+                        churn detection
+                    </div>
+                    <div class="result-item">
+                        <span class="result-number">✅ €39K → €50K+</span>
+                        investment to annual value
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Serve -->
+    <section>
+        <div class="container">
+            <h2>Built for Mid-Market Companies Who Can't Afford to Get AI Wrong</h2>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">📡</div>
+                    <h3>Telecommunications & ISPs</h3>
+                    <ul>
+                        <li>• Legacy billing systems</li>
+                        <li>• Customer churn problems</li>
+                        <li>• Manual reporting overhead</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600; color: #F97316;">Example: Lukman (470 hours saved)</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏦</div>
+                    <h3>Financial Services</h3>
+                    <ul>
+                        <li>• Compliance requirements</li>
+                        <li>• Data security concerns</li>
+                        <li>• Process automation needs</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600; color: #F97316;">Example: AR aging, forecasting</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🤝</div>
+                    <h3>B2B Operations</h3>
+                    <ul>
+                        <li>• Scattered customer data</li>
+                        <li>• Manual workflows</li>
+                        <li>• Predictive analytics needs</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600; color: #F97316;">Example: Inventory, demand forecasting</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏛️</div>
+                    <h3>Government Agencies</h3>
+                    <ul>
+                        <li>• Manual approval processes</li>
+                        <li>• Compliance-heavy environments</li>
+                        <li>• Air-gapped requirements</li>
+                    </ul>
+                    <p style="margin-top: 1rem; font-weight: 600; color: #F97316;">Example: Price analysis automation</p>
+                </div>
+            </div>
+            <div class="profile-box">
+                <h3>Ideal Client Profile:</h3>
+                <ul>
+                    <li>50-500 employees</li>
+                    <li>Multiple legacy systems with data quality issues</li>
+                    <li>Security & compliance requirements</li>
+                    <li>Budget: €50K-€200K for AI transformation</li>
+                    <li>No appetite for rip-and-replace</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Now -->
+    <section class="section-alt">
+        <div class="container">
+            <h2>The AI Window Is Closing</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">12-18 Months</span>
+                    <p class="stat-context">Companies waiting past 2025 risk falling 12-18 months behind competitors in operational efficiency</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3x Higher Costs</span>
+                    <p class="stat-context">Delayed AI adoption means 3x higher implementation costs by 2026 due to vendor scarcity and talent competition</p>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">70% Failure Rate</span>
+                    <p class="stat-context">Most AI projects fail because data wasn't ready. We help you get it right the first time.</p>
+                </div>
+            </div>
+            <p class="closing-message">We help you get it right the first time. Start with data. Build AI that works.</p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="cta">
+        <div class="container">
+            <h2>Ready to See If Your Data Is AI-Ready?</h2>
+            <div class="cta-grid">
+                <div class="cta-card">
+                    <h3>Free 30-Minute Consultation</h3>
+                    <p style="font-size: 1rem; color: #64748B; margin-bottom: 1.5rem;">Not sure where to start? Let's talk.</p>
+                    <ul>
+                        <li>Quick audit of your situation</li>
+                        <li>Honest assessment of AI readiness</li>
+                        <li>No sales pitch, just guidance</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="margin-top: 1.5rem; display: inline-block;">Book Free Call</a>
+                </div>
+                <div class="cta-card">
+                    <h3>Data Readiness Assessment</h3>
+                    <p style="font-size: 1rem; color: #64748B; margin-bottom: 1.5rem;">Ready to move? Start with a formal assessment.</p>
+                    <ul>
+                        <li>2-week deep dive into your data systems</li>
+                        <li>Detailed roadmap + ROI projections</li>
+                        <li>Business case for your board</li>
+                    </ul>
+                    <div class="cta-price">Investment: €10,000–€15,000</div>
+                    <a href="#" class="btn btn-primary" style="display: inline-block;">Request Assessment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#proof">Lukman Case Study</a></li>
+                        <li><a href="#cta">Services</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p style="color: #94A3B8; font-size: 0.9rem;">
+                        📧 hello@aisuperpowers.io<br>
+                        🔗 LinkedIn: /company/aisuperpowers<br>
+                        📍 Based in Oman & Poland
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h3>Stay Updated</h3>
+                    <p style="color: #94A3B8; font-size: 0.9rem; margin-bottom: 1rem;">Get AI readiness tips, case studies, and industry insights delivered monthly.</p>
+                    <input type="email" class="newsletter-input" placeholder="Your email">
+                    <button class="btn-newsletter">Subscribe</button>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2026 AI SPOWERS. We make messy data AI-ready.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

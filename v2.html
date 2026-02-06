@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Superpowers | Data-First AI Solutions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #F97316;
+            --deep-orange: #EA580C;
+            --peach: #FED7AA;
+            --light-peach: #FFF7ED;
+            --navy: #1E293B;
+            --gray: #64748B;
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 16px 0;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-cta {
+            background: var(--orange);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .nav-cta:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section - Split Design */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 80px;
+        }
+
+        .hero-left {
+            background: var(--navy);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 80px;
+        }
+
+        .hero-left h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-left h1 span {
+            color: var(--orange);
+        }
+
+        .hero-left p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        .hero-right {
+            background: var(--light-peach);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        /* Animated Pie Chart */
+        .pie-chart-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .pie-chart {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: conic-gradient(
+                var(--orange) 0deg 252deg,
+                var(--navy) 252deg 360deg
+            );
+            position: relative;
+            animation: pieReveal 1.5s ease-out;
+        }
+
+        @keyframes pieReveal {
+            from { background: conic-gradient(var(--orange) 0deg 0deg, #e2e8f0 0deg 360deg); }
+            to { background: conic-gradient(var(--orange) 0deg 252deg, var(--navy) 252deg 360deg); }
+        }
+
+        .pie-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            background: var(--light-peach);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pie-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--orange);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .pie-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+            text-align: center;
+        }
+
+        .pie-legend {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 24px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        /* Stats Section with Bar Charts */
+        .stats-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .stats-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .stats-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .stats-header p {
+            color: var(--gray);
+            font-size: 1.1rem;
+        }
+
+        .bar-charts {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .bar-chart-card {
+            background: var(--light-peach);
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .bar-chart-title {
+            font-size: 1rem;
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        .bar-group {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .bar-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .bar-track {
+            height: 12px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--orange);
+            border-radius: 6px;
+            animation: barGrow 1s ease-out forwards;
+            transform-origin: left;
+        }
+
+        @keyframes barGrow {
+            from { transform: scaleX(0); }
+            to { transform: scaleX(1); }
+        }
+
+        .bar-fill.navy {
+            background: var(--navy);
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 100px 0;
+            background: var(--navy);
+            color: white;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .problem-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .problem-content h2 span {
+            color: var(--orange);
+        }
+
+        .problem-list {
+            list-style: none;
+            margin-top: 32px;
+        }
+
+        .problem-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .problem-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--orange);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+        }
+
+        /* Stacked Bar Visualization */
+        .stacked-visual {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 40px;
+        }
+
+        .stacked-title {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 32px;
+        }
+
+        .stacked-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .stacked-row {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .stacked-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .stacked-bar {
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .stacked-segment {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .stacked-segment:hover {
+            filter: brightness(1.1);
+        }
+
+        .seg-data { background: var(--orange); }
+        .seg-model { background: var(--deep-orange); }
+        .seg-deploy { background: var(--peach); color: var(--navy); }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .services-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .service-card {
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 40px 32px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.15);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--orange);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--peach);
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 16px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--navy);
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            border-top: 1px solid #f1f5f9;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .check {
+            color: var(--orange);
+            font-weight: bold;
+        }
+
+        /* Process Section with Timeline */
+        .process-section {
+            padding: 100px 0;
+            background: var(--light-peach);
+        }
+
+        .process-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .process-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--orange);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 50px;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 40px;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-right: 40px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background: var(--orange);
+            border-radius: 50%;
+            top: 35px;
+            border: 4px solid var(--light-peach);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -12px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -12px;
+        }
+
+        .timeline-step {
+            color: var(--orange);
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Results Section with Radial Charts */
+        .results-section {
+            padding: 100px 0;
+            background: var(--orange);
+            color: white;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .results-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .result-card {
+            text-align: center;
+        }
+
+        .radial-chart {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+        }
+
+        .radial-chart svg {
+            transform: rotate(-90deg);
+        }
+
+        .radial-bg {
+            fill: none;
+            stroke: rgba(255,255,255,0.2);
+            stroke-width: 12;
+        }
+
+        .radial-fill {
+            fill: none;
+            stroke: white;
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke-dasharray: 408;
+            stroke-dashoffset: 408;
+            animation: radialFill 1.5s ease-out forwards;
+        }
+
+        @keyframes radialFill {
+            to { stroke-dashoffset: var(--offset); }
+        }
+
+        .radial-value {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .result-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Industries Section */
+        .industries-section {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .industries-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .industries-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .industries-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .industry-card {
+            background: var(--light-peach);
+            padding: 32px 24px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .industry-card:hover {
+            background: var(--orange);
+            color: white;
+            transform: translateY(-4px);
+        }
+
+        .industry-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .industry-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .industry-card p {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--navy);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .cta-section h2 span {
+            color: var(--orange);
+        }
+
+        .cta-section p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--orange);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--navy);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: var(--orange);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--orange);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            opacity: 0.6;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left {
+                padding: 60px 40px;
+            }
+
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+
+            .bar-charts,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-grid,
+            .industries-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-left {
+                padding: 40px 24px;
+            }
+
+            .hero-left h1 {
+                font-size: 2rem;
+            }
+
+            .pie-chart-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                padding-left: 60px;
+                padding-right: 0;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 8px;
+                right: auto;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+            }
+
+            .results-grid,
+            .industries-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">AI<span>Superpowers</span></div>
+            <a href="#cta" class="nav-cta">Book Assessment</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <h1>70% of AI Projects <span>Fail</span> Before Launch</h1>
+            <p>The problem isn't AI. It's data. We fix your data foundation first, then build AI that delivers real results.</p>
+            <a href="#cta" class="btn btn-primary">Get Your Data Assessed →</a>
+        </div>
+        <div class="hero-right">
+            <div class="pie-chart-container">
+                <div class="pie-chart"></div>
+                <div class="pie-center">
+                    <div class="pie-number">70%</div>
+                    <div class="pie-label">of AI projects fail<br>due to data issues</div>
+                </div>
+                <div class="pie-legend">
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: var(--orange)"></div>
+                        <span>Data Problems</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-dot" style="background: var(--navy)"></div>
+                        <span>Other Causes</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-header">
+                <h2>The Real Cost of Bad Data</h2>
+                <p>Industry research shows where AI projects actually break down</p>
+            </div>
+            <div class="bar-charts">
+                <div class="bar-chart-card">
+                    <div class="bar-chart-title">Time Spent on Data Prep</div>
+                    <div class="bar-group">
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Data Cleaning</span>
+                                <span>45%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Data Integration</span>
+                                <span>30%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Model Training</span>
+                                <span>15%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill navy" style="width: 15%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Deployment</span>
+                                <span>10%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill navy" style="width: 10%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar-chart-card">
+                    <div class="bar-chart-title">AI Project Failure Reasons</div>
+                    <div class="bar-group">
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Poor Data Quality</span>
+                                <span>40%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 40%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Integration Issues</span>
+                                <span>25%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Lack of Expertise</span>
+                                <span>20%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill navy" style="width: 20%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Unclear Goals</span>
+                                <span>15%</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill navy" style="width: 15%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bar-chart-card">
+                    <div class="bar-chart-title">ROI Timeline Impact</div>
+                    <div class="bar-group">
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>With Data Audit</span>
+                                <span>3 mo</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill" style="width: 30%"></div>
+                            </div>
+                        </div>
+                        <div class="bar-item">
+                            <div class="bar-label">
+                                <span>Without Audit</span>
+                                <span>12+ mo</span>
+                            </div>
+                            <div class="bar-track">
+                                <div class="bar-fill navy" style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="container">
+            <div class="problem-grid">
+                <div class="problem-content">
+                    <h2>Your Data Is <span>Scattered</span> Across Systems</h2>
+                    <p>Most companies have valuable data trapped in silos. Spreadsheets here, databases there, and critical information locked in legacy systems that don't talk to each other.</p>
+                    <ul class="problem-list">
+                        <li>
+                            <div class="problem-icon">✓</div>
+                            <span>Data locked in incompatible formats</span>
+                        </li>
+                        <li>
+                            <div class="problem-icon">✓</div>
+                            <span>Manual processes creating inconsistencies</span>
+                        </li>
+                        <li>
+                            <div class="problem-icon">✓</div>
+                            <span>No single source of truth</span>
+                        </li>
+                        <li>
+                            <div class="problem-icon">✓</div>
+                            <span>AI can't work with messy data</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="stacked-visual">
+                    <div class="stacked-title">Typical AI Project Effort Distribution</div>
+                    <div class="stacked-bars">
+                        <div class="stacked-row">
+                            <div class="stacked-label">Without Data Foundation</div>
+                            <div class="stacked-bar">
+                                <div class="stacked-segment seg-data" style="width: 70%">70% Data Prep</div>
+                                <div class="stacked-segment seg-model" style="width: 20%">20%</div>
+                                <div class="stacked-segment seg-deploy" style="width: 10%">10%</div>
+                            </div>
+                        </div>
+                        <div class="stacked-row">
+                            <div class="stacked-label">With Our Approach</div>
+                            <div class="stacked-bar">
+                                <div class="stacked-segment seg-data" style="width: 25%">25%</div>
+                                <div class="stacked-segment seg-model" style="width: 45%">45% AI Development</div>
+                                <div class="stacked-segment seg-deploy" style="width: 30%">30%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="container">
+            <div class="services-header">
+                <h2>How We Help</h2>
+                <p>Three focused services that build on each other</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3>Data Readiness Assessment</h3>
+                    <p>A comprehensive audit of your data landscape to identify opportunities and blockers before any AI investment.</p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> Data quality analysis</li>
+                        <li><span class="check">✓</span> Integration mapping</li>
+                        <li><span class="check">✓</span> AI opportunity scoring</li>
+                        <li><span class="check">✓</span> Implementation roadmap</li>
+                        <li><span class="check">✓</span> ROI projections</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <h3>AI Integration</h3>
+                    <p>We build the data infrastructure and AI solutions that connect your existing systems without replacing them.</p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> Data pipeline development</li>
+                        <li><span class="check">✓</span> Custom AI models</li>
+                        <li><span class="check">✓</span> System integration</li>
+                        <li><span class="check">✓</span> Security-first deployment</li>
+                        <li><span class="check">✓</span> Team training</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3>Ongoing Optimization</h3>
+                    <p>Continuous improvement of your AI systems to maintain accuracy and adapt to changing business needs.</p>
+                    <ul class="service-features">
+                        <li><span class="check">✓</span> Performance monitoring</li>
+                        <li><span class="check">✓</span> Model retraining</li>
+                        <li><span class="check">✓</span> Feature expansion</li>
+                        <li><span class="check">✓</span> Dedicated support</li>
+                        <li><span class="check">✓</span> Quarterly reviews</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="process-section">
+        <div class="container">
+            <div class="process-header">
+                <h2>Our Process</h2>
+                <p>A proven methodology that reduces risk and accelerates results</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-step">STEP 1</div>
+                        <h3>Discover</h3>
+                        <p>We map your data landscape, interview stakeholders, and identify the highest-impact opportunities.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-step">STEP 2</div>
+                        <h3>Design</h3>
+                        <p>We architect a solution that works with your existing systems, not against them.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-step">STEP 3</div>
+                        <h3>Build</h3>
+                        <p>We develop and deploy in phases, with continuous testing and stakeholder feedback.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-step">STEP 4</div>
+                        <h3>Optimize</h3>
+                        <p>We monitor, measure, and continuously improve to ensure lasting results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section">
+        <div class="container">
+            <div class="results-header">
+                <h2>Results Our Clients See</h2>
+                <p>Typical outcomes from our data-first approach</p>
+            </div>
+            <div class="results-grid">
+                <div class="result-card">
+                    <div class="radial-chart">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <circle class="radial-bg" cx="75" cy="75" r="65"/>
+                            <circle class="radial-fill" cx="75" cy="75" r="65" style="--offset: 82;"/>
+                        </svg>
+                        <div class="radial-value">80%</div>
+                    </div>
+                    <div class="result-label">Time Saved on<br>Manual Tasks</div>
+                </div>
+                <div class="result-card">
+                    <div class="radial-chart">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <circle class="radial-bg" cx="75" cy="75" r="65"/>
+                            <circle class="radial-fill" cx="75" cy="75" r="65" style="--offset: 0;"/>
+                        </svg>
+                        <div class="radial-value">100%</div>
+                    </div>
+                    <div class="result-label">Data Accuracy<br>Improvement</div>
+                </div>
+                <div class="result-card">
+                    <div class="radial-chart">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <circle class="radial-bg" cx="75" cy="75" r="65"/>
+                            <circle class="radial-fill" cx="75" cy="75" r="65" style="--offset: 163;"/>
+                        </svg>
+                        <div class="radial-value">60%</div>
+                    </div>
+                    <div class="result-label">Faster<br>Decision Making</div>
+                </div>
+                <div class="result-card">
+                    <div class="radial-chart">
+                        <svg width="150" height="150" viewBox="0 0 150 150">
+                            <circle class="radial-bg" cx="75" cy="75" r="65"/>
+                            <circle class="radial-fill" cx="75" cy="75" r="65" style="--offset: 122;"/>
+                        </svg>
+                        <div class="radial-value">3x</div>
+                    </div>
+                    <div class="result-label">ROI Within<br>First Year</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="industries-section">
+        <div class="container">
+            <div class="industries-header">
+                <h2>Industries We Serve</h2>
+                <p>Mid-market companies with 50-500 employees</p>
+            </div>
+            <div class="industries-grid">
+                <div class="industry-card">
+                    <div class="industry-icon">📡</div>
+                    <h3>Telecom</h3>
+                    <p>Customer data, billing systems, network analytics</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">💼</div>
+                    <h3>Financial Services</h3>
+                    <p>Risk analysis, compliance, customer insights</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏭</div>
+                    <h3>B2B Operations</h3>
+                    <p>Supply chain, inventory, vendor management</p>
+                </div>
+                <div class="industry-card">
+                    <div class="industry-icon">🏛️</div>
+                    <h3>Government</h3>
+                    <p>Citizen services, document processing, analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Ready to Make Your <span>Data AI-Ready</span>?</h2>
+            <p>Book a free 30-minute consultation to discuss your data challenges and see if we're a good fit.</p>
+            <div class="cta-buttons">
+                <a href="mailto:contact@aisuperpowers.com" class="btn btn-primary">Book Free Consultation</a>
+                <a href="#services" class="btn btn-secondary">View Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">AI<span>Superpowers</span></div>
+                    <p>We make your messy data AI-ready without replacing what you already have.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Data Assessment</a></li>
+                        <li><a href="#services">AI Integration</a></li>
+                        <li><a href="#services">Optimization</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:contact@aisuperpowers.com">contact@aisuperpowers.com</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 AI Superpowers. All rights reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
