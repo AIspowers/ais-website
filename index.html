@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Superpowers | We Fix Your Data So AI Actually Works</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --orange: #F97316;
+            --deep-orange: #EA580C;
+            --burnt-orange: #C2410C;
+            --peach: #FED7AA;
+            --light-peach: #FFF7ED;
+            --cream: #FFFBEB;
+            --navy: #1E293B;
+            --dark-navy: #0F172A;
+            --gray: #64748B;
+            --gray-light: #94A3B8;
+            --light-gray: #F8FAFC;
+            --white: #FFFFFF;
+            --card-bg: #1a1f2e;
+            --border: rgba(255,255,255,0.1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark-navy);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--orange);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        .nav-cta {
+            background: var(--orange) !important;
+            color: var(--white) !important;
+            padding: 12px 24px;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            background: var(--deep-orange) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 0 100px;
+            position: relative;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 50%, var(--deep-orange) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: 0;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-hook {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            font-style: italic;
+            margin-bottom: 24px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 900px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            max-width: 650px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .hero-cta:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.3);
+        }
+
+        .hero-cta svg {
+            transition: transform 0.3s;
+        }
+
+        .hero-cta:hover svg {
+            transform: translateX(4px);
+        }
+
+        .hero-stats {
+            margin-top: 60px;
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            border-left: 2px solid var(--border);
+            padding-left: 20px;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--orange);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            margin-top: 4px;
+            max-width: 180px;
+        }
+
+        /* Section Shared Styles */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            max-width: 700px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            max-width: 560px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        /* Mirror Section (Personas) */
+        .mirror {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .mirror .section-title {
+            color: var(--navy);
+        }
+
+        .persona-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .persona-card {
+            background: var(--light-peach);
+            border: 1px solid rgba(0,0,0,0.05);
+            border-radius: 20px;
+            padding: 36px 28px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .persona-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--orange), var(--peach));
+        }
+
+        .persona-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.15);
+        }
+
+        .persona-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(249,115,22,0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .persona-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--orange);
+        }
+
+        .persona-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+            color: var(--navy);
+        }
+
+        .persona-pain {
+            color: var(--gray);
+            font-size: 0.95rem;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            padding-left: 16px;
+            border-left: 3px solid var(--orange);
+        }
+
+        .persona-answer {
+            color: var(--navy);
+            font-size: 0.95rem;
+            line-height: 1.65;
+            font-weight: 400;
+        }
+
+        /* Bridge Section */
+        .bridge {
+            background: var(--dark-navy);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 80px 0;
+        }
+
+        .bridge .container {
+            max-width: 800px;
+        }
+
+        .bridge h2 {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            color: var(--orange);
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .bridge p {
+            font-size: 1.15rem;
+            color: var(--gray-light);
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .bridge strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        /* Method Section */
+        .method {
+            background: var(--navy);
+        }
+
+        .steps {
+            margin-top: 60px;
+        }
+
+        .step {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 40px;
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .step:last-child {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: rgba(249,115,22,0.15);
+            line-height: 1;
+            letter-spacing: -0.05em;
+        }
+
+        .step-content {
+            max-width: 640px;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .step-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+        }
+
+        .step-time {
+            font-size: 0.8rem;
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .step-desc {
+            color: var(--gray-light);
+            font-size: 1.05rem;
+            line-height: 1.75;
+        }
+
+        .step-highlight {
+            background: rgba(249,115,22,0.08);
+            border-left: 3px solid var(--orange);
+            padding: 16px 20px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 20px;
+            color: var(--white);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            background: var(--cream);
+            color: var(--navy);
+        }
+
+        .solutions .section-title {
+            color: var(--navy);
+        }
+
+        .solutions .section-subtitle {
+            color: var(--gray);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .solution-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.12);
+        }
+
+        .solution-visual {
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--navy);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .solution-visual video {
+            width: 100%;
+            display: block;
+        }
+
+        .solution-placeholder {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+
+        /* Spread Cards for Training */
+        .training-cards {
+            background: var(--navy);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 20px 0;
+        }
+
+        .spread-cards {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .spread-card {
+            width: 160px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+            margin: 0 -20px;
+        }
+
+        .spread-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .spread-card:nth-child(1) {
+            transform: rotate(-10deg);
+            z-index: 1;
+        }
+
+        .spread-card:nth-child(2) {
+            transform: rotate(0deg);
+            z-index: 2;
+        }
+
+        .spread-card:nth-child(3) {
+            transform: rotate(10deg);
+            z-index: 1;
+        }
+
+        .spread-card:hover {
+            transform: rotate(0deg) scale(1.1) translateY(-8px);
+            z-index: 10;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .solution-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .solution-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            color: var(--navy);
+        }
+
+        .solution-title em {
+            color: var(--orange);
+            font-style: normal;
+        }
+
+        .solution-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        .solutions-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .solutions-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 100px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .solutions-cta a:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+        }
+
+        .case-studies-btn {
+            background: var(--navy) !important;
+            border: 2px solid var(--orange);
+        }
+
+        .case-studies-btn:hover {
+            background: var(--orange) !important;
+        }
+
+        /* Trust Section */
+        .trust {
+            background: var(--light-gray);
+            color: var(--navy);
+        }
+
+        .trust .section-title {
+            color: var(--navy);
+        }
+
+        .trust .section-subtitle {
+            color: var(--gray);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .trust-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .trust-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .trust-card-icon {
+            width: 44px;
+            height: 44px;
+            background: rgba(249,115,22,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .trust-card-icon svg {
+            width: 22px;
+            height: 22px;
+            color: var(--orange);
+        }
+
+        .trust-card-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+        }
+
+        .trust-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .trust-item {
+            border-left: 3px solid var(--orange);
+            padding-left: 16px;
+        }
+
+        .trust-item-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+
+        .trust-item-desc {
+            font-size: 0.85rem;
+            color: var(--gray);
+            line-height: 1.55;
+        }
+
+        .trust-single {
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .trust-single .trust-card {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .trust-items-horizontal {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .trust-items-horizontal .trust-item {
+            border-left: 3px solid var(--orange);
+            padding-left: 16px;
+        }
+
+        /* Industries Section */
+        .industries {
+            background: var(--navy);
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .industries .section-title {
+            color: var(--white);
+            margin-bottom: 30px;
+        }
+
+        .industries-text {
+            font-size: 1.15rem;
+            color: var(--gray-light);
+            line-height: 1.9;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+
+        .industries-list {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            color: var(--white);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .industries-list span {
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .industries-list span:hover {
+            opacity: 1;
+            color: var(--orange);
+        }
+
+        /* Final CTA */
+        .final-cta {
+            background: var(--dark-navy);
+            text-align: center;
+            padding: 100px 0 120px;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta h2 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .final-cta p {
+            font-size: 1.15rem;
+            color: var(--gray-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .final-cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 100px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .final-cta-btn:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(249,115,22,0.35);
+        }
+
+        .final-cta-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-navy);
+            border-top: 1px solid var(--border);
+            padding: 60px 0 40px;
+        }
+
+        .footer-industries {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-industries-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .footer-industries-list {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            color: var(--gray-light);
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border);
+            padding-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+        }
+
+        .footer-logo span {
+            color: var(--orange);
+        }
+
+        .footer-contact {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .footer-tagline {
+            width: 100%;
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--gray-light);
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .persona-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-items-horizontal {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .step {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .step-number {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav .nav-links a:not(.nav-cta) {
+                display: none;
+            }
+
+            nav {
+                padding: 12px 0;
+            }
+
+            nav .container {
+                padding: 0 16px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-hook {
+                font-size: 1rem;
+            }
+
+            .hero-sub {
+                font-size: 1.05rem;
+            }
+
+            .hero-cta {
+                padding: 16px 28px;
+                font-size: 1rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+                margin-top: 40px;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .persona-card {
+                padding: 28px 20px;
+            }
+
+            .step {
+                gap: 12px;
+            }
+
+            .spread-cards {
+                height: 180px;
+            }
+
+            .spread-card {
+                width: 120px;
+                margin: 0 -15px;
+            }
+
+            .solution-card {
+                padding: 24px;
+            }
+
+            .bridge {
+                padding: 60px 0;
+            }
+
+            .bridge h2 {
+                font-size: 1.5rem;
+            }
+
+            .bridge p {
+                font-size: 1rem;
+            }
+
+            .industries {
+                padding: 60px 0;
+            }
+
+            .industries-text {
+                font-size: 1rem;
+            }
+
+            .industries-list {
+                gap: 20px;
+                font-size: 0.9rem;
+            }
+
+            .final-cta {
+                padding: 60px 0 80px;
+            }
+
+            .final-cta h2 {
+                font-size: 1.75rem;
+            }
+
+            .final-cta-btn {
+                padding: 16px 28px;
+                font-size: 1rem;
+            }
+
+            .trust-card {
+                padding: 28px 20px;
+            }
+
+            .trust-items-horizontal {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-tagline {
+                font-size: 0.95rem;
+                margin-top: 24px;
+                padding-top: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="#" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="220" height="44">
+                    <defs>
+                        <filter id="glow-nav" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g transform="translate(30, 40)">
+                        <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-nav)" opacity="0.7"/>
+                        <circle cx="0" cy="0" r="9" fill="#FFA000"/>
+                    </g>
+                    <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" letter-spacing="0.5">AIsuperpowers</text>
+                    <rect x="65" y="40" width="24" height="5" rx="2" ry="2" fill="#FF6F00" filter="url(#glow-nav)"/>
+                    <rect x="67" y="41" width="20" height="3" rx="1" ry="1" fill="#FFA000"/>
+                </svg>
+            </a>
+        <div class="nav-links">
+            <a href="#mirror">Why Us</a>
+            <a href="#method">How We Work</a>
+            <a href="#solutions">Results</a>
+            <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="nav-cta">Get Started</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <p class="hero-hook fade-in">AI was supposed to change everything about your business. And it didn't.</p>
+        <h1 class="fade-in">You don't have an AI problem. You have a <em>data problem.</em></h1>
+        <p class="hero-sub fade-in">We clean your data so AI actually works — then put your entire company on one screen, live, interactive, ready to talk to.</p>
+        <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="hero-cta fade-in">
+            Book FREE 30-Minute Consultation
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="hero-stats fade-in">
+            <div class="hero-stat">
+                <div class="hero-stat-number">5%</div>
+                <div class="hero-stat-label">Of executives trust their data. We fix the other 95%. <span style="opacity: 0.6; font-size: 0.75rem;">— HFS Research</span></div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">90 days</div>
+                <div class="hero-stat-label">From X-Ray to first working system</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">$715K+</div>
+                <div class="hero-stat-label">Exposed savings across our case studies</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Mirror Section (Personas) -->
+<section class="mirror" id="mirror">
+    <div class="container">
+        <div class="section-label fade-in">Where Are You Stuck?</div>
+        <h2 class="section-title fade-in">Every company wants AI. Almost none know how to make it work. Which one are you?</h2>
+
+        <div class="persona-cards">
+            <div class="persona-card fade-in">
+                <div class="persona-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
+                <h3 class="persona-title">The Starter</h3>
+                <p class="persona-pain">"We keep hearing about AI. Competitors are using it. We've had 3 meetings about it. Nothing happened."</p>
+                <p class="persona-answer">You're standing in IKEA without a floor plan. You'll buy random pieces that don't fit together. You don't need more meetings. You need an architect — not another tool nobody uses.</p>
+            </div>
+
+            <div class="persona-card fade-in">
+                <div class="persona-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                </div>
+                <h3 class="persona-title">The Burned</h3>
+                <p class="persona-pain">"We bought Copilot licenses. Built a chatbot. Nobody uses any of it. Budget gone. Trust gone."</p>
+                <p class="persona-answer">AI didn't fail you. The implementation did. You bought tools without architecture. That's like buying apps for a phone with no operating system. Of course nothing works.</p>
+            </div>
+
+            <div class="persona-card fade-in">
+                <div class="persona-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                </div>
+                <h3 class="persona-title">The Stuck</h3>
+                <p class="persona-pain">"Data everywhere. Spreadsheets, PDFs, CRM, three systems that don't talk to each other. Our AI advisor made it worse."</p>
+                <p class="persona-answer">60% of AI projects fail because of messy data. Not algorithms. Not tools. You don't need another advisor. You need someone who fixes the pipes before turning on the water.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Bridge Section -->
+<section class="bridge">
+    <div class="container">
+        <h2 class="fade-in">Why does AI fail?</h2>
+        <p class="fade-in">Not because of algorithms. Not because of tools. AI fails because your data is messy, disconnected, and scattered across systems that refuse to talk to each other. No one trusts it — not your team, not your leadership. Fix the foundation first, and AI delivers. Skip it, and you're just automating chaos.</p>
+    </div>
+</section>
+
+<!-- Method Section -->
+<section class="method" id="method">
+    <div class="container">
+        <div class="section-label fade-in">How We Work</div>
+        <h2 class="section-title fade-in">Three steps. That's it.</h2>
+        <p class="section-subtitle fade-in">Most AI projects take months and deliver a PDF. Ours take 6 and deliver a system.</p>
+
+        <div class="steps">
+            <div class="step fade-in">
+                <div class="step-number">01</div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-name">X-Ray</h3>
+                        <span class="step-time">Month 1–3</span>
+                    </div>
+                    <p class="step-desc">We sit inside your business. Not in a boardroom — in your actual workflows. We assess your data readiness: what's clean, what's messy, what's missing. We find the 3–5 places where AI saves real money. Not theory. Math.</p>
+                </div>
+            </div>
+
+            <div class="step fade-in">
+                <div class="step-number">02</div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-name">Build & Deploy</h3>
+                        <span class="step-time">Month 3–6</span>
+                    </div>
+                    <p class="step-desc">We connect your data, build dashboards that answer in seconds what used to take days, and automate the workflows eating your team's time. No random tools — an architecture designed for your business. Your people are trained and using it within 6 months.</p>
+                </div>
+            </div>
+
+            <div class="step fade-in">
+                <div class="step-number">03</div>
+                <div class="step-content">
+                    <div class="step-header">
+                        <h3 class="step-name">Optimize</h3>
+                        <span class="step-time">Month 6–12</span>
+                    </div>
+                    <p class="step-desc">We train your people to run it, improve it, and build on it — without us. Not a 2-hour workshop. Real hands-on training that turns your employees into AI builders. Then we step back.</p>
+                    <div class="step-highlight">We don't give you fish. We build you a fishing boat and teach your crew to sail it.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section -->
+<section class="solutions" id="solutions">
+    <div class="container">
+        <div class="section-label fade-in">What Changes After We Show Up</div>
+        <h2 class="section-title fade-in">Not slides. Not reports. Working systems your team uses on Monday morning.</h2>
+
+        <div class="solutions-grid">
+            <div class="solution-card fade-in">
+                <div class="solution-visual">
+                    <video autoplay loop muted playsinline>
+                        <source src="videos/aibi-dashboard.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">Command Center</div>
+                <h3 class="solution-title">Your Entire Company on <em>One Screen You Can Talk To</em></h3>
+                <p class="solution-desc">Your managers spend days collecting, checking, and pulling data from CRMs, files, and emails to make one decision. We build the screen that gives them the answer before the meeting starts.</p>
+            </div>
+
+            <div class="solution-card fade-in">
+                <div class="solution-visual">
+                    <video autoplay loop muted playsinline>
+                        <source src="videos/n8n-automation.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">Automation</div>
+                <h3 class="solution-title"><em>Insights</em> from Your CRM — Before Morning Coffee</h3>
+                <p class="solution-desc">Your data gets checked every second, not once a quarter. Errors flagged the moment they happen. Reports in your inbox before you ask for them.</p>
+            </div>
+
+            <div class="solution-card fade-in">
+                <div class="solution-visual">
+                    <video autoplay loop muted playsinline>
+                        <source src="videos/rag-video.mov" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">Knowledge</div>
+                <h3 class="solution-title">Years of Company Policy — <em>One Click</em> Away</h3>
+                <p class="solution-desc">Your company's knowledge is trapped in someone's head, or buried in folders nobody opens. We make all of it searchable in seconds. New hires onboard in days, not months.</p>
+            </div>
+
+            <div class="solution-card fade-in">
+                <div class="solution-visual training-cards">
+                    <div class="spread-cards">
+                        <div class="spread-card">
+                            <img src="videos/training-card-1.jpeg" alt="AI Training - Context Window">
+                        </div>
+                        <div class="spread-card">
+                            <img src="videos/training-card-2.jpeg" alt="AI Training - Prompts">
+                        </div>
+                        <div class="spread-card">
+                            <img src="videos/training-card-3.jpeg" alt="AI Training - Guardrails">
+                        </div>
+                    </div>
+                </div>
+                <div class="solution-label">Enablement</div>
+                <h3 class="solution-title">Train Your Team to Build <em>Their Own</em> AI</h3>
+                <p class="solution-desc">Stop paying consultants for every automation. We train your internal teams to build AI solutions themselves. The capability compounds: trained teams train others.</p>
+            </div>
+        </div>
+
+        <div class="solutions-cta fade-in">
+            <a href="case-studies.html" class="case-studies-btn">
+                See All Case Studies with $ Results &rarr;
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Trust Section -->
+<section class="trust">
+    <div class="container">
+        <h2 class="section-title fade-in">Built on your servers. Owned by your team.</h2>
+        <p class="section-subtitle fade-in" style="font-style: italic;">"We're here to solve your problem and make your team self-sufficient."</p>
+
+        <div class="trust-grid">
+            <div class="trust-card fade-in">
+                <div class="trust-card-header">
+                    <div class="trust-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    </div>
+                    <h3 class="trust-card-title">Security First</h3>
+                </div>
+                <div class="trust-items">
+                    <div class="trust-item">
+                        <div class="trust-item-name">On-Premise or Your Cloud</div>
+                        <div class="trust-item-desc">Runs on your servers or your AWS. Never ours. Your infrastructure, your control.</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item-name">Zero Data Sharing</div>
+                        <div class="trust-item-desc">Your data never leaves your walls. No third-party APIs touching it.</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item-name">Full Transparency</div>
+                        <div class="trust-item-desc">You own the code. No black boxes. Inspect, modify, or migrate anytime.</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item-name">Enterprise Ready</div>
+                        <div class="trust-item-desc">SOC2, GDPR-ready deployments. Built for regulated industries.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="trust-card fade-in">
+                <div class="trust-card-header">
+                    <div class="trust-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                    </div>
+                    <h3 class="trust-card-title">Not Like Big Consultants</h3>
+                </div>
+                <div class="trust-items">
+                    <div class="trust-item">
+                        <div class="trust-item-name">Start Small</div>
+                        <div class="trust-item-desc">2-week POC first, then scale. No 6-month contracts upfront.</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item-name">Work WITH Your Systems</div>
+                        <div class="trust-item-desc">We integrate with what you have. No rip-and-replace, no forced migrations.</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item-name">Train Your Team</div>
+                        <div class="trust-item-desc">We teach your people to build and maintain solutions. Then we step back.</div>
+                    </div>
+                    <div class="trust-item">
+                        <div class="trust-item-name">Fixed Pricing</div>
+                        <div class="trust-item-desc">Clear scope, clear cost. No billable hour surprises or scope creep invoices.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industries Section -->
+<section class="industries">
+    <div class="container">
+        <h2 class="section-title fade-in">We Work Across Industries</h2>
+        <p class="industries-text fade-in">
+            Data problems don't respect industry boundaries. Whether you're in government, telecom, finance, or operations — if your teams waste time on manual reporting, struggle to trust their data, or watch AI projects fail before they start — we can help. Our solutions are built around your specific challenges, not a one-size-fits-all template.
+        </p>
+        <div class="industries-list fade-in">
+            <span>Government</span>
+            <span>Telecom</span>
+            <span>AdTech</span>
+            <span>Finance</span>
+            <span>Education</span>
+            <span>Manufacturing</span>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta" id="cta">
+    <div class="container">
+        <h2 class="fade-in">Still reading? Good.<br>That means <em>you know.</em></h2>
+        <p class="fade-in">Book a call if you want AI working with your data. 30 minutes. No pitch deck. No BS. Just math.</p>
+        <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="final-cta-btn fade-in">
+            Book Now for FREE
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="final-cta-note fade-in">30 minutes · No obligation · We do the math for you</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-bottom">
+            <div class="footer-logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="180" height="36">
+                    <defs>
+                        <filter id="glow-footer" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g transform="translate(30, 40)">
+                        <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-footer)" opacity="0.7"/>
+                        <circle cx="0" cy="0" r="9" fill="#FFA000"/>
+                    </g>
+                    <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" letter-spacing="0.5">AIsuperpowers</text>
+                    <rect x="65" y="40" width="24" height="5" rx="2" ry="2" fill="#FF6F00" filter="url(#glow-footer)"/>
+                    <rect x="67" y="41" width="20" height="3" rx="1" ry="1" fill="#FFA000"/>
+                </svg>
+            </div>
+            <div class="footer-contact">Warsaw · Muscat</div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Fade-in animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
