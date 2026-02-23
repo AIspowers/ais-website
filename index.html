@@ -275,6 +275,10 @@
             letter-spacing: -0.02em;
         }
 
+        .hero-nowrap {
+            white-space: nowrap;
+        }
+
         .hero h1 em {
             color: var(--orange);
             font-style: italic;
@@ -1584,6 +1588,10 @@
                 margin-bottom: 16px;
             }
 
+            .hero-nowrap {
+                white-space: normal;
+            }
+
             .hero-sub {
                 font-size: 1.05rem;
                 margin-bottom: 32px;
@@ -1952,7 +1960,7 @@
 <section class="hero">
     <div class="container">
         <p class="hero-hook fade-in">AI was supposed to change everything about your business. And it didn't.</p>
-        <h1 class="fade-in"><span style="white-space: nowrap;">You don't have an AI problem.</span><br>You have a <em>data problem.</em></h1>
+        <h1 class="fade-in"><span class="hero-nowrap">You don't have an AI problem.</span><br>You have a <em>data problem.</em></h1>
         <p class="hero-sub fade-in">We clean your data so AI actually works — then put your entire company on one screen, live, interactive, ready to talk to.</p>
         <a href="#cta" class="cta-btn fade-in">
             Book a FREE 30-Minute Consultation
