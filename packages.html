@@ -35,7 +35,10 @@
             --border: rgba(255,255,255,0.1);
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -242,6 +245,7 @@
             text-align: center;
             position: relative;
             background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 50%, var(--deep-orange) 100%);
+            overflow: hidden;
         }
 
         .hero::before {
