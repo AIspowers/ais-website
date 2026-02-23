@@ -11,6 +11,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            word-break: break-word;
+        }
+
+        img, video, svg {
+            max-width: 100%;
+            height: auto;
         }
 
         :root {
@@ -31,6 +37,7 @@
             font-family: 'Inter', sans-serif;
             color: var(--navy);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -99,6 +106,128 @@
 
         .nav-cta:hover {
             background: var(--deep-orange) !important;
+        }
+
+        .logo svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Hamburger Menu Button */
+        .nav-hamburger {
+            display: none;
+            width: 48px;
+            height: 48px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+            position: relative;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--navy);
+            border-radius: 2px;
+            transition: all 0.3s;
+            position: absolute;
+            left: 12px;
+        }
+
+        .nav-hamburger span:nth-child(1) { top: 14px; }
+        .nav-hamburger span:nth-child(2) { top: 23px; }
+        .nav-hamburger span:nth-child(3) { top: 32px; }
+
+        .nav-hamburger.active span:nth-child(1) {
+            top: 23px;
+            transform: rotate(45deg);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            top: 23px;
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100%;
+            background: var(--dark-navy);
+            z-index: 999;
+            padding: 100px 32px 40px;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--white);
+        }
+
+        .mobile-menu .mobile-menu-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            padding: 16px 24px;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .mobile-menu .mobile-menu-cta:hover {
+            background: var(--deep-orange);
         }
 
         /* Hero */
@@ -421,19 +550,30 @@
 
         /* Responsive — Mobile */
         @media (max-width: 768px) {
-            /* Nav */
+            /* Nav: hide all links, show hamburger */
             nav {
                 padding: 14px 0;
             }
 
-            nav .nav-links a:not(.nav-cta) {
+            .nav-links {
                 display: none;
+            }
+
+            .nav-hamburger {
+                display: block;
+            }
+
+            .nav-hamburger span {
+                background: var(--navy);
             }
 
             .nav-cta {
                 padding: 10px 18px !important;
                 font-size: 0.8rem !important;
                 white-space: nowrap;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
             }
 
             nav .container {
@@ -584,8 +724,13 @@
             }
 
             .nav-cta {
-                padding: 8px 14px !important;
+                padding: 10px 16px !important;
                 font-size: 0.75rem !important;
+                min-height: 44px;
+            }
+
+            .page-hero {
+                padding: 100px 0 50px;
             }
 
             .page-hero h1 {
@@ -597,7 +742,8 @@
             }
 
             .case-study-content {
-                padding: 20px;
+                padding: 16px;
+                gap: 16px;
             }
 
             .case-study-text h3 {
@@ -608,6 +754,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .case-study-value {
+                padding: 20px;
+            }
+
             .value-amount {
                 font-size: 1.75rem;
             }
@@ -615,6 +765,10 @@
             .cta-btn {
                 padding: 14px 20px;
                 font-size: 0.9rem;
+            }
+
+            .cta-section h2 {
+                font-size: 1.5rem;
             }
 
             footer .logo svg {
@@ -639,8 +793,22 @@
                 <a href="index.html#solutions">Solutions</a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform" target="_blank" class="nav-cta">Get Started</a>
             </div>
+            <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu-backdrop" id="mobileBackdrop"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="index.html#solutions">Solutions</a>
+        <a href="packages.html">Service Offerings</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform" target="_blank" class="mobile-menu-cta">Get Started</a>
+    </div>
 
     <!-- Page Hero -->
     <section class="page-hero">
@@ -911,6 +1079,31 @@
             <p class="cta-note">30 minutes · No obligation · We do the math for you</p>
         </div>
     </section>
+
+    <script>
+    // Hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+    function toggleMobileMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileBackdrop.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMobileMenu);
+    mobileBackdrop.addEventListener('click', toggleMobileMenu);
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    });
+    </script>
 
     <!-- Footer -->
     <footer>

@@ -11,6 +11,12 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            word-break: break-word;
+        }
+
+        img, video, svg {
+            max-width: 100%;
+            height: auto;
         }
 
         :root {
@@ -77,6 +83,128 @@
 
         .logo span {
             color: var(--orange);
+        }
+
+        .logo svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Hamburger Menu Button */
+        .nav-hamburger {
+            display: none;
+            width: 48px;
+            height: 48px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 12px;
+            position: relative;
+            z-index: 1001;
+            flex-shrink: 0;
+        }
+
+        .nav-hamburger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            border-radius: 2px;
+            transition: all 0.3s;
+            position: absolute;
+            left: 12px;
+        }
+
+        .nav-hamburger span:nth-child(1) { top: 14px; }
+        .nav-hamburger span:nth-child(2) { top: 23px; }
+        .nav-hamburger span:nth-child(3) { top: 32px; }
+
+        .nav-hamburger.active span:nth-child(1) {
+            top: 23px;
+            transform: rotate(45deg);
+        }
+
+        .nav-hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-hamburger.active span:nth-child(3) {
+            top: 23px;
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100%;
+            background: var(--dark-navy);
+            z-index: 999;
+            padding: 100px 32px 40px;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu-backdrop.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: var(--gray-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--white);
+        }
+
+        .mobile-menu .mobile-menu-cta {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+            padding: 16px 24px;
+            background: var(--orange);
+            color: var(--white);
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: center;
+            border-bottom: none;
+        }
+
+        .mobile-menu .mobile-menu-cta:hover {
+            background: var(--deep-orange);
         }
 
         .nav-links {
@@ -1066,19 +1194,32 @@
 
         .testimonials-dots {
             display: flex;
-            gap: 8px;
+            gap: 0;
         }
 
         .testimonials-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 0;
+            background: transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .testimonials-dot::after {
+            content: '';
             width: 8px;
             height: 8px;
             border-radius: 50%;
             background: rgba(0,0,0,0.15);
             transition: all 0.3s;
-            cursor: pointer;
         }
 
-        .testimonials-dot.active {
+        .testimonials-dot.active::after {
             background: var(--orange);
             width: 24px;
             border-radius: 4px;
@@ -1390,19 +1531,26 @@
 
         /* Responsive — Mobile */
         @media (max-width: 768px) {
-            /* Nav: hide text links, keep CTA */
+            /* Nav: hide all links, show hamburger */
             nav {
                 padding: 14px 0;
             }
 
-            nav .nav-links a:not(.nav-cta) {
+            .nav-links {
                 display: none;
+            }
+
+            .nav-hamburger {
+                display: block;
             }
 
             .nav-cta {
                 padding: 10px 18px !important;
                 font-size: 0.8rem !important;
                 white-space: nowrap;
+                min-height: 44px;
+                display: inline-flex;
+                align-items: center;
             }
 
             nav .container {
@@ -1690,8 +1838,13 @@
             }
 
             .nav-cta {
-                padding: 8px 14px !important;
+                padding: 10px 16px !important;
                 font-size: 0.75rem !important;
+                min-height: 44px;
+            }
+
+            .hero {
+                padding: 80px 0 50px;
             }
 
             .hero h1 {
@@ -1700,6 +1853,14 @@
 
             .hero-sub {
                 font-size: 0.95rem;
+            }
+
+            .step-name {
+                font-size: 1.35rem;
+            }
+
+            .step-number {
+                font-size: 2rem;
             }
 
             .team-grid {
@@ -1716,13 +1877,21 @@
                 padding: 24px 16px;
             }
 
+            .solution-card {
+                padding: 16px;
+            }
+
+            .trust-card {
+                padding: 24px 16px;
+            }
+
             .spread-cards {
-                height: 150px;
+                height: 140px;
             }
 
             .spread-card {
-                width: 100px;
-                margin: 0 -12px;
+                width: 90px;
+                margin: 0 -10px;
             }
 
             .section-title {
@@ -1731,6 +1900,14 @@
 
             .final-cta h2 {
                 font-size: 1.5rem;
+            }
+
+            .testimonial-card {
+                padding: 20px 16px;
+            }
+
+            .testimonial-featured {
+                padding: 24px 16px;
             }
         }
     </style>
@@ -1753,8 +1930,23 @@
             <a href="packages.html">Service Offerings</a>
             <a href="#cta" class="nav-cta">Get Started</a>
         </div>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </div>
 </nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-backdrop" id="mobileBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#mirror">Why Us</a>
+    <a href="#method">How We Work</a>
+    <a href="case-studies.html">Case Studies</a>
+    <a href="packages.html">Service Offerings</a>
+    <a href="#cta" class="mobile-menu-cta">Get Started</a>
+</div>
 
 <!-- Hero Section -->
 <section class="hero">
@@ -2305,6 +2497,30 @@
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+    function toggleMobileMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileBackdrop.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMobileMenu);
+    mobileBackdrop.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
     });
 </script>
 
