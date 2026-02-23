@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Case Studies | AI Superpowers</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M 18 2 L 8 15 L 15 14 L 6 30 L 26 13 L 18 14 L 26 2 Z' fill='%23F97316'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -30,7 +31,6 @@
             font-family: 'Inter', sans-serif;
             color: var(--navy);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
         h1, h2, h3 {
@@ -52,15 +52,10 @@
             z-index: 1000;
             padding: 16px 0;
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            backdrop-filter: blur(20px);
         }
 
-        nav .container.nav-content {
-            max-width: none;
-            margin: 0;
-            padding: 0 48px;
-        }
-
-        .nav-content {
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -69,6 +64,7 @@
         .logo {
             display: flex;
             align-items: center;
+            text-decoration: none;
         }
 
         .logo svg text {
@@ -86,6 +82,7 @@
             text-decoration: none;
             font-size: 0.95rem;
             transition: all 0.3s;
+            font-weight: 500;
         }
 
         .nav-links a:hover {
@@ -96,7 +93,7 @@
             background: var(--orange) !important;
             color: white !important;
             padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: 100px;
             font-weight: 600;
         }
 
@@ -151,7 +148,7 @@
         .case-studies-grid {
             display: flex;
             flex-direction: column;
-            gap: 48px;
+            gap: 64px;
         }
 
         .case-study-card {
@@ -160,6 +157,7 @@
             overflow: hidden;
             box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             transition: all 0.3s;
+            scroll-margin-top: 100px;
         }
 
         .case-study-card:hover {
@@ -275,43 +273,96 @@
         /* CTA Section */
         .cta-section {
             padding: 100px 0;
-            background: var(--navy);
+            background: var(--dark-navy);
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .cta-section h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
+            position: relative;
         }
 
         .cta-section p {
             font-size: 1.2rem;
             opacity: 0.9;
             max-width: 500px;
-            margin: 0 auto 32px;
+            margin: 0 auto 12px;
+            position: relative;
         }
 
-        .btn {
-            padding: 16px 32px;
-            border-radius: 8px;
-            font-size: 1rem;
+        .scarcity {
+            display: inline-block;
+            background: rgba(249,115,22,0.1);
+            border: 1px solid rgba(249,115,22,0.25);
+            color: var(--orange);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 100px;
+            font-size: 1.15rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
         }
 
-        .btn-primary {
-            background: var(--orange);
-            color: white;
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
         }
 
-        .btn-primary:hover {
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
             background: var(--deep-orange);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.35);
+        }
+
+        .cta-note {
+            margin-top: 16px;
+            font-size: 0.85rem;
+            opacity: 0.6;
+            position: relative;
         }
 
         /* Footer */
@@ -319,16 +370,24 @@
             background: var(--dark-navy);
             color: white;
             padding: 40px 0;
-            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
-        footer p {
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-contact {
+            font-size: 0.85rem;
             opacity: 0.6;
-            font-size: 0.9rem;
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
+        /* Responsive — Tablet */
+        @media (max-width: 1024px) {
             .case-study-content,
             .case-study-card:nth-child(even) .case-study-content {
                 grid-template-columns: 1fr;
@@ -344,25 +403,55 @@
             }
 
             .case-study-results {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .case-studies-section {
+                padding: 60px 0;
+            }
+
+            .case-studies-grid {
+                gap: 48px;
+            }
+
+            .cta-section {
+                padding: 80px 0;
             }
         }
 
+        /* Responsive — Mobile */
         @media (max-width: 768px) {
-            .nav-links a:not(.nav-cta) {
+            /* Nav */
+            nav {
+                padding: 14px 0;
+            }
+
+            nav .nav-links a:not(.nav-cta) {
                 display: none;
             }
 
-            nav {
-                padding: 12px 0;
+            .nav-cta {
+                padding: 10px 18px !important;
+                font-size: 0.8rem !important;
+                white-space: nowrap;
             }
 
-            nav .container.nav-content {
+            nav .container {
                 padding: 0 16px;
             }
 
+            .logo svg {
+                width: 150px;
+                height: 30px;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+
+            /* Page Hero */
             .page-hero {
-                padding: 120px 0 60px;
+                padding: 110px 0 60px;
             }
 
             .page-hero h1 {
@@ -373,8 +462,28 @@
                 font-size: 1.05rem;
             }
 
+            .back-link {
+                font-size: 0.9rem;
+                margin-bottom: 16px;
+                display: inline-block;
+            }
+
+            /* Case Studies */
             .case-studies-section {
                 padding: 40px 0;
+            }
+
+            .case-studies-grid {
+                gap: 32px;
+            }
+
+            .case-study-card {
+                border-radius: 16px;
+                scroll-margin-top: 80px;
+            }
+
+            .case-study-card:hover {
+                transform: none;
             }
 
             .case-study-content {
@@ -390,10 +499,47 @@
                 font-size: 0.95rem;
             }
 
+            .case-study-badge {
+                font-size: 0.7rem;
+                padding: 5px 12px;
+            }
+
+            .case-study-results {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .result-item {
+                padding: 12px;
+            }
+
+            .result-value {
+                font-size: 1.2rem;
+            }
+
+            .result-label {
+                font-size: 0.75rem;
+            }
+
+            .case-study-value {
+                padding: 24px;
+                min-height: auto;
+                border-radius: 12px;
+            }
+
             .value-amount {
                 font-size: 2rem;
             }
 
+            .value-label {
+                font-size: 0.75rem;
+            }
+
+            .value-period {
+                font-size: 0.85rem;
+            }
+
+            /* CTA Section */
             .cta-section {
                 padding: 60px 0;
             }
@@ -401,37 +547,97 @@
             .cta-section h2 {
                 font-size: 1.75rem;
             }
+
+            .cta-section p {
+                font-size: 1rem;
+            }
+
+            .cta-btn {
+                padding: 16px 28px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .scarcity {
+                font-size: 0.7rem;
+                padding: 6px 14px;
+            }
+
+            /* Footer */
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            footer .logo svg {
+                width: 150px;
+                height: 30px;
+            }
+        }
+
+        /* Responsive — Small phones */
+        @media (max-width: 400px) {
+            .logo svg {
+                width: 130px;
+                height: 26px;
+            }
+
+            .nav-cta {
+                padding: 8px 14px !important;
+                font-size: 0.75rem !important;
+            }
+
+            .page-hero h1 {
+                font-size: 1.65rem;
+            }
+
+            .page-hero p {
+                font-size: 0.95rem;
+            }
+
+            .case-study-content {
+                padding: 20px;
+            }
+
+            .case-study-text h3 {
+                font-size: 1.2rem;
+            }
+
+            .case-study-results {
+                grid-template-columns: 1fr;
+            }
+
+            .value-amount {
+                font-size: 1.75rem;
+            }
+
+            .cta-btn {
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+
+            footer .logo svg {
+                width: 130px;
+                height: 26px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="container nav-content">
+        <div class="container">
             <a href="index.html" class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="250" height="50">
-                    <defs>
-                        <filter id="glow-nav" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <g transform="translate(30, 40)">
-                        <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-nav)" opacity="0.7"/>
-                        <circle cx="0" cy="0" r="9" fill="#FFA000"/>
-                    </g>
-                    <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#1E293B" letter-spacing="0.5">AIsuperpowers</text>
-                    <rect x="65" y="40" width="24" height="5" rx="2" ry="2" fill="#FF6F00" filter="url(#glow-nav)"/>
-                    <rect x="67" y="41" width="20" height="3" rx="1" ry="1" fill="#FFA000"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="220" height="36">
+                    <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                    <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#1E293B">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#1E293B">powers.io</tspan></text>
                 </svg>
             </a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="index.html#solutions">Solutions</a>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform?usp=sharing&ouid=116371056573856407268" target="_blank" class="nav-cta">Get Started</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform" target="_blank" class="nav-cta">Get Started</a>
             </div>
         </div>
     </nav>
@@ -451,7 +657,7 @@
             <div class="case-studies-grid">
 
                 <!-- Case Study 1: HCT Strategy Dashboards -->
-                <div class="case-study-card">
+                <div class="case-study-card" id="command-center">
                     <div class="case-study-content">
                         <div class="case-study-text">
                             <div class="case-study-badge">Government / Education</div>
@@ -553,7 +759,7 @@
                 </div>
 
                 <!-- Case Study 4: CRM Error Detection -->
-                <div class="case-study-card">
+                <div class="case-study-card" id="automation">
                     <div class="case-study-content">
                         <div class="case-study-text">
                             <div class="case-study-badge">CRM / Data Quality</div>
@@ -587,7 +793,7 @@
                 </div>
 
                 <!-- Case Study 5: Company Knowledge Retrieval -->
-                <div class="case-study-card">
+                <div class="case-study-card" id="knowledge">
                     <div class="case-study-content">
                         <div class="case-study-text">
                             <div class="case-study-badge">Knowledge Management</div>
@@ -655,7 +861,7 @@
                 </div>
 
                 <!-- Case Study 7: AI Training -->
-                <div class="case-study-card">
+                <div class="case-study-card" id="enablement">
                     <div class="case-study-content">
                         <div class="case-study-text">
                             <div class="case-study-badge">Team Enablement</div>
@@ -695,16 +901,29 @@
     <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
+            <div class="scarcity">We take on 3 new clients per quarter</div>
             <h2>Ready for Results Like These?</h2>
             <p>Let's discuss how we can deliver similar outcomes for your organization.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform?usp=sharing&ouid=116371056573856407268" target="_blank" class="btn btn-primary">Book a FREE 30-Minute Consultation &rarr;</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform" target="_blank" class="cta-btn">
+                Book a FREE 30-Minute Consultation
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <p class="cta-note">30 minutes · No obligation · We do the math for you</p>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 AI Superpowers. All rights reserved.</p>
+            <div class="footer-bottom">
+                <a href="index.html" class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="180" height="28">
+                        <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                        <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers.io</tspan></text>
+                    </svg>
+                </a>
+                <div class="footer-contact">Warsaw · Muscat</div>
+            </div>
         </div>
     </footer>
 </body>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Superpowers | We Fix Your Data So AI Actually Works</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M 18 2 L 8 15 L 15 14 L 6 30 L 26 13 L 18 14 L 26 2 Z' fill='%23F97316'/></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -29,10 +30,7 @@
             --border: rgba(255,255,255,0.1);
         }
 
-        html {
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -126,8 +124,8 @@
             content: '';
             position: absolute;
             top: -50%;
-            right: 0;
-            width: 60%;
+            right: -20%;
+            width: 80%;
             height: 200%;
             background: radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%);
             pointer-events: none;
@@ -163,33 +161,86 @@
             font-weight: 300;
         }
 
-        .hero-cta {
+        /* Shared CTA Button Style - V5 Enhanced */
+        .cta-btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            padding: 18px 36px;
+            padding: 20px 40px;
             background: var(--orange);
             color: var(--white);
             border: none;
             border-radius: 100px;
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 600;
             text-decoration: none;
             transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
 
-        .hero-cta:hover {
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
             background: var(--deep-orange);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(249,115,22,0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.35);
         }
 
-        .hero-cta svg {
+        .cta-btn svg {
             transition: transform 0.3s;
         }
 
-        .hero-cta:hover svg {
+        .cta-btn:hover svg {
             transform: translateX(4px);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+        }
+
+        .cta-btn-outline:hover {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        /* CTA on light backgrounds */
+        .cta-btn-dark {
+            background: var(--navy);
+            color: var(--white);
+            border: 2px solid var(--navy);
+        }
+
+        .cta-btn-dark:hover {
+            background: var(--dark-navy);
+            border-color: var(--dark-navy);
+            box-shadow: 0 15px 40px rgba(15,23,42,0.3);
+        }
+
+        .cta-note {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            letter-spacing: 0.02em;
+        }
+
+        .cta-note-dark {
+            color: var(--gray);
         }
 
         .hero-stats {
@@ -242,6 +293,14 @@
             background: var(--orange);
         }
 
+        .section-label-centered {
+            justify-content: center;
+        }
+
+        .section-label-centered::before {
+            display: none;
+        }
+
         .section-title {
             font-size: clamp(2rem, 4vw, 3rem);
             margin-bottom: 20px;
@@ -250,12 +309,24 @@
             letter-spacing: -0.02em;
         }
 
+        .section-title-centered {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .section-subtitle {
             font-size: 1.1rem;
             color: var(--gray-light);
             max-width: 560px;
             line-height: 1.7;
             font-weight: 300;
+        }
+
+        .section-subtitle-centered {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Mirror Section (Personas) */
@@ -342,7 +413,13 @@
             font-weight: 400;
         }
 
-        /* Bridge Section */
+        /* Mid-section CTA */
+        .mid-cta {
+            text-align: center;
+            padding: 60px 0 0;
+        }
+
+        /* Bridge Section - V5: Bullet points instead of dense paragraph */
         .bridge {
             background: var(--dark-navy);
             border-top: 1px solid var(--border);
@@ -357,18 +434,38 @@
         .bridge h2 {
             font-size: clamp(1.75rem, 3vw, 2.5rem);
             color: var(--orange);
-            margin-bottom: 20px;
+            margin-bottom: 28px;
             letter-spacing: -0.02em;
         }
 
-        .bridge p {
-            font-size: 1.15rem;
-            color: var(--gray-light);
-            line-height: 1.8;
-            font-weight: 300;
+        .bridge-points {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .bridge strong {
+        .bridge-points li {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            line-height: 1.7;
+            font-weight: 300;
+            padding-left: 28px;
+            position: relative;
+        }
+
+        .bridge-points li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 12px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .bridge-points li strong {
             color: var(--white);
             font-weight: 600;
         }
@@ -472,6 +569,10 @@
             padding: 32px;
             transition: all 0.4s;
             box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
         }
 
         .solution-card:hover {
@@ -491,15 +592,94 @@
         .solution-visual video {
             width: 100%;
             display: block;
+            cursor: pointer;
         }
 
-        .solution-placeholder {
-            height: 200px;
+        /* Play icon overlay on video */
+        .solution-visual {
+            position: relative;
+        }
+
+        .solution-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            background: rgba(249,115,22,0.85);
+            border-radius: 50%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpolygon points='9,6 19,12 9,18'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 55% 50%;
+            background-size: 16px;
+            opacity: 0.75;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .solution-visual:hover::after {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Video lightbox */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .video-lightbox.active {
+            display: flex;
+        }
+
+        .video-lightbox-content {
+            position: relative;
+            width: 75%;
+            max-width: 960px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .video-lightbox-content video {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .video-lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--gray);
-            font-size: 0.85rem;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .video-lightbox-close:hover {
+            background: rgba(249,115,22,0.8);
         }
 
         /* Spread Cards for Training */
@@ -584,36 +764,25 @@
             line-height: 1.65;
         }
 
+        /* V5: Solution card "see case study" link */
+        .solution-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange);
+            transition: gap 0.3s;
+        }
+
+        .solution-card:hover .solution-link {
+            gap: 10px;
+        }
+
         .solutions-cta {
             text-align: center;
             margin-top: 60px;
-        }
-
-        .solutions-cta a {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 16px 32px;
-            background: var(--orange);
-            color: var(--white);
-            border-radius: 100px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .solutions-cta a:hover {
-            background: var(--deep-orange);
-            transform: translateY(-2px);
-        }
-
-        .case-studies-btn {
-            background: var(--navy) !important;
-            border: 2px solid var(--orange);
-        }
-
-        .case-studies-btn:hover {
-            background: var(--orange) !important;
         }
 
         /* Trust Section */
@@ -703,29 +872,96 @@
             line-height: 1.55;
         }
 
-        .trust-single {
-            display: flex;
-            justify-content: center;
-            margin-top: 60px;
+        /* V5: Team Section */
+        .team {
+            background: var(--white);
+            color: var(--navy);
+            padding: 100px 0;
         }
 
-        .trust-single .trust-card {
-            max-width: 900px;
-            width: 100%;
+        .team .section-title {
+            color: var(--navy);
         }
 
-        .trust-items-horizontal {
+        .team-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
+            gap: 32px;
+            margin-top: 60px;
+            max-width: 1000px;
         }
 
-        .trust-items-horizontal .trust-item {
-            border-left: 3px solid var(--orange);
-            padding-left: 16px;
+        .team-card {
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 24px 16px;
+            border-radius: 16px;
+            transition: all 0.3s;
         }
 
-        /* Industries Section */
+        .team-card:hover {
+            background: var(--light-peach);
+            transform: translateY(-4px);
+        }
+
+        .team-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 3px solid rgba(249,115,22,0.15);
+            transition: border-color 0.3s;
+        }
+
+        .team-card:hover .team-photo {
+            border-color: var(--orange);
+        }
+
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .team-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--orange);
+            transition: gap 0.3s;
+        }
+
+        .team-linkedin svg {
+            color: var(--orange);
+        }
+
+        .team-card:hover .team-linkedin {
+            gap: 10px;
+        }
+
+        /* Industries Section - V5: Properly centered */
         .industries {
             background: var(--navy);
             text-align: center;
@@ -734,7 +970,11 @@
 
         .industries .section-title {
             color: var(--white);
+            margin-left: auto;
+            margin-right: auto;
             margin-bottom: 30px;
+            text-align: center;
+            max-width: none;
         }
 
         .industries-text {
@@ -749,28 +989,244 @@
         .industries-list {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 16px;
             flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+
+        .industry-tag {
+            background: rgba(249,115,22,0.1);
+            border: 1px solid rgba(249,115,22,0.2);
             color: var(--white);
-            font-size: 1rem;
+            padding: 10px 24px;
+            border-radius: 100px;
+            font-size: 0.95rem;
             font-weight: 500;
+            transition: all 0.3s;
         }
 
-        .industries-list span {
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-
-        .industries-list span:hover {
-            opacity: 1;
+        .industry-tag:hover {
+            background: rgba(249,115,22,0.2);
+            border-color: var(--orange);
             color: var(--orange);
         }
 
-        /* Final CTA */
+        /* V5: Testimonials Section */
+        .testimonials {
+            background: var(--cream);
+            color: var(--navy);
+            padding: 100px 0;
+        }
+
+        .testimonials .section-title {
+            color: var(--navy);
+        }
+
+        .testimonials-grid {
+            display: flex;
+            margin-top: 60px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testimonials-grid .testimonial-card {
+            min-width: 100%;
+            max-width: 100%;
+            flex-shrink: 0;
+            transition: transform 0.5s ease;
+        }
+
+        /* Carousel navigation */
+        .testimonials-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .testimonials-nav-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 2px solid rgba(0,0,0,0.1);
+            background: var(--white);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            color: var(--navy);
+        }
+
+        .testimonials-nav-btn:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .testimonials-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .testimonials-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .testimonials-dot.active {
+            background: var(--orange);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 32px 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: relative;
+        }
+
+        .testimonial-quote {
+            font-size: 2.5rem;
+            color: var(--orange);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-text {
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--white);
+        }
+
+        .testimonial-photo {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(249,115,22,0.2);
+        }
+
+        .testimonial-info-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+        }
+
+        .testimonial-info-role {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Featured testimonial (full-width) */
+        .testimonial-featured {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 44px 48px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: relative;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 28px;
+        }
+
+        .testimonial-featured::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--peach));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .testimonial-featured .testimonial-photo-large {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(249,115,22,0.15);
+            flex-shrink: 0;
+        }
+
+        .testimonial-featured .testimonial-quote {
+            font-size: 3rem;
+            color: var(--orange);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-featured .testimonial-text {
+            font-size: 1.15rem;
+            color: var(--gray);
+            line-height: 1.75;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-featured-label {
+            display: inline-block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        /* Final CTA - V5: Enhanced */
         .final-cta {
             background: var(--dark-navy);
             text-align: center;
             padding: 100px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .final-cta h2 {
@@ -778,6 +1234,7 @@
             margin-bottom: 20px;
             line-height: 1.15;
             letter-spacing: -0.02em;
+            position: relative;
         }
 
         .final-cta h2 em {
@@ -790,33 +1247,37 @@
             color: var(--gray-light);
             margin-bottom: 40px;
             font-weight: 300;
+            position: relative;
         }
 
-        .final-cta-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            padding: 20px 40px;
-            background: var(--orange);
-            color: var(--white);
-            border: none;
-            border-radius: 100px;
-            font-size: 1.15rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .final-cta-btn:hover {
-            background: var(--deep-orange);
-            transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(249,115,22,0.35);
+        .final-cta .cta-btn {
+            position: relative;
         }
 
         .final-cta-note {
             margin-top: 20px;
             font-size: 0.9rem;
             color: var(--gray);
+            position: relative;
+        }
+
+        /* V5: Scarcity badge */
+        .scarcity {
+            display: inline-block;
+            background: rgba(249,115,22,0.1);
+            border: 1px solid rgba(249,115,22,0.25);
+            color: var(--orange);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .scarcity-dark {
+            background: rgba(249,115,22,0.08);
+            border-color: rgba(249,115,22,0.2);
         }
 
         /* Footer */
@@ -826,31 +1287,7 @@
             padding: 60px 0 40px;
         }
 
-        .footer-industries {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .footer-industries-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--gray);
-            margin-bottom: 20px;
-        }
-
-        .footer-industries-list {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            color: var(--gray-light);
-            font-size: 0.9rem;
-        }
-
         .footer-bottom {
-            border-top: 1px solid var(--border);
-            padding-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -896,10 +1333,19 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
+        /* Responsive — Tablet */
         @media (max-width: 1024px) {
+            section {
+                padding: 80px 0;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
             .persona-cards {
                 grid-template-columns: 1fr;
+                max-width: 500px;
             }
 
             .solutions-grid {
@@ -910,7 +1356,16 @@
                 grid-template-columns: 1fr;
             }
 
-            .trust-items-horizontal {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-photo {
+                width: 40px;
+                height: 40px;
+            }
+
+            .team-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -922,49 +1377,68 @@
             .step-number {
                 font-size: 3rem;
             }
+
+            .hero {
+                padding: 120px 0 80px;
+                min-height: auto;
+            }
+
+            .final-cta {
+                padding: 80px 0 100px;
+            }
         }
 
+        /* Responsive — Mobile */
         @media (max-width: 768px) {
+            /* Nav: hide text links, keep CTA */
+            nav {
+                padding: 14px 0;
+            }
+
             nav .nav-links a:not(.nav-cta) {
                 display: none;
             }
 
-            nav {
-                padding: 12px 0;
+            .nav-cta {
+                padding: 10px 18px !important;
+                font-size: 0.8rem !important;
+                white-space: nowrap;
             }
 
             nav .container {
                 padding: 0 16px;
             }
 
-            section {
-                padding: 60px 0;
+            /* Logo smaller on mobile */
+            .logo svg {
+                width: 150px;
+                height: 30px;
             }
 
+            /* Container tighter padding */
             .container {
                 padding: 0 16px;
             }
 
+            /* Hero */
             .hero {
                 padding: 100px 0 60px;
                 min-height: auto;
             }
 
-            .hero h1 {
-                font-size: 2rem;
-            }
-
             .hero-hook {
                 font-size: 1rem;
+                margin-bottom: 16px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 16px;
             }
 
             .hero-sub {
                 font-size: 1.05rem;
-            }
-
-            .hero-cta {
-                padding: 16px 28px;
-                font-size: 1rem;
+                margin-bottom: 32px;
             }
 
             .hero-stats {
@@ -977,16 +1451,100 @@
                 font-size: 2rem;
             }
 
+            /* CTA buttons */
+            .cta-btn {
+                padding: 16px 28px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-btn-dark {
+                width: auto;
+            }
+
+            /* Section spacing */
+            section {
+                padding: 60px 0;
+            }
+
             .section-title {
                 font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            /* Personas */
+            .persona-cards {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-top: 32px;
             }
 
             .persona-card {
                 padding: 28px 20px;
             }
 
+            .persona-title {
+                font-size: 1.3rem;
+            }
+
+            .mid-cta {
+                padding: 40px 0 0;
+            }
+
+            /* Bridge */
+            .bridge {
+                padding: 60px 0;
+            }
+
+            .bridge h2 {
+                font-size: 1.5rem;
+            }
+
+            .bridge-points li {
+                font-size: 1rem;
+            }
+
+            /* Method */
             .step {
+                grid-template-columns: 1fr;
                 gap: 12px;
+                padding: 32px 0;
+            }
+
+            .step-number {
+                font-size: 2.5rem;
+            }
+
+            .step-name {
+                font-size: 1.5rem;
+            }
+
+            .step-desc {
+                font-size: 0.95rem;
+            }
+
+            /* Lightbox */
+            .video-lightbox-content {
+                width: 95%;
+            }
+
+            /* Solutions */
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 32px;
+            }
+
+            .solution-card {
+                padding: 24px;
+            }
+
+            .solution-title {
+                font-size: 1.2rem;
             }
 
             .spread-cards {
@@ -998,35 +1556,97 @@
                 margin: 0 -15px;
             }
 
-            .solution-card {
-                padding: 24px;
-            }
-
-            .bridge {
+            /* Testimonials */
+            .testimonials {
                 padding: 60px 0;
             }
 
-            .bridge h2 {
-                font-size: 1.5rem;
+            .testimonial-featured {
+                flex-direction: column;
+                text-align: center;
+                padding: 28px 24px;
+                gap: 20px;
             }
 
-            .bridge p {
+            .testimonial-featured .testimonial-photo-large {
+                width: 80px;
+                height: 80px;
+            }
+
+            .testimonial-featured .testimonial-text {
                 font-size: 1rem;
             }
 
+            .testimonial-card {
+                padding: 28px 24px;
+            }
+
+            .testimonial-text {
+                font-size: 0.95rem;
+            }
+
+            /* Trust */
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 32px;
+            }
+
+            .trust-card {
+                padding: 28px 24px;
+            }
+
+            /* Team */
+            .team {
+                padding: 60px 0;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .team-photo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .team-name {
+                font-size: 1.05rem;
+            }
+
+            .team-role {
+                font-size: 0.7rem;
+            }
+
+            .team-bio {
+                font-size: 0.8rem;
+                display: none;
+            }
+
+            /* Industries */
             .industries {
                 padding: 60px 0;
             }
 
             .industries-text {
                 font-size: 1rem;
+                line-height: 1.7;
             }
 
             .industries-list {
-                gap: 20px;
-                font-size: 0.9rem;
+                gap: 8px;
             }
 
+            .industry-tag {
+                padding: 8px 16px;
+                font-size: 0.8rem;
+            }
+
+            /* Final CTA */
             .final-cta {
                 padding: 60px 0 80px;
             }
@@ -1035,28 +1655,82 @@
                 font-size: 1.75rem;
             }
 
-            .final-cta-btn {
-                padding: 16px 28px;
+            .final-cta p {
                 font-size: 1rem;
             }
 
-            .trust-card {
-                padding: 28px 20px;
+            .scarcity {
+                font-size: 0.7rem;
+                padding: 6px 14px;
             }
 
-            .trust-items-horizontal {
-                grid-template-columns: 1fr;
-            }
-
+            /* Footer */
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .footer-logo svg {
+                width: 150px;
+                height: 30px;
             }
 
             .footer-tagline {
                 font-size: 0.95rem;
                 margin-top: 24px;
                 padding-top: 24px;
+            }
+        }
+
+        /* Responsive — Small phones */
+        @media (max-width: 400px) {
+            .logo svg {
+                width: 130px;
+                height: 26px;
+            }
+
+            .nav-cta {
+                padding: 8px 14px !important;
+                font-size: 0.75rem !important;
+            }
+
+            .hero h1 {
+                font-size: 1.65rem;
+            }
+
+            .hero-sub {
+                font-size: 0.95rem;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 200px;
+            }
+
+            .cta-btn {
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+
+            .persona-card {
+                padding: 24px 16px;
+            }
+
+            .spread-cards {
+                height: 150px;
+            }
+
+            .spread-card {
+                width: 100px;
+                margin: 0 -12px;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .final-cta h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -1067,30 +1741,17 @@
 <nav>
     <div class="container">
         <a href="#" class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="220" height="44">
-                    <defs>
-                        <filter id="glow-nav" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <g transform="translate(30, 40)">
-                        <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-nav)" opacity="0.7"/>
-                        <circle cx="0" cy="0" r="9" fill="#FFA000"/>
-                    </g>
-                    <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" letter-spacing="0.5">AIsuperpowers</text>
-                    <rect x="65" y="40" width="24" height="5" rx="2" ry="2" fill="#FF6F00" filter="url(#glow-nav)"/>
-                    <rect x="67" y="41" width="20" height="3" rx="1" ry="1" fill="#FFA000"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="220" height="36">
+                    <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                    <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers.io</tspan></text>
                 </svg>
             </a>
         <div class="nav-links">
             <a href="#mirror">Why Us</a>
             <a href="#method">How We Work</a>
-            <a href="#solutions">Results</a>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform?usp=sharing&ouid=116371056573856407268" target="_blank" class="nav-cta">Get Started</a>
+            <a href="case-studies.html">Case Studies</a>
+            <a href="packages.html">Service Offerings</a>
+            <a href="#cta" class="nav-cta">Get Started</a>
         </div>
     </div>
 </nav>
@@ -1099,9 +1760,9 @@
 <section class="hero">
     <div class="container">
         <p class="hero-hook fade-in">AI was supposed to change everything about your business. And it didn't.</p>
-        <h1 class="fade-in">You don't have an AI problem. You have a <em>data problem.</em></h1>
+        <h1 class="fade-in"><span style="white-space: nowrap;">You don't have an AI problem.</span><br>You have a <em>data problem.</em></h1>
         <p class="hero-sub fade-in">We clean your data so AI actually works — then put your entire company on one screen, live, interactive, ready to talk to.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform?usp=sharing&ouid=116371056573856407268" target="_blank" class="hero-cta fade-in">
+        <a href="#cta" class="cta-btn fade-in">
             Book a FREE 30-Minute Consultation
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
@@ -1156,14 +1817,28 @@
                 <p class="persona-answer">60% of AI projects fail because of messy data. Not algorithms. Not tools. You don't need another advisor. You need someone who fixes the pipes before turning on the water.</p>
             </div>
         </div>
+
+        <!-- V5: Mid-section CTA -->
+        <div class="mid-cta fade-in">
+            <a href="#cta" class="cta-btn cta-btn-dark">
+                Sound familiar? Let's talk
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <p class="cta-note cta-note-dark">Free 30-minute assessment — no pitch, just math</p>
+        </div>
     </div>
 </section>
 
-<!-- Bridge Section -->
+<!-- Bridge Section - V5: Bullet points -->
 <section class="bridge">
     <div class="container">
         <h2 class="fade-in">Why does AI fail?</h2>
-        <p class="fade-in">Not because of algorithms. Not because of tools. AI fails because your data is messy, disconnected, and scattered across systems that refuse to talk to each other. No one trusts it — not your team, not your leadership. Fix the foundation first, and AI delivers. Skip it, and you're just automating chaos.</p>
+        <ul class="bridge-points fade-in">
+            <li><strong>Not because of algorithms.</strong> The technology is ready. Your data isn't.</li>
+            <li><strong>Not because of tools.</strong> You don't lack software. You lack clean, connected, trusted data.</li>
+            <li><strong>Your data is scattered</strong> across systems that refuse to talk to each other. No one trusts it — not your team, not your leadership.</li>
+            <li><strong>Fix the foundation first,</strong> and AI delivers. Skip it, and you're just automating chaos.</li>
+        </ul>
     </div>
 </section>
 
@@ -1172,7 +1847,7 @@
     <div class="container">
         <div class="section-label fade-in">How We Work</div>
         <h2 class="section-title fade-in">Three steps. That's it.</h2>
-        <p class="section-subtitle fade-in">Most AI projects take months and deliver a PDF. Ours take 6 and deliver a system.</p>
+        <p class="section-subtitle fade-in">Most AI projects take months and deliver a PDF. Ours delivers a system.</p>
 
         <div class="steps">
             <div class="step fade-in">
@@ -1180,7 +1855,6 @@
                 <div class="step-content">
                     <div class="step-header">
                         <h3 class="step-name">X-Ray</h3>
-                        <span class="step-time">Month 1–3</span>
                     </div>
                     <p class="step-desc">We sit inside your business. Not in a boardroom — in your actual workflows. We assess your data readiness: what's clean, what's messy, what's missing. We find the 3–5 places where AI saves real money. Not theory. Math.</p>
                 </div>
@@ -1191,7 +1865,6 @@
                 <div class="step-content">
                     <div class="step-header">
                         <h3 class="step-name">Build & Deploy</h3>
-                        <span class="step-time">Month 3–6</span>
                     </div>
                     <p class="step-desc">We connect your data, build dashboards that answer in seconds what used to take days, and automate the workflows eating your team's time. No random tools — an architecture designed for your business. Your people are trained and using it within 6 months.</p>
                 </div>
@@ -1202,7 +1875,6 @@
                 <div class="step-content">
                     <div class="step-header">
                         <h3 class="step-name">Optimize</h3>
-                        <span class="step-time">Month 6–12</span>
                     </div>
                     <p class="step-desc">We train your people to run it, improve it, and build on it — without us. Not a 2-hour workshop. Real hands-on training that turns your employees into AI builders. Then we step back.</p>
                     <div class="step-highlight">We don't give you fish. We build you a fishing boat and teach your crew to sail it.</div>
@@ -1212,7 +1884,7 @@
     </div>
 </section>
 
-<!-- Solutions Section -->
+<!-- Solutions Section - V5: Clickable cards -->
 <section class="solutions" id="solutions">
     <div class="container">
         <div class="section-label fade-in">What Changes After We Show Up</div>
@@ -1220,62 +1892,157 @@
 
         <div class="solutions-grid">
             <div class="solution-card fade-in">
-                <div class="solution-visual">
-                    <video autoplay loop muted playsinline>
-                        <source src="videos/aibi-dashboard.mp4" type="video/mp4">
+                <div class="solution-visual" onclick="openLightbox('videos/V1-Executive-Dashboards-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V1-Executive-Dashboards-v3.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="solution-label">Command Center</div>
                 <h3 class="solution-title">Your Entire Company on <em>One Screen You Can Talk To</em></h3>
                 <p class="solution-desc">Your managers spend days collecting, checking, and pulling data from CRMs, files, and emails to make one decision. We build the screen that gives them the answer before the meeting starts.</p>
+                <a href="case-studies.html#command-center" class="solution-link">See all case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
 
             <div class="solution-card fade-in">
-                <div class="solution-visual">
-                    <video autoplay loop muted playsinline>
-                        <source src="videos/n8n-automation.mp4" type="video/mp4">
+                <div class="solution-visual" onclick="openLightbox('videos/V4-CRMErrorDetection-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V4-CRMErrorDetection-v3.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="solution-label">Automation</div>
                 <h3 class="solution-title"><em>Insights</em> from Your CRM — Before Morning Coffee</h3>
                 <p class="solution-desc">Your data gets checked every second, not once a quarter. Errors flagged the moment they happen. Reports in your inbox before you ask for them.</p>
+                <a href="case-studies.html#automation" class="solution-link">See all case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
 
             <div class="solution-card fade-in">
-                <div class="solution-visual">
-                    <video autoplay loop muted playsinline>
-                        <source src="videos/rag-video.mov" type="video/mp4">
+                <div class="solution-visual" onclick="openLightbox('videos/V5-KnowledgeRAG-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V5-KnowledgeRAG-v3.mp4" type="video/mp4">
                     </video>
                 </div>
                 <div class="solution-label">Knowledge</div>
                 <h3 class="solution-title">Years of Company Policy — <em>One Click</em> Away</h3>
                 <p class="solution-desc">Your company's knowledge is trapped in someone's head, or buried in folders nobody opens. We make all of it searchable in seconds. New hires onboard in days, not months.</p>
+                <a href="case-studies.html#knowledge" class="solution-link">See all case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
 
             <div class="solution-card fade-in">
-                <div class="solution-visual training-cards">
-                    <div class="spread-cards">
-                        <div class="spread-card">
-                            <img src="videos/training-card-1.jpeg" alt="AI Training - Context Window">
-                        </div>
-                        <div class="spread-card">
-                            <img src="videos/training-card-2.jpeg" alt="AI Training - Prompts">
-                        </div>
-                        <div class="spread-card">
-                            <img src="videos/training-card-3.jpeg" alt="AI Training - Guardrails">
-                        </div>
-                    </div>
+                <div class="solution-visual" onclick="openLightbox('videos/V7-AITraining-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V7-AITraining-v3.mp4" type="video/mp4">
+                    </video>
                 </div>
                 <div class="solution-label">Enablement</div>
                 <h3 class="solution-title">Train Your Team to Build <em>Their Own</em> AI</h3>
                 <p class="solution-desc">Stop paying consultants for every automation. We train your internal teams to build AI solutions themselves. The capability compounds: trained teams train others.</p>
+                <a href="case-studies.html#enablement" class="solution-link">See all case studies <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
             </div>
         </div>
 
         <div class="solutions-cta fade-in">
-            <a href="case-studies.html" class="case-studies-btn">
-                See All Case Studies with $ Results &rarr;
+            <a href="case-studies.html" class="cta-btn cta-btn-dark">
+                See All Case Studies
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </a>
+        </div>
+    </div>
+</section>
+
+<!-- V5: Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-label section-label-centered fade-in">What Our Partners Say</div>
+        <h2 class="section-title section-title-centered fade-in">Real feedback from real engagements</h2>
+
+        <!-- Featured: Strategic Partnership -->
+        <div class="testimonial-featured fade-in">
+            <img src="videos/testimonial-khalid.jpeg" alt="Khalid Al Husaini" class="testimonial-photo-large">
+            <div>
+                <div class="testimonial-featured-label">Strategic Partnership</div>
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">We partnered with AIsuperpowers because we saw a team that could actually deliver AI to government — not just talk about it. Bringing them to Oman was about giving our government clients access to real AI capability — not presentations, not promises, but working systems. That's exactly what we're delivering together.</p>
+                <div class="testimonial-author">
+                    <div>
+                        <div class="testimonial-info-name">Khalid Al Husaini</div>
+                        <div class="testimonial-info-role">Chairman & CEO · Labbik Telecom Services · Oman</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Client testimonials grid -->
+        <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">Working with AIsuperpowers, we went from idea to working prototype in weeks. They understood the business logic immediately, built something real, and gave us a system we could iterate on ourselves.</p>
+                <div class="testimonial-author">
+                    <img src="videos/testimonial-karol.jpeg" alt="Karol Sadaj" class="testimonial-photo">
+                    <div>
+                        <div class="testimonial-info-name">Karol Sadaj</div>
+                        <div class="testimonial-info-role">Fintech Executive · AIP Seed Board · ex-Revolut</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">AIsuperpowers helped our entire team go from confused about AI to using it daily. They didn't just install tools — they trained our engineers to actually work with them. That's what made the difference.</p>
+                <div class="testimonial-author">
+                    <img src="videos/testimonial-hwy.png" alt="Highway" style="width: 52px; height: 52px; object-fit: contain;">
+                    <div>
+                        <div class="testimonial-info-name">Piotr Urbański</div>
+                        <div class="testimonial-info-role">Founder & CEO · Highway Sp. z o.o. · Engineering & Infrastructure</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">Thanks to AIsuperpowers, our leadership team now makes confident AI decisions. Before, every conversation about AI ended in confusion — now we have a clear framework and we're actually executing on it.</p>
+                <div class="testimonial-author">
+                    <img src="videos/testimonial-raiffeisen.png" alt="Raiffeisen Bank" style="width: 52px; height: 52px; object-fit: contain;">
+                    <div>
+                        <div class="testimonial-info-name">Piotr Nowak</div>
+                        <div class="testimonial-info-role">Head of Risk & Collections · Raiffeisen Bank International</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">Working with AIsuperpowers helped me build an AI strategy I could actually execute — not a 50-page report, but a real roadmap with clear priorities and quick wins that got buy-in from the board.</p>
+                <div class="testimonial-author">
+                    <img src="videos/testimonial-kowynia.jpeg" alt="Piotr Kowynia" class="testimonial-photo">
+                    <div>
+                        <div class="testimonial-info-name">Piotr Kowynia</div>
+                        <div class="testimonial-info-role">President & CEO · Nest Bank S.A.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card fade-in">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">Finding an AI partner who understands the Omani market was the challenge. AIsuperpowers didn't just bring the technology — they understood how business works here. We went from running everything manually to having automated operations that actually made us faster. The ROI was obvious within weeks.</p>
+                <div class="testimonial-author">
+                    <img src="videos/testimonial-pouria.jpeg" alt="Pouria Fardpour" class="testimonial-photo">
+                    <div>
+                        <div class="testimonial-info-name">Pouria Fardpour</div>
+                        <div class="testimonial-info-role">Founder · Sultan Lands · Real Estate · Oman</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Carousel nav -->
+        <div class="testimonials-nav">
+            <button class="testimonials-nav-btn" onclick="scrollTestimonials(-1)" aria-label="Previous">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="testimonials-dots" id="testimonialDots"></div>
+            <button class="testimonials-nav-btn" onclick="scrollTestimonials(1)" aria-label="Next">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
         </div>
     </div>
 </section>
@@ -1344,31 +2111,87 @@
     </div>
 </section>
 
-<!-- Industries Section -->
-<section class="industries">
+<!-- V5: Team Section -->
+<section class="team" id="team">
     <div class="container">
-        <h2 class="section-title fade-in">We Work Across Industries</h2>
-        <p class="industries-text fade-in">
-            Data problems don't respect industry boundaries. Whether you're in government, telecom, finance, or operations — if your teams waste time on manual reporting, struggle to trust their data, or watch AI projects fail before they start — we can help. Our solutions are built around your specific challenges, not a one-size-fits-all template.
-        </p>
-        <div class="industries-list fade-in">
-            <span>Government</span>
-            <span>Telecom</span>
-            <span>AdTech</span>
-            <span>Finance</span>
-            <span>Education</span>
-            <span>Manufacturing</span>
+        <div class="section-label fade-in">Who We Are</div>
+        <h2 class="section-title fade-in">Small team. Big outcomes.</h2>
+        <p class="section-subtitle fade-in">We're not a 200-person firm that sends juniors. You work directly with the people who build your systems.</p>
+
+        <div class="team-grid">
+            <a href="https://www.linkedin.com/in/aws-naser-861866270" target="_blank" class="team-card fade-in">
+                <img src="videos/team-aws.jpg" alt="Aws Naser" class="team-photo">
+                <h3 class="team-name">Aws Naser</h3>
+                <div class="team-role">Co-Founder</div>
+                <p class="team-bio">AI Business Architect. Designs data strategies and AI systems that turn operational chaos into measurable outcomes.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/martazalewskapr/" target="_blank" class="team-card fade-in">
+                <img src="videos/team-marta.jpg" alt="Marta Zalewska" class="team-photo">
+                <h3 class="team-name">Marta Zalewska</h3>
+                <div class="team-role">Co-Founder</div>
+                <p class="team-bio">PR & Change Management. Drives brand narrative and organizational transformation through AI adoption.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/daniel-pulaski/" target="_blank" class="team-card fade-in">
+                <img src="videos/team-daniel.jpg" alt="Daniel Pulaski" class="team-photo">
+                <h3 class="team-name">Daniel Pulaski</h3>
+                <div class="team-role">Partner</div>
+                <p class="team-bio">Business Strategy. Translates business pain into technical roadmaps and manages client relationships from discovery to delivery.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/melikenurisk/" target="_blank" class="team-card fade-in">
+                <img src="videos/team-melikenur.jpg" alt="Melikenur Işık" class="team-photo">
+                <h3 class="team-name">Melikenur Işık</h3>
+                <div class="team-role">AI Lead</div>
+                <p class="team-bio">Data Architect. Engineers the data pipelines, infrastructure, and AI models that power every client deployment.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
         </div>
     </div>
 </section>
 
-<!-- Final CTA -->
+<!-- Industries Section - V5: Properly centered with tags -->
+<section class="industries">
+    <div class="container">
+        <h2 class="section-title section-title-centered fade-in">We Work Across Industries</h2>
+        <p class="industries-text fade-in">
+            Data problems don't respect industry boundaries. Whether you're in government, telecom, finance, or operations — if your teams waste time on manual reporting, struggle to trust their data, or watch AI projects fail before they start — we can help.
+        </p>
+        <div class="industries-list fade-in">
+            <span class="industry-tag">Government</span>
+            <span class="industry-tag">Telecom</span>
+            <span class="industry-tag">AdTech</span>
+            <span class="industry-tag">Finance</span>
+            <span class="industry-tag">Education</span>
+            <span class="industry-tag">Manufacturing</span>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA - V5: Enhanced with scarcity -->
 <section class="final-cta" id="cta">
     <div class="container">
+        <div class="scarcity scarcity-dark fade-in">We take on 3 new clients per quarter</div>
         <h2 class="fade-in">Still reading? Good.<br>That means <em>you know.</em></h2>
-        <p class="fade-in">Book a call if you want AI working with your data. 30 minutes. No pitch deck. No BS. Just math.</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform?usp=sharing&ouid=116371056573856407268" target="_blank" class="final-cta-btn fade-in">
-            Book Now for FREE
+        <p class="fade-in">Fill a 5-minute assessment so we understand your challenge — then book a call. We'll come prepared with answers, not questions.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScWr3iGiZx_EIpgeLiDyQz6aagx_3TVyRPBgCI02XCec_IDFQ/viewform" target="_blank" class="cta-btn fade-in">
+            Book a FREE 30-Minute Consultation
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
         <p class="final-cta-note fade-in">30 minutes · No obligation · We do the math for you</p>
@@ -1380,29 +2203,26 @@
     <div class="container">
         <div class="footer-bottom">
             <div class="footer-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="180" height="36">
-                    <defs>
-                        <filter id="glow-footer" x="-50%" y="-50%" width="200%" height="200%">
-                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                            <feMerge>
-                                <feMergeNode in="coloredBlur"/>
-                                <feMergeNode in="SourceGraphic"/>
-                            </feMerge>
-                        </filter>
-                    </defs>
-                    <g transform="translate(30, 40)">
-                        <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-footer)" opacity="0.7"/>
-                        <circle cx="0" cy="0" r="9" fill="#FFA000"/>
-                    </g>
-                    <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" letter-spacing="0.5">AIsuperpowers</text>
-                    <rect x="65" y="40" width="24" height="5" rx="2" ry="2" fill="#FF6F00" filter="url(#glow-footer)"/>
-                    <rect x="67" y="41" width="20" height="3" rx="1" ry="1" fill="#FFA000"/>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="180" height="28">
+                    <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                    <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers.io</tspan></text>
                 </svg>
             </div>
             <div class="footer-contact">Warsaw · Muscat</div>
         </div>
+        <div class="footer-tagline">"We fix your data so AI actually works."</div>
     </div>
 </footer>
+
+<!-- Video Lightbox -->
+<div class="video-lightbox" id="videoLightbox">
+    <div class="video-lightbox-content">
+        <button class="video-lightbox-close" onclick="closeLightbox()">&#10005;</button>
+        <video id="lightboxVideo" controls playsinline>
+            <source id="lightboxSource" src="" type="video/mp4">
+        </video>
+    </div>
+</div>
 
 <script>
     // Fade-in animation on scroll
@@ -1415,6 +2235,77 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Testimonials carousel
+    let currentSlide = 0;
+    const cards = document.querySelectorAll('.testimonials-grid .testimonial-card');
+    const dotsContainer = document.getElementById('testimonialDots');
+    const totalSlides = cards.length;
+
+    // Create dots
+    cards.forEach((_, i) => {
+        const dot = document.createElement('div');
+        dot.className = 'testimonials-dot' + (i === 0 ? ' active' : '');
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(index) {
+        currentSlide = index;
+        cards.forEach(card => {
+            card.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+        });
+        dotsContainer.querySelectorAll('.testimonials-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentSlide);
+        });
+    }
+
+    function scrollTestimonials(direction) {
+        let next = currentSlide + direction;
+        if (next < 0) next = totalSlides - 1;
+        if (next >= totalSlides) next = 0;
+        goToSlide(next);
+    }
+
+    // Touch swipe support
+    let touchStartX = 0;
+    const grid = document.querySelector('.testimonials-grid');
+    grid.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+    grid.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) scrollTestimonials(diff > 0 ? 1 : -1);
+    });
+
+    // Lightbox
+    function openLightbox(src) {
+        const lightbox = document.getElementById('videoLightbox');
+        const video = document.getElementById('lightboxVideo');
+        const source = document.getElementById('lightboxSource');
+        source.src = src;
+        video.load();
+        video.play();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('videoLightbox');
+        const video = document.getElementById('lightboxVideo');
+        video.pause();
+        video.currentTime = 0;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('videoLightbox').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeLightbox();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
 </script>
 
 </body>
