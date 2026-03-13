@@ -910,29 +910,13 @@
         footer {
             background: var(--dark-navy);
             border-top: 1px solid var(--border);
-            padding: 60px 0 40px;
-        }
-
-        .footer-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.25rem;
-        }
-
-        .footer-logo span {
-            color: var(--orange);
+            padding: 40px 0;
         }
 
         .footer-contact {
             font-size: 0.85rem;
             color: var(--gray);
+            text-align: center;
         }
 
         .footer-tagline {
@@ -1160,29 +1144,6 @@
             .cta-btn {
                 padding: 16px 28px;
                 font-size: 1rem;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                justify-content: center;
-            }
-
-            .footer-logo {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-            }
-
-            .footer-logo svg {
-                width: 150px;
-                height: 30px;
-            }
-
-            .footer-contact {
-                width: 100%;
-                text-align: center;
             }
 
             .footer-tagline {
@@ -1673,20 +1634,8 @@
 <!-- Footer -->
 <footer>
     <div class="container">
-        <div class="footer-bottom">
-            <div class="footer-logo">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="180" height="28">
-                    <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
-                    <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers</tspan></text>
-                </svg>
-            </div>
-            <div class="footer-contact">
-                Warsaw · Muscat · <a href="mailto:contact@aisuperpowers.io" style="color: var(--orange); text-decoration: none;">contact@aisuperpowers.io</a>
-            </div>
-        </div>
-        <div class="footer-tagline">
-            "We fix your data so AI actually works."
-        </div>
+        <div class="footer-contact">Warsaw · Muscat</div>
+        <div class="footer-tagline">"We fix your data so AI actually works."</div>
     </div>
 </footer>
 
