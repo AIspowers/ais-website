@@ -1,0 +1,139 @@
+AI Superpowers Website — Style Guide
+=====================================
+
+We now have a shared stylesheet (styles.css) that handles all common elements.
+Any new page just needs to link it and only add page-specific styles.
+
+
+1. HEAD SETUP
+-------------
+Add these lines in <head>:
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M 18 2 L 8 15 L 15 14 L 6 30 L 26 13 L 18 14 L 26 2 Z' fill='%23F97316'/></svg>">
+
+
+2. FONTS
+--------
+- Inter (sans-serif) — body text, labels, buttons
+- Playfair Display (serif) — headings (h1, h2, h3)
+
+
+3. COLOR PALETTE (use these CSS variable names)
+------------------------------------------------
+Orange:       --orange        #F97316   (primary brand color)
+Deep Orange:  --deep-orange   #EA580C   (hover states)
+Burnt Orange: --burnt-orange  #C2410C   (dark accents)
+Peach:        --peach         #FED7AA   (light warm backgrounds)
+Light Peach:  --light-peach   #FFF7ED   (warm section backgrounds)
+Cream:        --cream         #FFFBEB   (softest warm tone)
+Navy:         --navy          #1E293B   (secondary dark)
+Dark Navy:    --dark-navy     #0F172A   (darkest — nav, footer, dark sections)
+Gray:         --gray          #64748B   (body text on light backgrounds)
+Gray Light:   --gray-light    #94A3B8   (muted text, labels)
+Light Gray:   --light-gray    #F8FAFC   (light section backgrounds)
+White:        --white         #FFFFFF
+Card BG:      --card-bg       #1A1F2E   (dark card backgrounds)
+Border:       --border        rgba(255,255,255,0.1)  (borders on dark backgrounds)
+
+For borders on light backgrounds, use: #E2E8F0
+
+
+4. LAYOUT
+---------
+- Container: max-width 1200px, padding 0 24px (auto-centers content)
+- Use class="container" on wrapper divs
+
+
+5. WHAT styles.css ALREADY HANDLES (don't duplicate these)
+----------------------------------------------------------
+- Navigation bar (dark navy, fixed top, blur backdrop)
+- Hamburger menu + mobile slide-out menu
+- Footer (dark navy, location text + tagline)
+- Back-to-top button
+- Fade-in scroll animations (class="fade-in")
+- All responsive breakpoints for nav/footer (768px, 400px)
+
+
+6. NAV HTML TEMPLATE (copy this into every new page)
+-----------------------------------------------------
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="220" height="36">
+                <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers</tspan></text>
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="index.html#mirror">Why AI Fails</a>
+            <a href="index.html#method">How We Work</a>
+            <a href="index.html#solutions">What We Build</a>
+            <a href="index.html#team">The Team</a>
+            <a href="packages.html">Service Offerings</a>
+            <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="nav-cta">See If We're the Right Fit</a>
+        </div>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-backdrop" id="mobileBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#mirror">Why AI Fails</a>
+    <a href="index.html#method">How We Work</a>
+    <a href="index.html#solutions">What We Build</a>
+    <a href="index.html#team">The Team</a>
+    <a href="packages.html">Service Offerings</a>
+    <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="mobile-menu-cta">See If We're the Right Fit</a>
+</div>
+
+
+7. FOOTER HTML TEMPLATE
+------------------------
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-contact">Warsaw · Muscat</div>
+        <div class="footer-tagline">"We build it. We train you. We leave."</div>
+    </div>
+</footer>
+
+
+8. MOBILE MENU JS (add before closing </body>)
+-----------------------------------------------
+<script>
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+function toggleMobileMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    mobileBackdrop.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', toggleMobileMenu);
+mobileBackdrop.addEventListener('click', toggleMobileMenu);
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    });
+});
+</script>
+
+
+9. PAGE-SPECIFIC STYLES
+------------------------
+Only add styles inside a <style> tag for things unique to the page (hero layout, cards, grids, etc.).
+Everything shared is already in styles.css — no need to redefine colors, nav, footer, or animations.
