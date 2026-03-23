@@ -58,17 +58,6 @@ body { color: var(--text-primary); background: var(--white); -webkit-font-smooth
 .hero-btn-wrap { margin-bottom: 48px; }
 
 .hero-screen { max-width: 900px; margin: 0 auto; border-radius: 12px 12px 0 0; border: 1px solid var(--border); border-bottom: none; overflow: hidden; background: var(--bg-light); position: relative; }
-.hero-screen-inner { aspect-ratio: 16/8; display: grid; grid-template-columns: 180px 1fr; background: #fafafa; }
-.screen-sidebar { background: #f3f3f3; border-right: 1px solid var(--border); padding: 20px 14px; display: flex; flex-direction: column; gap: 10px; }
-.screen-sidebar div { height: 10px; border-radius: 5px; background: var(--border); }
-.screen-sidebar div:first-child { background: var(--orange); opacity: 0.4; width: 60%; }
-.screen-main { padding: 20px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr; gap: 12px; }
-.screen-card { border-radius: 8px; background: var(--white); border: 1px solid var(--border); min-height: 40px; }
-.screen-card.big { grid-column: 1/3; background: var(--orange-light); border-color: #F9731630; position: relative; min-height: 60px; }
-.screen-chat { position: absolute; bottom: 12px; left: 14px; right: 14px; height: 28px; border-radius: 14px; background: var(--white); border: 1px solid var(--border); }
-.screen-play { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 56px; height: 56px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px #F9731650; transition: transform .2s; }
-.screen-play:hover { transform: translate(-50%,-50%) scale(1.08); }
-.screen-play::after { content: ''; width: 0; height: 0; border-left: 16px solid var(--white); border-top: 10px solid transparent; border-bottom: 10px solid transparent; margin-left: 3px; }
 
 .hero-who { background: var(--bg-light); border-top: 1px solid var(--border); padding: 16px 32px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
 .hero-who-label { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
@@ -179,8 +168,6 @@ body { color: var(--text-primary); background: var(--white); -webkit-font-smooth
   .hero { padding: 110px 0 0; }
   .hero-stats { flex-wrap: wrap; }
   .hero-stat { flex: 1 1 33%; }
-  .hero-screen-inner { grid-template-columns: 1fr; }
-  .screen-sidebar { display: none; }
   .cap-grid { grid-template-columns: 1fr 1fr; }
   .del-grid { grid-template-columns: 1fr; }
   .proof-cases { grid-template-columns: 1fr; }
@@ -254,19 +241,9 @@ body { color: var(--text-primary); background: var(--white); -webkit-font-smooth
     </div>
   </div>
   <div class="hero-screen">
-    <div class="hero-screen-inner">
-      <div class="screen-sidebar">
-        <div></div><div></div><div></div><div></div><div></div><div></div>
-      </div>
-      <div class="screen-main">
-        <div class="screen-card big"><div class="screen-chat"></div></div>
-        <div class="screen-card"></div>
-        <div class="screen-card"></div>
-        <div class="screen-card"></div>
-        <div class="screen-card"></div>
-      </div>
-    </div>
-    <div class="screen-play"></div>
+    <video autoplay muted playsinline loop style="width:100%;display:block;">
+      <source src="videos/V1-Executive-Dashboards-v3.mp4" type="video/mp4">
+    </video>
   </div>
   <div class="hero-who">
     <span class="hero-who-label">BUILT FOR:</span>
