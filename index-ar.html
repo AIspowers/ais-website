@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Superpowers | شركة الذكاء الاصطناعي الوحيدة التي ستحتاجها</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M 18 2 L 8 15 L 15 14 L 6 30 L 26 13 L 18 14 L 26 2 Z' fill='%23F97316'/></svg>">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background: var(--dark-navy);
+            color: var(--white);
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        h1, h2, h3, .logo, .footer-tagline {
+            font-family: 'Cairo', serif !important;
+        }
+
+        /* ===== RTL overrides for styles.css directional rules ===== */
+        .mobile-menu { right: auto; left: -100%; transition: left 0.3s ease; }
+        .mobile-menu.active { right: auto; left: 0; }
+        .mobile-menu-backdrop { left: auto; right: 0; }
+        .nav-hamburger span { left: auto; right: 12px; }
+        .back-to-top { right: auto; left: 32px; }
+        @media (max-width: 768px) { .back-to-top { right: auto; left: 20px; } }
+
+        /* Flip directional arrows in CTAs and links */
+        .cta-btn svg,
+        .solution-link svg,
+        .back-to-top svg { transform: scaleX(-1); }
+
+        /* Hero backdrop glow — flip to the other side */
+        .hero::before { right: auto; left: -20%; }
+
+        /* Keep the logo wordmark rendering left-to-right (it's an English brand mark) */
+        .logo, .logo svg, .logo text, .logo tspan { direction: ltr; unicode-bidi: embed; }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 140px 0 100px;
+            position: relative;
+            background: linear-gradient(135deg, var(--dark-navy) 0%, var(--navy) 50%, var(--deep-orange) 100%);
+        }
+
+        .hero {
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(249,115,22,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-hook {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            font-style: italic;
+            margin-bottom: 24px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 24px;
+            max-width: 900px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-nowrap {
+            white-space: nowrap;
+        }
+
+        .hero h1 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 1.25rem;
+            color: var(--gray-light);
+            max-width: 650px;
+            line-height: 1.7;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* Shared CTA Button Style - V5 Enhanced */
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 20px 40px;
+            background: var(--orange);
+            color: var(--white);
+            border: none;
+            border-radius: 100px;
+            font-size: 1.15rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+
+        .cta-btn:hover {
+            background: var(--deep-orange);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.35);
+        }
+
+        .cta-btn svg {
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            border: 2px solid var(--orange);
+            color: var(--orange);
+        }
+
+        .cta-btn-outline:hover {
+            background: var(--orange);
+            color: var(--white);
+        }
+
+        /* CTA on light backgrounds */
+        .cta-btn-dark {
+            background: var(--navy);
+            color: var(--white);
+            border: 2px solid var(--navy);
+        }
+
+        .cta-btn-dark:hover {
+            background: var(--dark-navy);
+            border-color: var(--dark-navy);
+            box-shadow: 0 15px 40px rgba(15,23,42,0.3);
+        }
+
+        .cta-note {
+            margin-top: 12px;
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            letter-spacing: 0.02em;
+        }
+
+        .cta-note-dark {
+            color: var(--gray);
+        }
+
+        .hero-stats {
+            margin-top: 60px;
+            display: flex;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .hero-stat {
+            border-left: 2px solid var(--border);
+            padding-left: 20px;
+        }
+
+        .hero-stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--orange);
+            letter-spacing: -0.02em;
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+            margin-top: 4px;
+            max-width: 180px;
+        }
+
+        /* Section Shared Styles */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-label {
+            color: var(--orange);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--orange);
+        }
+
+        .section-label-centered {
+            justify-content: center;
+        }
+
+        .section-label-centered::before {
+            display: none;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            max-width: 700px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+        }
+
+        .section-title-centered {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-light);
+            max-width: 560px;
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        .section-subtitle-centered {
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: var(--light-peach);
+            color: var(--navy);
+        }
+
+        .problem .section-label {
+            color: var(--orange);
+        }
+
+        .problem .section-title {
+            color: var(--navy);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-top: 60px;
+        }
+
+        .problem-text {
+            font-size: 1.1rem;
+            color: var(--gray);
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 32px;
+        }
+
+        .problem-conclusion {
+            font-size: 1.1rem;
+            color: var(--navy);
+            font-style: italic;
+            font-weight: 400;
+            line-height: 1.6;
+            padding: 28px;
+            border-left: 3px solid var(--orange);
+            background: var(--white);
+            border-radius: 0 10px 10px 0;
+        }
+
+        /* Method Section */
+        .method {
+            background: var(--white);
+            color: var(--navy);
+        }
+
+        .method .section-label {
+            color: var(--orange);
+        }
+
+        .method .section-title {
+            color: var(--navy);
+        }
+
+        .method-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
+            align-items: end;
+        }
+
+        .method-tagline {
+            font-size: 1rem;
+            color: var(--gray);
+            font-style: italic;
+            font-weight: 300;
+            align-self: end;
+            padding-bottom: 4px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .step-card {
+            background: var(--white);
+            padding: 48px 36px;
+            transition: background 0.3s;
+        }
+
+        .step-card:hover {
+            background: var(--light-gray);
+        }
+
+        .step-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: rgba(249,115,22,0.35);
+            line-height: 1;
+            margin-bottom: 24px;
+        }
+
+        .step-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 16px;
+        }
+
+        .step-body {
+            font-size: 0.95rem;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .step-tag {
+            display: inline-block;
+            margin-top: 24px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--orange);
+            border-top: 1px solid rgba(0,0,0,0.08);
+            padding-top: 16px;
+            width: 100%;
+        }
+
+        /* Solutions Section */
+        .solutions {
+            background: var(--cream);
+            color: var(--navy);
+        }
+
+        .solutions .section-title {
+            color: var(--navy);
+        }
+
+        .solutions .section-subtitle {
+            color: var(--gray);
+        }
+
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .solution-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 20px;
+            padding: 32px;
+            transition: all 0.4s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+
+        .solution-card:hover {
+            border-color: var(--orange);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 40px rgba(249,115,22,0.12);
+        }
+
+        .solution-visual {
+            margin-bottom: 24px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--navy);
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .solution-visual video {
+            width: 100%;
+            display: block;
+            cursor: pointer;
+        }
+
+        /* Play icon overlay on video */
+        .solution-visual {
+            position: relative;
+        }
+
+        .solution-visual::after {
+            content: '';
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            width: 36px;
+            height: 36px;
+            background: rgba(249,115,22,0.85);
+            border-radius: 50%;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpolygon points='9,6 19,12 9,18'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: 55% 50%;
+            background-size: 16px;
+            opacity: 0.75;
+            transition: all 0.3s;
+            pointer-events: none;
+        }
+
+        .solution-visual:hover::after {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Video lightbox */
+        .video-lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .video-lightbox.active {
+            display: flex;
+        }
+
+        .video-lightbox-content {
+            position: relative;
+            width: 75%;
+            max-width: 960px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.5);
+            cursor: default;
+        }
+
+        .video-lightbox-content video {
+            width: 100%;
+            display: block;
+            border-radius: 16px;
+        }
+
+        .video-lightbox-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.6);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .video-lightbox-close:hover {
+            background: rgba(249,115,22,0.8);
+        }
+
+        /* Spread Cards for Training */
+        .training-cards {
+            background: var(--navy);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 12px;
+            padding: 20px 0;
+        }
+
+        .spread-cards {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .spread-card {
+            width: 160px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex-shrink: 0;
+            margin: 0 -20px;
+        }
+
+        .spread-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .spread-card:nth-child(1) {
+            transform: rotate(-10deg);
+            z-index: 1;
+        }
+
+        .spread-card:nth-child(2) {
+            transform: rotate(0deg);
+            z-index: 2;
+        }
+
+        .spread-card:nth-child(3) {
+            transform: rotate(10deg);
+            z-index: 1;
+        }
+
+        .spread-card:hover {
+            transform: rotate(0deg) scale(1.1) translateY(-8px);
+            z-index: 10;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .solution-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--orange);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .solution-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+            color: var(--navy);
+        }
+
+        .solution-title em {
+            color: var(--orange);
+            font-style: normal;
+        }
+
+        .solution-desc {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.65;
+        }
+
+        /* V5: Solution card "see case study" link */
+        .solution-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--orange);
+            transition: gap 0.3s;
+        }
+
+        .solution-card:hover .solution-link {
+            gap: 10px;
+        }
+
+        .solutions-cta {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        /* Data Sovereignty Section */
+        .ownership {
+            background: var(--light-peach);
+            color: var(--navy);
+        }
+
+        .ownership .section-title {
+            color: var(--navy);
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: clamp(1.5rem, 3vw, 2.75rem);
+        }
+
+        .ownership .section-label {
+            justify-content: center;
+        }
+
+        .ownership .section-label::before {
+            display: none;
+        }
+
+        .own-desc {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 60px;
+            font-size: 1.05rem;
+            color: var(--gray);
+            line-height: 1.75;
+            font-weight: 300;
+        }
+
+        .own-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .own-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+
+        .own-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(249,115,22,0.12);
+            border-color: var(--orange);
+        }
+
+        .own-card-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(249,115,22,0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .own-card-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--orange);
+        }
+
+        .own-card strong {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--navy);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .own-card span {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .own-cta {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        /* V5: Team Section */
+        .team {
+            background: var(--white);
+            color: var(--navy);
+            padding: 100px 0;
+        }
+
+        .team .section-title {
+            color: var(--navy);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 60px;
+            max-width: 1000px;
+        }
+
+        .team-card {
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            padding: 24px 16px;
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+
+        .team-card:hover {
+            background: var(--light-peach);
+            transform: translateY(-4px);
+        }
+
+        .team-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            border: 3px solid rgba(249,115,22,0.15);
+            transition: border-color 0.3s;
+        }
+
+        .team-card:hover .team-photo {
+            border-color: var(--orange);
+        }
+
+        .team-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+            color: var(--navy);
+        }
+
+        .team-role {
+            font-size: 0.85rem;
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .team-linkedin {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--orange);
+            transition: gap 0.3s;
+        }
+
+        .team-linkedin svg {
+            color: var(--orange);
+        }
+
+        .team-card:hover .team-linkedin {
+            gap: 10px;
+        }
+
+        /* Testimonials Section - 3 boxes visible, horizontal scroll, warm theme */
+        .testimonials {
+            background: var(--cream);
+            color: var(--navy);
+            padding: 100px 0;
+            overflow: visible;
+        }
+
+        .testimonials .section-title {
+            color: var(--navy);
+        }
+
+        .testimonials .container {
+            overflow: visible;
+        }
+
+        .testimonials-scroll {
+            overflow-x: auto;
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            margin-top: 60px;
+            padding-bottom: 16px;
+        }
+
+        .testimonials-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .testimonials-scroll::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.05);
+            border-radius: 3px;
+        }
+
+        .testimonials-scroll::-webkit-scrollbar-thumb {
+            background: var(--orange);
+            border-radius: 3px;
+        }
+
+        .testimonials-grid {
+            display: flex;
+            gap: 24px;
+            width: max-content;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 36px 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            width: 370px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--peach));
+            border-radius: 20px 20px 0 0;
+        }
+
+        .testimonial-quote {
+            font-size: 2.5rem;
+            color: var(--orange);
+            opacity: 0.3;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: var(--gray);
+            line-height: 1.75;
+            font-style: italic;
+            flex: 1;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+            margin-top: auto;
+        }
+
+        .testimonial-photo {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(249,115,22,0.2);
+            flex-shrink: 0;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.8rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--navy);
+        }
+
+        .testimonial-info-role {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        /* Final CTA - V5: Enhanced */
+        .final-cta {
+            background: var(--dark-navy);
+            text-align: center;
+            padding: 100px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(249,115,22,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            margin-bottom: 20px;
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            position: relative;
+        }
+
+        .final-cta h2 em {
+            color: var(--orange);
+            font-style: italic;
+        }
+
+        .final-cta p {
+            font-size: 1.15rem;
+            color: var(--gray-light);
+            margin-bottom: 40px;
+            font-weight: 300;
+            position: relative;
+        }
+
+        .final-cta .cta-btn {
+            position: relative;
+        }
+
+        .final-cta-note {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--gray);
+            position: relative;
+        }
+
+        /* V5: Scarcity badge */
+        .scarcity {
+            display: inline-block;
+            background: rgba(249,115,22,0.1);
+            border: 1px solid rgba(249,115,22,0.25);
+            color: var(--orange);
+            padding: 8px 20px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+
+        .scarcity-dark {
+            background: rgba(249,115,22,0.08);
+            border-color: rgba(249,115,22,0.2);
+        }
+
+        /* Responsive — Tablet */
+        @media (max-width: 1024px) {
+            section {
+                padding: 80px 0;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .method-header {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .own-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .own-desc {
+                font-size: 1rem;
+            }
+
+            .testimonial-card {
+                width: 300px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                padding: 120px 0 80px;
+                min-height: auto;
+            }
+
+            .final-cta {
+                padding: 80px 0 60px;
+            }
+        }
+
+        /* Responsive — Mobile */
+        @media (max-width: 768px) {
+            /* Hero */
+            .hero {
+                padding: 100px 0 60px;
+                min-height: auto;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                margin-bottom: 16px;
+            }
+
+            .hero-sub {
+                font-size: 1.05rem;
+                margin-bottom: 32px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 24px;
+                margin-top: 40px;
+            }
+
+            .hero-stat-number {
+                font-size: 2rem;
+            }
+
+            /* CTA buttons */
+            .cta-btn {
+                padding: 16px 28px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .cta-btn-dark {
+                width: 100%;
+            }
+
+            /* Section spacing */
+            section {
+                padding: 60px 0;
+            }
+
+            .section-title {
+                font-size: 1.75rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+            }
+
+            /* Problem */
+            .problem-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+                margin-top: 32px;
+            }
+
+            .problem-text {
+                font-size: 1rem;
+            }
+
+            .problem-conclusion {
+                font-size: 1rem;
+                padding: 20px;
+            }
+
+            /* Method */
+            .method-header {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                margin-bottom: 32px;
+            }
+
+            .method-tagline {
+                font-size: 0.95rem;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-card {
+                padding: 32px 24px;
+            }
+
+            .step-number {
+                font-size: 2.5rem;
+            }
+
+            .step-title {
+                font-size: 1.2rem;
+            }
+
+            /* Lightbox */
+            .video-lightbox-content {
+                width: 95%;
+            }
+
+            /* Solutions */
+            .solutions-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin-top: 32px;
+            }
+
+            .solution-card {
+                padding: 24px;
+            }
+
+            .solution-title {
+                font-size: 1.2rem;
+            }
+
+            .spread-cards {
+                height: 180px;
+            }
+
+            .spread-card {
+                width: 120px;
+                margin: 0 -15px;
+            }
+
+            /* Data Sovereignty */
+            .own-cards {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .own-card {
+                padding: 24px 16px;
+            }
+
+            .own-card-icon {
+                width: 48px;
+                height: 48px;
+                margin-bottom: 16px;
+            }
+
+            .own-card-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .own-card strong {
+                font-size: 1rem;
+            }
+
+            .own-card span {
+                font-size: 0.85rem;
+            }
+
+            .own-desc {
+                font-size: 0.95rem;
+                margin-bottom: 40px;
+            }
+
+            .own-cta {
+                margin-top: 32px;
+            }
+
+            /* Testimonials */
+            .testimonials {
+                padding: 60px 0;
+            }
+
+            .testimonial-card {
+                width: 280px;
+                padding: 28px 24px;
+            }
+
+            .testimonial-quote {
+                font-size: 2rem;
+            }
+
+            .testimonial-text {
+                font-size: 0.9rem;
+            }
+
+            /* Team */
+            .team {
+                padding: 60px 0;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .team-photo {
+                width: 90px;
+                height: 90px;
+            }
+
+            .team-name {
+                font-size: 1.05rem;
+            }
+
+            .team-role {
+                font-size: 0.7rem;
+            }
+
+            .team-bio {
+                font-size: 0.8rem;
+            }
+
+            /* Final CTA */
+            .final-cta {
+                padding: 60px 0 40px;
+            }
+
+            .final-cta h2 {
+                font-size: 1.75rem;
+            }
+
+            .final-cta p {
+                font-size: 1rem;
+            }
+
+        }
+
+        /* Responsive — Small phones */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 80px 0 50px;
+            }
+
+            .hero h1 {
+                font-size: 1.65rem;
+            }
+
+            .hero-sub {
+                font-size: 0.95rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .step-number {
+                font-size: 2rem;
+            }
+
+            .step-card {
+                padding: 24px 20px;
+            }
+
+            .cta-btn {
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+
+            /* Data Sovereignty — stack to 1 col on small phones */
+            .own-cards {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .own-card {
+                padding: 20px 16px;
+            }
+
+            .solution-card {
+                padding: 16px;
+            }
+
+            .testimonial-card {
+                width: 260px;
+                padding: 24px 20px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                max-width: 200px;
+            }
+
+            .spread-cards {
+                height: 140px;
+            }
+
+            .spread-card {
+                width: 90px;
+                margin: 0 -10px;
+            }
+
+            .final-cta h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="#" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="220" height="36">
+                    <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                    <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers</tspan></text>
+                </svg>
+            </a>
+        <div class="nav-links">
+            <a href="#mirror">لماذا يفشل الذكاء الاصطناعي</a>
+            <a href="#method">كيف نعمل</a>
+            <a href="#solutions">ماذا نبني</a>
+            <a href="#team">الفريق</a>
+            <a href="packages.html">خدماتنا</a>
+            <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="nav-cta">هل نحن الشريك المناسب؟</a>
+        </div>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-backdrop" id="mobileBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#mirror">لماذا يفشل الذكاء الاصطناعي</a>
+    <a href="#method">كيف نعمل</a>
+    <a href="#solutions">ماذا نبني</a>
+    <a href="#team">الفريق</a>
+    <a href="packages.html">خدماتنا</a>
+    <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="mobile-menu-cta">هل نحن الشريك المناسب؟</a>
+</div>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1 class="fade-in">نحن شركة الذكاء الاصطناعي<br>الوحيدة التي <em>ستحتاج</em> إلى توظيفها.</h1>
+        <p class="hero-sub fade-in">معظم الشركات تتركك <strong>تابعاً.</strong> نحن نتركك <strong>قادراً،</strong> ونصمّم أنظمة ذكاء اصطناعي يديرها فريقك، وتتبعها عملياتك، وتمتلكها شركتك. <strong>بشكل دائم.</strong></p>
+        <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="cta-btn fade-in">
+            هل نحن الشريك المناسب؟ احجز مكالمة
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <div class="hero-stats fade-in">
+            <div class="hero-stat">
+                <div class="hero-stat-number">+715 ألف$</div>
+                <div class="hero-stat-label">وفورات مكتشفة عبر مشاريع العملاء</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">90 يوماً</div>
+                <div class="hero-stat-label">من التشخيص إلى أول نظام يعمل فعلياً</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-number">5%</div>
+                <div class="hero-stat-label">فقط من المدراء التنفيذيين يثقون ببياناتهم. نضمن أن تكون منهم. <span style="opacity: 0.6; font-size: 0.75rem;">(أبحاث HFS)</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Problem Section -->
+<section class="problem" id="mirror">
+    <div class="container">
+        <div class="section-label fade-in">هل يبدو هذا مألوفاً؟</div>
+        <div class="problem-grid">
+            <div class="fade-in">
+                <h2 class="section-title">استثمرت في الذكاء الاصطناعي.<br>فرقك اختارت Excel.</h2>
+            </div>
+            <div class="fade-in">
+                <p class="problem-text">
+                    أنفقت الميزانية. وقّعت العقود. حضرت العروض التقديمية. وهذا الصباح، أفضل موظفيك لا يزالون ينسخون البيانات في جداول البيانات، ومدراؤك لا يزالون ينتظرون ثلاثة أيام للحصول على تقرير، ومديرك المالي يسأل عن جدوى كل ذلك.
+                </p>
+                <div class="problem-conclusion">
+                    لم يخذلك الذكاء الاصطناعي. بل بيعت لك واجهة استعراضية بدلاً من نظام حقيقي.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Method Section -->
+<section class="method" id="method">
+    <div class="container">
+        <div class="method-header">
+            <div>
+                <div class="section-label fade-in">كيف نعمل</div>
+                <h2 class="section-title fade-in">ثلاث خطوات.<br>هذا كل شيء.</h2>
+            </div>
+            <div class="method-tagline fade-in">
+                "لا نعطيك سمكة. بل نبني لك قارب صيد ونعلّم طاقمك كيف يبحر به."
+            </div>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card fade-in">
+                <div class="step-number">01</div>
+                <div class="step-title">التشخيص</div>
+                <div class="step-body">نجلس داخل عملياتك، لا في قاعة اجتماعات. نقيّم بياناتك، ونرسم مواطن الخلل، ونكتشف 3–5 مناطق يوفّر فيها الذكاء الاصطناعي أموالاً حقيقية. البيانات السيئة هي السبب الرئيسي لفشل الذكاء الاصطناعي — نكتشفها قبل أن تكلّفك شيئاً.</div>
+                <div class="step-tag">الاكتشاف والتصميم</div>
+            </div>
+            <div class="step-card fade-in">
+                <div class="step-number">02</div>
+                <div class="step-title">البناء والنشر</div>
+                <div class="step-body">نبني أنظمة ذكاء اصطناعي مصمّمة حول طريقة عمل شركتك الفعلية. بيانات متصلة. عمليات مؤتمتة. منشورة على بنيتك التحتية. ومملوكة لك، لا لنا.</div>
+                <div class="step-tag">التنفيذ والنشر</div>
+            </div>
+            <div class="step-card fade-in">
+                <div class="step-number">03</div>
+                <div class="step-title">التحسين والانسحاب</div>
+                <div class="step-body">ندرّب فريقك على تشغيل النظام وتحسينه وتطويره بدوننا. نقل قدرات حقيقي، لا ورشة عمل مدّتها ساعتان. ثم ننسحب. بشكل دائم.</div>
+                <div class="step-tag">نقل القدرات والتسليم</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section - V5: Clickable cards -->
+<section class="solutions" id="solutions">
+    <div class="container">
+        <div class="section-label fade-in">What We Build</div>
+        <h2 class="section-title fade-in">We don't just advise. We build.</h2>
+        <p class="section-subtitle fade-in" style="color: var(--gray);">Real systems, deployed inside real businesses, running without us. Here's what that looks like.</p>
+
+        <div class="solutions-grid">
+            <div class="solution-card fade-in">
+                <div class="solution-visual" onclick="openLightbox('videos/V1-Executive-Dashboards-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V1-Executive-Dashboards-v3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">AI Dashboard</div>
+                <h3 class="solution-title">Your Entire Company on <em>One Screen You Can Talk To</em></h3>
+                <p class="solution-desc">Your managers spend days pulling data from CRMs, files, and emails. We build the screen that gives them the answer before the meeting starts.</p>
+                <a href="ai-dashboard.html" class="solution-link">How it works <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+
+            <!-- HIDDEN: Automation card (content TBD)
+            <div class="solution-card fade-in">
+                <div class="solution-visual" onclick="openLightbox('videos/V4-CRMErrorDetection-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V4-CRMErrorDetection-v3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">Automation</div>
+                <h3 class="solution-title"><em>Insights</em> from Your CRM, Before Morning Coffee</h3>
+                <p class="solution-desc">Your data gets checked every second, not once a quarter. Errors flagged the moment they happen. Reports in your inbox before you ask for them.</p>
+                <a href="case-studies.html#automation" class="solution-link">See the case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+            -->
+
+            <div class="solution-card fade-in">
+                <div class="solution-visual" onclick="openLightbox('videos/V5-KnowledgeRAG-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V5-KnowledgeRAG-v3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">Knowledge Engine</div>
+                <h3 class="solution-title">Years of Company Policy, <em>One Click</em> Away</h3>
+                <p class="solution-desc">Your company's knowledge stops living in someone's head or buried in folders nobody opens. New hires onboard in days, not months.</p>
+                <a href="case-studies.html#knowledge" class="solution-link">See the case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+
+            <!-- HIDDEN: Enablement card (content TBD)
+            <div class="solution-card fade-in">
+                <div class="solution-visual" onclick="openLightbox('videos/V7-AITraining-v3.mp4')">
+                    <video autoplay muted playsinline loop>
+                        <source src="videos/V7-AITraining-v3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="solution-label">Enablement</div>
+                <h3 class="solution-title">Train Your Team to Build <em>Their Own</em> AI</h3>
+                <p class="solution-desc">Stop paying consultants for every automation. We train your internal teams to build AI solutions themselves. The capability compounds: trained teams train others.</p>
+                <a href="case-studies.html#enablement" class="solution-link">See the case study <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+            -->
+        </div>
+
+        <div class="solutions-cta fade-in">
+            <a href="case-studies.html" class="cta-btn cta-btn-dark">
+                See All Case Studies
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Data Sovereignty Section -->
+<section class="ownership">
+    <div class="container">
+        <h2 class="section-title fade-in">Your data never leaves your walls.<br>Neither do the systems we build.</h2>
+        <p class="own-desc fade-in">Every system we architect runs on your infrastructure. Your servers, your cloud, your rules. When we're done, you own the code, the data, and the capability. No black boxes. No lock-in.</p>
+
+        <div class="own-cards">
+            <div class="own-card fade-in">
+                <div class="own-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                </div>
+                <strong>Your infrastructure.</strong>
+                <span>Your servers or your cloud. Never ours.</span>
+            </div>
+            <div class="own-card fade-in">
+                <div class="own-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <strong>Your data.</strong>
+                <span>Never touches a third-party API. Never leaves your environment.</span>
+            </div>
+            <div class="own-card fade-in">
+                <div class="own-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <strong>Your code.</strong>
+                <span>Inspect it, modify it, migrate it. Anytime.</span>
+            </div>
+            <div class="own-card fade-in">
+                <div class="own-card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <strong>Your team.</strong>
+                <span>Trained to run, improve, and build on it. Without us.</span>
+            </div>
+        </div>
+
+        <div class="own-cta fade-in">
+            <a href="#cta" class="cta-btn cta-btn-dark">
+                Let's talk about your infrastructure
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <div class="section-label section-label-centered fade-in">What Clients Say</div>
+        <h2 class="section-title section-title-centered fade-in">Real feedback.<br>Real engagements.</h2>
+
+        <div class="testimonials-scroll">
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">We partnered with AIsuperpowers because we saw a team that could actually deliver AI to government, not just talk about it. Working systems. That's exactly what we're delivering together.</p>
+                    <div class="testimonial-author">
+                        <img src="videos/testimonial-khalid.jpeg" alt="Khalid Al Husaini" class="testimonial-photo">
+                        <div>
+                            <div class="testimonial-info-name">Khalid Al Husaini</div>
+                            <div class="testimonial-info-role">Chairman & CEO · Labbik Telecom · Oman</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">From idea to working prototype in weeks. They understood the business logic immediately, built something real, and gave us a system we could iterate on ourselves.</p>
+                    <div class="testimonial-author">
+                        <img src="videos/testimonial-karol.jpeg" alt="Karol Sadaj" class="testimonial-photo">
+                        <div>
+                            <div class="testimonial-info-name">Karol Sadaj</div>
+                            <div class="testimonial-info-role">Fintech Executive · AIP Seed Board · ex-Revolut</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">They didn't just install tools. They trained our engineers to actually work with them. Our entire team went from confused about AI to using it daily. That's what made the difference.</p>
+                    <div class="testimonial-author">
+                        <img src="videos/testimonial-hwy.png" alt="Highway" class="testimonial-photo" style="object-fit: contain;">
+                        <div>
+                            <div class="testimonial-info-name">Piotr Urbanski</div>
+                            <div class="testimonial-info-role">Founder & CEO · Highway · Engineering</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Working with AIsuperpowers helped me build an AI strategy I could actually execute, not a 50-page report, but a real roadmap with clear priorities that got buy-in from the board.</p>
+                    <div class="testimonial-author">
+                        <img src="videos/testimonial-raiffeisen.png" alt="Raiffeisen Bank" class="testimonial-photo" style="object-fit: contain;">
+                        <div>
+                            <div class="testimonial-info-name">Piotr Nowak</div>
+                            <div class="testimonial-info-role">Head of Risk · Raiffeisen Bank International</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Our leadership team now makes confident AI decisions. Before, every conversation about AI ended in confusion. Now we have a clear framework and we're actually executing on it.</p>
+                    <div class="testimonial-author">
+                        <img src="videos/testimonial-kowynia.jpeg" alt="Piotr Kowynia" class="testimonial-photo">
+                        <div>
+                            <div class="testimonial-info-name">Piotr Kowynia</div>
+                            <div class="testimonial-info-role">President & CEO · Nest Bank S.A.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">They understood how business works here in Oman. We went from running everything manually to having automated operations that actually made us faster. ROI was obvious within weeks.</p>
+                    <div class="testimonial-author">
+                        <img src="videos/testimonial-pouria.jpeg" alt="Pouria Fardpour" class="testimonial-photo">
+                        <div>
+                            <div class="testimonial-info-name">Pouria Fardpour</div>
+                            <div class="testimonial-info-role">Founder · Sultan Lands · Real Estate · Oman</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- V5: Team Section -->
+<section class="team" id="team">
+    <div class="container">
+        <div class="section-label fade-in">The Team</div>
+        <h2 class="section-title fade-in">You won't get a junior team. You'll get us.</h2>
+        <p class="section-subtitle fade-in">We're four people who've done this across AdTech, finance, government, telecom, and manufacturing, across three continents. Every client works directly with the people who design, build, and train. No account managers. No handoffs.</p>
+
+        <div class="team-grid">
+            <a href="https://www.linkedin.com/in/aws-naser-861866270" target="_blank" class="team-card fade-in">
+                <img src="videos/team-aws.jpg" alt="Aws Naser" class="team-photo">
+                <h3 class="team-name">Aws Naser</h3>
+                <div class="team-role">Co-Founder & AI Architect</div>
+                <p class="team-bio">Designs AI systems executives actually understand, and that their teams actually use.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/martazalewskapr/" target="_blank" class="team-card fade-in">
+                <img src="videos/team-marta.jpg" alt="Marta Zalewska" class="team-photo">
+                <h3 class="team-name">Marta Zalewska</h3>
+                <div class="team-role">Co-Founder & Change Lead</div>
+                <p class="team-bio">The reason your people adopt AI instead of resisting it. Change management is her system.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/daniel-pulaski/" target="_blank" class="team-card fade-in">
+                <img src="videos/team-daniel.jpg" alt="Daniel Pulaski" class="team-photo">
+                <h3 class="team-name">Daniel Pulaski</h3>
+                <div class="team-role">Partner & Business Strategy</div>
+                <p class="team-bio">Translates your business pain into a system before the first invoice is signed.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/melikenurisk/" target="_blank" class="team-card fade-in">
+                <img src="videos/team-melikenur.jpg" alt="Melikenur Işık" class="team-photo">
+                <h3 class="team-name">Melikenur Işık</h3>
+                <div class="team-role">AI Lead & Data Architect</div>
+                <p class="team-bio">Builds the data infrastructure that makes everything run. Clean, connected, and yours.</p>
+                <span class="team-linkedin">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    LinkedIn
+                </span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Final CTA - V5: Enhanced with scarcity -->
+<section class="final-cta" id="cta">
+    <div class="container">
+        <h2 class="fade-in">لا تزال تقرأ؟<br>إذاً أنت <em>تعلم.</em></h2>
+        <p class="fade-in">معظم مشاريع الذكاء الاصطناعي تفشل بسبب اختيار الشريك الخاطئ، لا التقنية. لنكتشف معاً إن كنا الشريك المناسب لك.</p>
+        <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="cta-btn fade-in">
+            هل نحن الشريك المناسب؟ احجز مكالمة
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <p class="final-cta-note fade-in">30 دقيقة · بدون عروض ترويجية · نأتي مستعدّين بالإجابات</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-contact">وارسو · مسقط</div>
+        <div class="footer-tagline">"نبنيه. ندرّبكم عليه. ثم ننسحب."</div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<!-- Video Lightbox -->
+<div class="video-lightbox" id="videoLightbox">
+    <div class="video-lightbox-content">
+        <button class="video-lightbox-close" onclick="closeLightbox()">&#10005;</button>
+        <video id="lightboxVideo" controls playsinline>
+            <source id="lightboxSource" src="" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script>
+    // Fade-in animation on scroll
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Lightbox
+    function openLightbox(src) {
+        const lightbox = document.getElementById('videoLightbox');
+        const video = document.getElementById('lightboxVideo');
+        const source = document.getElementById('lightboxSource');
+        source.src = src;
+        video.load();
+        video.play();
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        const lightbox = document.getElementById('videoLightbox');
+        const video = document.getElementById('lightboxVideo');
+        video.pause();
+        video.currentTime = 0;
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('videoLightbox').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeLightbox();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Back to top button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 600);
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+    function toggleMobileMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileBackdrop.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMobileMenu);
+    mobileBackdrop.addEventListener('click', toggleMobileMenu);
+
+    // Close mobile menu on link click
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
