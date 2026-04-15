@@ -24,6 +24,7 @@ The following items are already rendered in Arabic inside `index-ar.html` and th
 - **Tags:** Preserve `<em>`, `<strong>`, `<br>` exactly as in the English source line.
 - **Numbers & currency:** Retain figures as-is (`$715K+`, `90 days`, `5%`, `32+`, `$2.4M`, `4-in-1`, `10x`, `50–500`). Translate only the surrounding label. Where "days/weeks/hours" appear inline with numerals, translate the word but keep the numeral.
 - **Brand & product names:** `AI Superpowers` stays English (brand). Product/vendor names (`Salesforce`, `HubSpot`, `SAP`, `Slack`, `Microsoft Teams`, `BigQuery`, `Power BI`, `Tableau`, `Revolut`, etc.) stay English.
+- **Personal names:** Keep all personal names in Latin script exactly as written in the English source (e.g. `Aws Naser`, `Daniel`, `Khalid Al Husaini`, `Melikenur Işık`). Do NOT transliterate to Arabic.
 - **"AI":** Use "الذكاء الاصطناعي" on first mention per section; `AI` alone is acceptable thereafter if it reads more naturally.
 - **City names:** Warsaw = وارسو, Muscat = مسقط, Oman = عُمان, EMEA stays as-is.
 - **Job titles with "·" separator** (e.g. `Chairman & CEO · Labbik Telecom · Oman`): keep the middle dot `·` as a separator between Arabic segments.
