@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة الذكاء الاصطناعي — كل أعمالك. شاشة واحدة. في الوقت الفعلي. | AI Superpowers</title>
+<meta name="description" content="لوحة الذكاء الاصطناعي تربط كل أنظمتك في عرض واحد مباشر. شاهد كل شيء. اسأل أي شيء. قرّر بشكل أسرع. من AI Superpowers.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M 18 2 L 8 15 L 15 14 L 6 30 L 26 13 L 18 14 L 26 2 Z' fill='%23F97316'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600;700;800&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ===== RTL overrides (Arabic version) ===== */
+body { font-family: 'Tajawal', sans-serif !important; }
+h1, h2, h3, .logo, .footer-tagline { font-family: 'Cairo', serif !important; }
+
+.mobile-menu { right: auto; left: -100%; transition: left 0.3s ease; }
+.mobile-menu.active { right: auto; left: 0; }
+.mobile-menu-backdrop { left: auto; right: 0; }
+.nav-hamburger span { left: auto; right: 12px; }
+.back-to-top { right: auto; left: 32px; }
+@media (max-width: 768px) { .back-to-top { right: auto; left: 20px; } }
+
+.cta-btn svg,
+.solution-link svg,
+.back-to-top svg { transform: scaleX(-1); }
+
+.logo, .logo svg, .logo text, .logo tspan { direction: ltr; unicode-bidi: embed; }
+/* ===== End RTL overrides ===== */
+
+/* Page-specific variable aliases for Marta's dashboard styles */
+:root {
+  --orange-dark: var(--deep-orange);
+  --orange-burnt: var(--burnt-orange);
+  --orange-light: var(--light-peach);
+  --orange-peach: var(--peach);
+  --orange-cream: var(--cream);
+  --navy-mid: var(--navy);
+  --dark-card: var(--card-bg);
+  --dark-border: #2D3548;
+  --text-primary: var(--dark-navy);
+  --text-secondary: var(--gray);
+  --text-muted: var(--gray-light);
+  --bg-light: var(--light-gray);
+  --border: #E2E8F0;
+  --font: 'Inter', -apple-system, sans-serif;
+  --font-heading: 'Playfair Display', Georgia, serif;
+}
+
+body { color: var(--text-primary); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+/* SECTIONS */
+.section { position: relative; overflow: hidden; }
+.section-light { background: var(--white); }
+.section-dark { background: var(--dark-navy); color: var(--white); }
+.section-warm { background: var(--orange-light); }
+.section-orange { background: var(--orange); color: var(--white); }
+
+/* HERO */
+.hero { padding: 140px 0 0; border-bottom: 1px solid var(--border); }
+.hero-accent { position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--orange); }
+.hero-tag { font-size: 12px; font-weight: 600; color: var(--orange); letter-spacing: 1.5px; margin-bottom: 16px; }
+.hero h1 { font-family: var(--font-heading); font-size: clamp(36px, 5.5vw, 56px); font-weight: 700; line-height: 1.1; margin-bottom: 8px; letter-spacing: -0.5px; }
+.hero h1 span { color: var(--orange); }
+.hero h2 { font-size: clamp(18px, 2.5vw, 24px); font-weight: 500; color: var(--text-muted); margin-bottom: 20px; }
+.hero h2 span { color: var(--text-primary); }
+.hero-body { font-size: 17px; line-height: 1.7; color: var(--text-secondary); max-width: 640px; margin-bottom: 32px; }
+.hero-body strong { color: var(--text-primary); font-weight: 600; }
+.hero-stats { display: flex; gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+.hero-stat { flex: 1; text-align: center; padding: 20px 16px; border-right: 1px solid var(--border); }
+.hero-stat:last-child { border: none; }
+.hero-stat strong { display: block; font-size: 28px; font-weight: 700; color: var(--orange); }
+.hero-stat span { font-size: 13px; color: var(--text-muted); }
+.btn { display: inline-block; background: var(--orange); color: var(--white); padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: all .2s; border: none; cursor: pointer; }
+.btn:hover { background: var(--orange-dark); transform: translateY(-1px); }
+.hero-btn-wrap { margin-bottom: 48px; }
+
+.hero-screen { max-width: 900px; margin: 0 auto; border-radius: 12px 12px 0 0; border: 1px solid var(--border); border-bottom: none; overflow: hidden; background: var(--bg-light); position: relative; }
+
+.hero-who { background: var(--bg-light); border-top: 1px solid var(--border); padding: 16px 32px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.hero-who-label { font-size: 11px; color: var(--text-muted); letter-spacing: 1px; font-weight: 600; }
+.hero-who-tag { font-size: 13px; padding: 5px 14px; border-radius: 20px; border: 1px solid var(--border); color: var(--text-secondary); background: var(--white); }
+
+/* DEMO SECTION */
+.demo-section { padding: 80px 0; }
+.section-tag { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; margin-bottom: 12px; }
+.section-tag-orange { color: var(--orange); }
+.section-tag-white { color: rgba(255,255,255,0.5); }
+.sh1 { font-family: var(--font-heading); font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px; }
+.sh2 { font-size: 16px; color: var(--text-muted); margin-bottom: 40px; }
+.dark .sh2 { color: #64748B; }
+
+.demo-box { max-width: 720px; padding: 28px; border-radius: 12px; background: var(--dark-card); border: 1px solid var(--dark-border); margin-bottom: 48px; }
+.demo-q { display: flex; gap: 12px; align-items: center; margin-bottom: 16px; }
+.demo-input { flex: 1; padding: 12px 20px; border-radius: 24px; background: var(--navy-mid); border: 1px solid var(--dark-border); font-size: 15px; color: #94A3B8; font-style: italic; font-family: var(--font); }
+.demo-send { width: 42px; height: 42px; border-radius: 50%; background: var(--orange); flex-shrink: 0; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: background .2s; border: none; }
+.demo-send:hover { background: var(--orange-dark); }
+.demo-send svg { width: 18px; height: 18px; fill: none; stroke: var(--white); stroke-width: 2; }
+.demo-answer { padding: 20px; border-radius: 10px; background: var(--dark-card); border: 1px solid #F9731630; font-size: 15px; color: #CBD5E1; line-height: 1.7; }
+.demo-answer strong { color: var(--orange); }
+
+.cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 48px; }
+.cap-card { padding: 24px 20px; border-radius: 10px; border: 1px solid var(--dark-border); background: var(--dark-card); transition: border-color .2s; }
+.cap-card:hover { border-color: var(--orange); }
+.cap-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: var(--white); }
+.cap-desc { font-size: 13px; color: #94A3B8; line-height: 1.5; }
+
+.int-label { font-size: 11px; color: #64748B; letter-spacing: 1px; font-weight: 600; margin-bottom: 20px; }
+.int-cat { margin-bottom: 16px; }
+.int-cat-label { font-size: 12px; font-weight: 600; color: #94A3B8; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; }
+.int-cat-label::after { content: ''; flex: 1; height: 1px; background: var(--dark-border); }
+.int-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.int-tag { font-size: 13px; padding: 6px 14px; border-radius: 6px; background: var(--navy-mid); border: 1px solid var(--dark-border); color: #CBD5E1; transition: all .2s; }
+.int-tag:hover { border-color: var(--orange); color: var(--orange); }
+.int-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; padding: 10px 20px; border-radius: 8px; background: #F9731618; border: 1px solid #F9731640; font-size: 14px; font-weight: 600; color: var(--orange); cursor: pointer; text-decoration: none; transition: all .2s; }
+.int-more:hover { background: #F9731630; }
+
+/* DELIVERABLES */
+.del-section { padding: 80px 0; }
+.del-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 32px; max-width: 800px; }
+.del-item { display: flex; gap: 14px; align-items: flex-start; padding: 20px; background: var(--bg-light); border-radius: 10px; border: 1px solid var(--border); transition: border-color .2s; }
+.del-item:hover { border-color: var(--orange); }
+.del-chk { flex-shrink: 0; width: 24px; height: 24px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; margin-top: 2px; }
+.del-chk svg { width: 12px; height: 12px; fill: none; stroke: var(--white); stroke-width: 2.5; }
+.del-title { font-size: 15px; font-weight: 600; margin-bottom: 3px; }
+.del-desc { font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+.own-strip { display: flex; gap: 0; border-radius: 10px; overflow: hidden; border: 1px solid #F9731630; background: var(--orange-light); max-width: 800px; }
+.own-item { flex: 1; text-align: center; padding: 16px 12px; border-right: 1px solid #F9731625; }
+.own-item:last-child { border: none; }
+.own-item strong { display: block; font-size: 14px; color: var(--orange); font-weight: 600; }
+.own-item span { font-size: 12px; color: var(--text-muted); }
+
+/* PROOF */
+.proof-section { padding: 80px 0; }
+.proof-quote { font-family: var(--font-heading); font-size: 20px; line-height: 1.6; color: #CBD5E1; font-style: italic; padding-left: 20px; border-left: 3px solid var(--orange); margin-bottom: 20px; max-width: 640px; }
+.proof-author { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+.proof-av { width: 44px; height: 44px; border-radius: 50%; background: #F9731640; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 600; color: var(--orange); }
+.proof-name { font-size: 14px; color: #94A3B8; }
+.proof-name strong { color: var(--white); display: block; font-weight: 600; font-size: 15px; }
+.proof-cases { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; max-width: 600px; }
+.proof-case { border: 1px solid var(--dark-border); border-radius: 12px; padding: 24px; position: relative; overflow: hidden; transition: border-color .2s; }
+.proof-case:hover { border-color: var(--orange); }
+.proof-case::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--orange); }
+.proof-ind { font-size: 11px; color: var(--orange); letter-spacing: 1px; font-weight: 600; }
+.proof-num { font-size: 32px; font-weight: 700; margin: 8px 0 4px; }
+.proof-lbl { font-size: 13px; color: #64748B; line-height: 1.4; }
+.proof-link { font-size: 15px; color: var(--orange); font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; transition: gap .2s; }
+.proof-link:hover { gap: 10px; }
+
+/* FAQ */
+.faq-section { padding: 80px 0; }
+.faq-grid { max-width: 720px; }
+.faq-item { padding: 20px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.faq-item:last-child { border: none; }
+.faq-q { font-size: 16px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.faq-q::after { content: '+'; font-size: 24px; color: var(--orange); font-weight: 400; transition: transform .2s; flex-shrink: 0; }
+.faq-item.open .faq-q::after { transform: rotate(45deg); }
+.faq-a { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height .3s ease, padding .3s ease; padding-top: 0; }
+.faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
+/* CTA */
+.cta-section { padding: 80px 0; text-align: center; }
+.cta-section h2 { font-family: var(--font-heading); font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px; }
+.cta-sub { font-size: 17px; opacity: 0.85; margin-bottom: 28px; }
+.btn-white { background: var(--white); color: var(--orange); padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 600; display: inline-block; text-decoration: none; transition: all .2s; }
+.btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+.cta-micro { font-size: 14px; opacity: 0.6; margin-top: 12px; }
+.cta-trust { margin-top: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+.cta-trust span { font-size: 13px; opacity: 0.65; display: flex; align-items: center; gap: 6px; }
+.cta-trust span::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.6); }
+.cta-link { margin-top: 24px; font-size: 14px; opacity: 0.5; }
+.cta-link a { color: var(--white); text-decoration: underline; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.anim { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.anim.visible { opacity: 1; transform: translateY(0); }
+.anim-d1 { transition-delay: 0.1s; }
+.anim-d2 { transition-delay: 0.2s; }
+.anim-d3 { transition-delay: 0.3s; }
+.anim-d4 { transition-delay: 0.4s; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .hero { padding: 110px 0 0; }
+  .hero-stats { flex-wrap: wrap; }
+  .hero-stat { flex: 1 1 33%; }
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+  .del-grid { grid-template-columns: 1fr; }
+  .proof-cases { grid-template-columns: 1fr; }
+  .own-strip { flex-wrap: wrap; }
+  .own-item { flex: 1 1 50%; }
+  .hero-who { padding: 16px 20px; }
+  .nav-inner { padding: 14px 20px; }
+}
+@media (max-width: 480px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .hero-stat { flex: 1 1 50%; }
+  .own-strip { flex-direction: column; }
+  .own-item { border-right: none; border-bottom: 1px solid #F9731625; }
+  .own-item:last-child { border: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="index.html" class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="220" height="36">
+                    <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                    <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers</tspan></text>
+                </svg>
+            </a>
+        <div class="nav-links">
+            <a href="index.html#mirror">لماذا يفشل الذكاء الاصطناعي</a>
+            <a href="index.html#method">كيف نعمل</a>
+            <a href="index.html#solutions">ماذا نبني</a>
+            <a href="index.html#team">الفريق</a>
+            <a href="packages.html">خدماتنا</a>
+            <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="nav-cta">هل نحن الشريك المناسب؟</a>
+        </div>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-backdrop" id="mobileBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#mirror">لماذا يفشل الذكاء الاصطناعي</a>
+    <a href="index.html#method">كيف نعمل</a>
+    <a href="index.html#solutions">ماذا نبني</a>
+    <a href="index.html#team">الفريق</a>
+    <a href="packages.html">خدماتنا</a>
+    <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="mobile-menu-cta">هل نحن الشريك المناسب؟</a>
+</div>
+
+<!-- 01 HERO -->
+<section class="section section-light hero">
+  <div class="hero-accent"></div>
+  <div class="container">
+    <div class="hero-tag">AI DASHBOARD</div>
+    <h1 class="anim">Your entire business.<br>One screen. <span>Real time.</span></h1>
+    <h2 class="anim anim-d1">See everything. Ask anything. <span>Decide faster.</span></h2>
+    <p class="hero-body anim anim-d2">AI Dashboard connects all your systems into one live view — <strong>so you can see how your company performs and make strategic decisions in minutes, not days.</strong> Ask questions in any language. Get answers from one source.</p>
+    <div class="hero-stats anim anim-d2">
+      <div class="hero-stat"><strong>32+</strong><span>hrs/week saved</span></div>
+      <div class="hero-stat"><strong>$715K</strong><span>annual savings</span></div>
+      <div class="hero-stat"><strong>90 days</strong><span>to live system</span></div>
+    </div>
+    <div class="hero-btn-wrap anim anim-d3">
+      <a href="https://calendly.com/daniel-aisuperpowers/30min" class="btn">Book a free 30-min call →</a>
+    </div>
+  </div>
+  <div class="hero-screen">
+    <video autoplay muted playsinline loop style="width:100%;display:block;">
+      <source src="videos/V1-Executive-Dashboards-v3.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-who">
+    <span class="hero-who-label">BUILT FOR:</span>
+    <span class="hero-who-tag">C-suite & executives</span>
+    <span class="hero-who-tag">50–500 employees</span>
+    <span class="hero-who-tag">Multi-system orgs</span>
+    <span class="hero-who-tag">Gov & enterprise</span>
+  </div>
+</section>
+
+<!-- 02 DEMO + CAPABILITIES + INTEGRATIONS -->
+<section class="section section-dark demo-section">
+  <div class="container">
+    <div class="section-tag section-tag-white">HOW IT WORKS</div>
+    <h3 class="sh1 anim">See it in action.</h3>
+    <p class="sh2 anim anim-d1">Ask your data a question. Get an answer. That's it.</p>
+
+    <div class="demo-box anim anim-d2">
+      <div class="demo-q">
+        <div class="demo-input">"What happened to Q3 revenue vs. forecast?"</div>
+        <button class="demo-send"><svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+      <div class="demo-answer">
+        <strong>Q3 revenue was $2.4M, 12% below the $2.73M forecast.</strong> The primary driver was a 23% decline in EMEA renewals during August. Three enterprise accounts delayed renewals totalling $340K. Pipeline shows 2 of 3 are now in active negotiation for Q4 close. <strong>Based on current pipeline velocity, Q4 is projected at $2.9M — 6% above target.</strong>
+      </div>
+    </div>
+
+    <div class="cap-grid">
+      <div class="cap-card anim"><div class="cap-title">Real-time data from all systems</div><div class="cap-desc">CRM, ERP, finance, HR — one live view. No exports, no copy-paste.</div></div>
+      <div class="cap-card anim anim-d1"><div class="cap-title">Natural language queries</div><div class="cap-desc">Ask in any language. Get answers in seconds, not days.</div></div>
+      <div class="cap-card anim anim-d2"><div class="cap-title">AI-flagged anomalies</div><div class="cap-desc">Trends and risks surfaced before you ask. The system learns what matters.</div></div>
+      <div class="cap-card anim anim-d3"><div class="cap-title">Automated reporting</div><div class="cap-desc">Scheduled reports, KPI alerts, board-ready exports. Zero manual work.</div></div>
+      <div class="cap-card anim anim-d4"><div class="cap-title">Predictive insights</div><div class="cap-desc">Demand forecasting, inventory trends, revenue projections — based on your historical data.</div></div>
+    </div>
+
+    <div class="int-label anim">CONNECTS TO YOUR EXISTING SYSTEMS</div>
+
+    <div class="int-cat anim">
+      <div class="int-cat-label">CRM & sales</div>
+      <div class="int-tags">
+        <span class="int-tag">Salesforce</span><span class="int-tag">HubSpot</span><span class="int-tag">Pipedrive</span><span class="int-tag">Zoho CRM</span><span class="int-tag">Microsoft Dynamics</span>
+      </div>
+    </div>
+    <div class="int-cat anim">
+      <div class="int-cat-label">ERP & finance</div>
+      <div class="int-tags">
+        <span class="int-tag">SAP</span><span class="int-tag">Oracle</span><span class="int-tag">NetSuite</span><span class="int-tag">QuickBooks</span><span class="int-tag">Xero</span><span class="int-tag">Odoo</span>
+      </div>
+    </div>
+    <div class="int-cat anim">
+      <div class="int-cat-label">Files & drives</div>
+      <div class="int-tags">
+        <span class="int-tag">Google Drive</span><span class="int-tag">OneDrive</span><span class="int-tag">SharePoint</span><span class="int-tag">Dropbox</span><span class="int-tag">Box</span><span class="int-tag">PDF reports</span><span class="int-tag">Excel / CSV</span><span class="int-tag">Word docs</span>
+      </div>
+    </div>
+    <div class="int-cat anim">
+      <div class="int-cat-label">Communication & collaboration</div>
+      <div class="int-tags">
+        <span class="int-tag">Slack</span><span class="int-tag">Microsoft Teams</span><span class="int-tag">Gmail</span><span class="int-tag">Outlook</span><span class="int-tag">Google Workspace</span><span class="int-tag">Microsoft 365</span>
+      </div>
+    </div>
+    <div class="int-cat anim">
+      <div class="int-cat-label">HR & operations</div>
+      <div class="int-tags">
+        <span class="int-tag">BambooHR</span><span class="int-tag">Workday</span><span class="int-tag">HiBob</span><span class="int-tag">Simpplr</span><span class="int-tag">Jira</span><span class="int-tag">Asana</span><span class="int-tag">Monday.com</span>
+      </div>
+    </div>
+    <div class="int-cat anim">
+      <div class="int-cat-label">Data & infrastructure</div>
+      <div class="int-tags">
+        <span class="int-tag">PostgreSQL</span><span class="int-tag">MySQL</span><span class="int-tag">MongoDB</span><span class="int-tag">Supabase</span><span class="int-tag">BigQuery</span><span class="int-tag">Snowflake</span><span class="int-tag">REST APIs</span><span class="int-tag">Webhooks</span>
+      </div>
+    </div>
+
+    <a href="https://calendly.com/daniel-aisuperpowers/30min" class="int-more anim">Don't see your system? We connect to anything with an API →</a>
+  </div>
+</section>
+
+<!-- 03 DELIVERABLES -->
+<section class="section section-light del-section">
+  <div class="container">
+    <div class="section-tag section-tag-orange">WHAT YOU GET</div>
+    <h3 class="sh1 anim">What you actually get.</h3>
+    <p class="sh2 anim anim-d1" style="color:var(--text-muted)">Not a demo. Not a report. Working systems you own permanently.</p>
+
+    <div class="del-grid">
+      <div class="del-item anim">
+        <div class="del-chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="del-title">Live AI-powered dashboard</div><div class="del-desc">Real-time data from all connected systems. Accessible from any device, anywhere.</div></div>
+      </div>
+      <div class="del-item anim anim-d1">
+        <div class="del-chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="del-title">Natural language interface</div><div class="del-desc">Ask questions in any language. Instant answers from your own data.</div></div>
+      </div>
+      <div class="del-item anim">
+        <div class="del-chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="del-title">Automated alerts & reports</div><div class="del-desc">Anomaly detection, KPI tracking, board-ready exports — no manual work.</div></div>
+      </div>
+      <div class="del-item anim anim-d1">
+        <div class="del-chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="del-title">Clean data pipeline</div><div class="del-desc">Unified integration layer connecting your existing systems. No rip-and-replace.</div></div>
+      </div>
+      <div class="del-item anim">
+        <div class="del-chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="del-title">Full source code + docs</div><div class="del-desc">You own every line. Architecture docs, maintenance guides, API references.</div></div>
+      </div>
+      <div class="del-item anim anim-d1">
+        <div class="del-chk"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><div class="del-title">Team training + transfer</div><div class="del-desc">Hands-on sessions until your team runs it independently. Real training, not a webinar.</div></div>
+      </div>
+    </div>
+
+    <div class="own-strip anim">
+      <div class="own-item"><strong>Your servers</strong><span>Never ours</span></div>
+      <div class="own-item"><strong>Your data</strong><span>Never leaves</span></div>
+      <div class="own-item"><strong>Your code</strong><span>Inspect anytime</span></div>
+      <div class="own-item"><strong>Your team</strong><span>Runs it alone</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PROOF -->
+<section class="section section-dark proof-section">
+  <div class="container">
+    <div class="section-tag section-tag-white">REAL RESULTS</div>
+    <h3 class="sh1 anim">AI Dashboard results from real clients.</h3>
+
+    <div class="proof-quote anim anim-d1">From idea to working prototype in weeks. They understood the business logic immediately, built something real, and gave us a system we could iterate on ourselves.</div>
+    <div class="proof-author anim anim-d2">
+      <div class="proof-av">KS</div>
+      <div class="proof-name"><strong>Karol Sadaj</strong>Fintech Executive · AIP Seed Board · ex-Revolut</div>
+    </div>
+
+    <div class="proof-cases">
+      <div class="proof-case anim">
+        <div class="proof-ind">HIGHER EDUCATION</div>
+        <div class="proof-num">$715K+</div>
+        <div class="proof-lbl">Annual savings from automated executive dashboards. 32+ hrs/week eliminated.</div>
+      </div>
+      <div class="proof-case anim anim-d1">
+        <div class="proof-ind">TELECOM</div>
+        <div class="proof-num">4 → 1</div>
+        <div class="proof-lbl">Monthly reports consolidated into one AI-powered dashboard with predictive insights.</div>
+      </div>
+    </div>
+
+    <a href="case-studies.html" class="proof-link anim">See all case studies →</a>
+  </div>
+</section>
+
+<!-- 05 FAQ -->
+<section class="section section-light faq-section">
+  <div class="container">
+    <div class="section-tag section-tag-orange">FAQ</div>
+    <h3 class="sh1 anim">Common questions about AI Dashboard.</h3>
+
+    <div class="faq-grid anim anim-d1">
+      <div class="faq-item">
+        <div class="faq-q">"What about data security?"</div>
+        <div class="faq-a">Everything runs on your infrastructure. Data never leaves your environment. We work within your existing security and compliance frameworks.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"We already have Power BI / Tableau."</div>
+        <div class="faq-a">BI tools show charts. AI Dashboard gives answers in plain language. We often layer on top of existing BI — not replace it.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"Our data is a mess."</div>
+        <div class="faq-a">80% of our work is cleaning and connecting data. If it were already clean, you wouldn't need us.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"How much does this cost?"</div>
+        <div class="faq-a">Depends on scope. The free assessment gives you a clear picture before any commitment. Most clients see ROI within 90 days.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"Does it support my language?"</div>
+        <div class="faq-a">Yes. Interface, queries, and generated reports work in any language — Arabic, English, Polish, Spanish, and more. Built for global teams.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">"How long until it's live?"</div>
+        <div class="faq-a">90 days from kickoff to live system. First working prototype typically within 4–6 weeks.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 06 CTA -->
+<section class="section section-orange cta-section">
+  <div class="container">
+    <h2 class="anim">Stop chasing data.<br>Start getting answers.</h2>
+    <p class="cta-sub anim anim-d1">30-minute call. No pitch. We come prepared.</p>
+    <a href="https://calendly.com/daniel-aisuperpowers/30min" class="btn-white anim anim-d2">Book a free call →</a>
+    <div class="cta-trust anim anim-d3">
+      <span>Free initial assessment</span>
+      <span>No commitment required</span>
+      <span>Keep the assessment either way</span>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-contact">وارسو · مسقط</div>
+        <div class="footer-tagline">"نبنيه. ندرّبكم عليه. ثم ننسحب."</div>
+    </div>
+</footer>
+
+<script>
+// Scroll animations
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.anim').forEach(el => obs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('navHamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+function toggleMobileMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    mobileBackdrop.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+}
+
+hamburger.addEventListener('click', toggleMobileMenu);
+mobileBackdrop.addEventListener('click', toggleMobileMenu);
+
+mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        if (mobileMenu.classList.contains('active')) {
+            toggleMobileMenu();
+        }
+    });
+});
+</script>
+
+</body>
+</html>
