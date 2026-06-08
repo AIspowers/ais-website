@@ -793,6 +793,17 @@
             gap: 10px;
         }
 
+        /* TEMPORARY: hide team photos + LinkedIn until reveal. Delete this block to restore. */
+        .team-photo,
+        .team-linkedin {
+            display: none !important;
+        }
+        .team-card {
+            pointer-events: none;
+            cursor: default;
+        }
+        /* END TEMPORARY */
+
         /* Testimonials Section - 3 boxes visible, horizontal scroll, warm theme */
         .testimonials {
             background: var(--cream);
@@ -1385,7 +1396,7 @@
 <!-- Hero Section -->
 <section class="hero">
     <div class="container">
-        <h1 class="fade-in">Most AI firms leave you <strong>dependent.</strong><br>We leave you <strong>capable.</strong></h1>
+        <h1 class="fade-in">Most AI firms leave you <strong>dependent.</strong><br>We leave you <strong style="color: var(--orange);">capable.</strong></h1>
         <p class="hero-sub fade-in">We architect AI systems <strong>your people run</strong> and <strong>your business owns</strong>, on your infrastructure, then handed over. <strong>Permanently.</strong></p>
         <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="cta-btn fade-in">
             See If We're the Right Fit. Book a Call
