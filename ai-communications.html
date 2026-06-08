@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Communications — How Your AI Will Be Questioned | AI Superpowers</title>
+<meta name="description" content="Most companies launch AI before they decide what to say about it. Board-level AI communications for regulated industries. Pressure Test, executive sessions, rollout communications.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M 18 2 L 8 15 L 15 14 L 6 30 L 26 13 L 18 14 L 26 2 Z' fill='%23F97316'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  /* ===== AI Communications page — themed to match site (Inter + Playfair, site orange/navy/cream) ===== */
+  .ais-comms{
+    color:var(--navy);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .ais-comms *{box-sizing:border-box;}
+
+  .ais-comms .band{padding:clamp(52px,8vw,104px) clamp(22px,6vw,80px);}
+  .ais-comms .band--white{background:var(--white);}
+  .ais-comms .band--peach{background:var(--light-peach);}
+  .ais-comms .band--cream{background:var(--cream);}
+  .ais-comms .wrap{max-width:880px;margin:0 auto;}
+
+  .ais-comms .eyebrow{
+    display:inline-flex;align-items:center;gap:12px;
+    font-size:0.8rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;
+    color:var(--orange);margin-bottom:24px;
+  }
+  .ais-comms .eyebrow::before{content:"";width:32px;height:2px;background:var(--orange);}
+
+  /* Extra top padding so the hero clears the fixed site nav */
+  .ais-comms .band--hero{padding-top:clamp(140px,16vw,200px);padding-bottom:clamp(56px,9vw,104px);}
+  .ais-comms .kicker{
+    display:inline-flex;align-items:center;gap:12px;font-size:0.8rem;font-weight:600;
+    letter-spacing:3px;text-transform:uppercase;color:var(--orange);margin-bottom:24px;
+  }
+  .ais-comms .kicker::before{content:"";width:32px;height:2px;background:var(--orange);}
+
+  .ais-comms .credo{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(1.6rem,3.4vw,2.2rem);font-weight:600;line-height:1.2;
+    letter-spacing:-.02em;max-width:24ch;margin-bottom:22px;color:var(--navy);
+  }
+  .ais-comms .credo em{font-style:italic;color:var(--orange);}
+
+  .ais-comms .others{
+    margin-top:clamp(28px,4vw,42px);background:var(--white);border:1px solid rgba(0,0,0,0.08);
+    border-radius:20px;padding:clamp(22px,3.5vw,34px);box-shadow:0 4px 20px rgba(0,0,0,0.05);
+  }
+  .ais-comms .others h3{
+    font-family:'Inter',sans-serif;
+    font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;
+    color:var(--orange);margin-bottom:14px;
+  }
+  .ais-comms .others p{font-size:0.95rem;line-height:1.65;color:var(--navy);max-width:66ch;}
+  .ais-comms .others p + p{margin-top:12px;color:var(--gray);}
+
+  .ais-comms .hero{
+    font-family:'Playfair Display', serif;
+    font-size:clamp(2rem,5vw,3.4rem);font-weight:600;line-height:1.1;
+    letter-spacing:-.02em;max-width:17ch;color:var(--navy);
+  }
+  .ais-comms .hero em,.ais-comms .position em{font-style:italic;color:var(--orange);}
+  .ais-comms .sub{
+    font-size:clamp(1rem,2vw,1.15rem);line-height:1.7;color:var(--gray);
+    max-width:60ch;margin-top:26px;
+  }
+  .ais-comms .hero-cost{
+    font-size:clamp(1rem,2vw,1.1rem);line-height:1.6;font-weight:600;color:var(--navy);
+    max-width:48ch;margin-top:20px;padding-left:18px;border-left:3px solid var(--orange);
+  }
+  .ais-comms .diff{
+    font-size:1rem;line-height:1.6;font-weight:600;color:var(--navy);
+    max-width:50ch;margin-top:20px;
+  }
+  .ais-comms .format{
+    font-size:0.95rem;line-height:1.65;color:var(--gray);max-width:54ch;margin-top:16px;
+  }
+  .ais-comms .next{
+    font-size:clamp(1rem,2vw,1.1rem);line-height:1.5;font-weight:600;color:var(--navy);
+    max-width:52ch;margin-top:14px;
+  }
+  .ais-comms .cta{
+    display:inline-flex;align-items:center;gap:10px;margin-top:28px;
+    background:var(--orange);color:var(--white);
+    font-family:'Inter',sans-serif;
+    font-size:1rem;font-weight:700;letter-spacing:-.01em;text-decoration:none;
+    padding:16px 30px;border-radius:999px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .ais-comms .cta:hover{background:var(--deep-orange);transform:translateY(-2px);}
+
+  .ais-comms .position{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:600;line-height:1.32;
+    letter-spacing:-.015em;max-width:32ch;color:var(--navy);
+  }
+  .ais-comms .position-sub{
+    font-size:0.95rem;line-height:1.7;color:var(--gray);margin-top:18px;max-width:52ch;
+  }
+
+  .ais-comms .author{
+    display:flex;align-items:center;gap:16px;margin-top:clamp(28px,4vw,40px);
+    padding-top:clamp(28px,4vw,40px);border-top:1px solid rgba(0,0,0,0.08);
+  }
+  .ais-comms .author img{
+    width:74px;height:74px;border-radius:50%;object-fit:cover;
+    background:var(--light-peach);flex:none;border:3px solid rgba(249,115,22,0.15);
+  }
+  .ais-comms .author .an{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;letter-spacing:-.01em;color:var(--navy);}
+  .ais-comms .author .ar{font-size:0.85rem;color:var(--gray);margin-top:2px;}
+  .ais-comms .author .al{
+    display:inline-block;margin-top:5px;font-size:0.8rem;font-weight:600;
+    color:var(--orange);text-decoration:none;
+  }
+  .ais-comms .author .al:hover{text-decoration:underline;}
+
+  .ais-comms .session-name{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:600;letter-spacing:-.02em;margin-top:10px;
+    line-height:1.15;color:var(--navy);
+  }
+  .ais-comms .session-lede{
+    font-size:1rem;line-height:1.65;color:var(--gray);margin-top:16px;max-width:54ch;
+  }
+
+  .ais-comms .modules{margin-top:clamp(30px,5vw,48px);}
+  .ais-comms .mod{
+    display:grid;grid-template-columns:64px 1fr;gap:10px;
+    padding:24px 0;border-top:1px solid rgba(0,0,0,0.08);
+  }
+  .ais-comms .mod:last-child{border-bottom:1px solid rgba(0,0,0,0.08);}
+  .ais-comms .mod .num{
+    font-family:'Playfair Display',serif;
+    font-size:1.6rem;font-weight:600;color:var(--orange);line-height:1;padding-top:2px;
+    letter-spacing:-.01em;
+  }
+  .ais-comms .mod .mt{font-size:1.05rem;font-weight:700;letter-spacing:-.01em;color:var(--navy);}
+  .ais-comms .mod .md{font-size:0.95rem;line-height:1.6;color:var(--gray);margin-top:7px;max-width:60ch;}
+
+  .ais-comms .cases{margin-top:clamp(30px,5vw,46px);}
+  .ais-comms .case{padding:26px 0;border-top:1px solid rgba(0,0,0,0.08);}
+  .ais-comms .case:last-child{border-bottom:1px solid rgba(0,0,0,0.08);}
+  .ais-comms .case .cn{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:600;letter-spacing:-.01em;color:var(--navy);}
+  .ais-comms .case .cc{
+    font-size:0.75rem;font-weight:700;color:var(--orange);margin-top:4px;
+    text-transform:uppercase;letter-spacing:2px;
+  }
+  .ais-comms .case .cd{font-size:0.95rem;line-height:1.6;color:var(--gray);margin-top:11px;max-width:62ch;}
+
+  .ais-comms .close{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.2rem,2.6vw,1.6rem);font-weight:600;line-height:1.35;
+    letter-spacing:-.015em;max-width:38ch;color:var(--navy);
+  }
+  .ais-comms .price{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(1.4rem,2.6vw,1.8rem);font-weight:600;color:var(--orange);
+    margin-top:28px;letter-spacing:-.01em;
+  }
+  .ais-comms .price small{
+    display:block;font-family:'Inter',sans-serif;font-weight:500;font-size:0.85rem;color:var(--gray);
+    letter-spacing:.01em;margin-top:6px;
+  }
+
+  @media (max-width:520px){
+    .ais-comms .mod{grid-template-columns:42px 1fr;}
+    .ais-comms .mod .num{font-size:1.3rem;}
+  }
+
+  .ais-comms [data-r]{opacity:0;transform:translateY(14px);animation:aisRise .7s cubic-bezier(.2,.7,.2,1) forwards;}
+  @keyframes aisRise{to{opacity:1;transform:none;}}
+  @media (prefers-reduced-motion:reduce){.ais-comms [data-r]{animation:none;opacity:1;transform:none;}}
+
+  /* Three-rung service grid */
+  .ais-comms .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(28px,4vw,42px);}
+  .ais-comms .svc-card{
+    background:var(--white);border:1px solid rgba(0,0,0,0.08);
+    border-radius:20px;padding:32px;display:flex;flex-direction:column;
+    box-shadow:0 4px 20px rgba(0,0,0,0.05);
+    transition:transform .3s ease, box-shadow .3s ease;
+  }
+  .ais-comms .svc-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,0.08);}
+  .ais-comms .svc-card .sk{font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--orange);}
+  .ais-comms .svc-card .sn{font-family:'Playfair Display',serif;font-size:clamp(1.25rem,2.4vw,1.45rem);font-weight:600;letter-spacing:-.01em;margin-top:10px;line-height:1.2;color:var(--navy);}
+  .ais-comms .svc-card .sd{font-size:0.95rem;line-height:1.6;color:var(--gray);margin-top:14px;flex:1;}
+  .ais-comms .svc-card .sp{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--orange);margin-top:20px;}
+  @media(max-width:820px){.ais-comms .svc-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body style="background:#FFFFFF;">
+
+<!-- Navigation -->
+<nav>
+    <div class="container">
+        <a href="index.html" class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 52" width="220" height="36">
+                <path d="M 18 1 L 8 22 L 16 20 L 2 50 L 27 20 L 19 22 L 27 1 Z" fill="#F97316"/>
+                <text x="34" y="38" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="30" font-weight="400" letter-spacing="-0.3"><tspan fill="#ffffff">ai</tspan><tspan fill="#F97316">super</tspan><tspan fill="#ffffff">powers</tspan></text>
+            </svg>
+        </a>
+        <div class="nav-links">
+            <a href="index.html#mirror">Why AI Fails</a>
+            <a href="index.html#method">How We Work</a>
+            <a href="index.html#solutions">What We Build</a>
+            <a href="ai-communications.html">AI Communications</a>
+            <a href="index.html#team">The Team</a>
+            <a href="packages.html">Service Offerings</a>
+            <a href="https://calendly.com/marta-aisuperpowers/30min" target="_blank" class="nav-cta">Book a Call</a>
+        </div>
+        <button class="nav-hamburger" id="navHamburger" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu-backdrop" id="mobileBackdrop"></div>
+<div class="mobile-menu" id="mobileMenu">
+    <a href="index.html#mirror">Why AI Fails</a>
+    <a href="index.html#method">How We Work</a>
+    <a href="index.html#solutions">What We Build</a>
+    <a href="ai-communications.html">AI Communications</a>
+    <a href="index.html#team">The Team</a>
+    <a href="packages.html">Service Offerings</a>
+    <a href="https://calendly.com/marta-aisuperpowers/30min" target="_blank" class="mobile-menu-cta">Book a Call</a>
+</div>
+
+<div class="ais-comms">
+
+  <!-- BAND 1 · white · hero -->
+  <section class="band band--white band--hero">
+    <div class="wrap">
+      <p class="kicker" data-r>AI Communications</p>
+      <h1 class="hero" data-r style="animation-delay:.06s">Most companies launch AI before they <em>decide</em> what to say about it.</h1>
+      <p class="sub" data-r style="animation-delay:.14s">By the time a regulator writes, an investor asks at the earnings call, or a customer wants to know how their data is being used, the story has already been written by someone outside the company.</p>
+      <p class="hero-cost" data-r style="animation-delay:.2s">In a regulated industry, the wrong answer to the regulator is not a bad headline. It is the start of an investigation.</p>
+      <a class="cta" data-r style="animation-delay:.26s" href="https://calendly.com/marta-aisuperpowers/30min" target="_blank" rel="noopener">Book a call &rarr;</a>
+    </div>
+  </section>
+
+  <!-- BAND 2 · peach · three rungs -->
+  <section class="band band--peach">
+    <div class="wrap">
+      <p class="eyebrow" data-r>What I do</p>
+      <h2 class="session-name" data-r style="animation-delay:.05s">Three ways in, one job</h2>
+      <p class="session-lede" data-r style="animation-delay:.1s">Whether the questions are weeks away or the rollout is already underway, the work is the same. Making sure the story of your AI is one you wrote, not one written for you.</p>
+
+      <div class="svc-grid" data-r style="animation-delay:.16s">
+        <div class="svc-card">
+          <div class="sk">Start here</div>
+          <div class="sn">The Pressure Test</div>
+          <div class="sd">An analysis of how your company talks about its AI today and where it leaves you exposed. I review your current statements and positioning, map the risks a regulator or journalist would find, and hand you a written assessment of the gaps and what to fix first.</div>
+          <div class="sp">From $5,000</div>
+        </div>
+        <div class="svc-card">
+          <div class="sk">C-suite sessions</div>
+          <div class="sn">How Your AI Will Be Questioned</div>
+          <div class="sd">A full day with your board and C-suite, getting them ready to answer for your AI in front of regulators, investors, and the people whose data it touches.</div>
+          <div class="sp">From $30,000</div>
+        </div>
+        <div class="svc-card">
+          <div class="sk">AI communications &amp; change</div>
+          <div class="sn">Make the Rollout Stick</div>
+          <div class="sd">A six to twelve week engagement that runs the communications and change through an AI deployment, so your people adopt it instead of resisting it.</div>
+          <div class="sp">From $60,000</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND 3 · white · where I stand + about -->
+  <section class="band band--white">
+    <div class="wrap">
+      <p class="eyebrow" data-r>Where I stand</p>
+      <p class="credo" data-r style="animation-delay:.04s">AI rarely fails on the technology. It fails on the <em>explanation</em>. And the explanation is a leadership decision, not a press release.</p>
+      <p class="position" data-r style="animation-delay:.08s">Which is why boards and C-suites in regulated industries bring me in to <em>write the story first.</em></p>
+      <p class="position-sub" data-r style="animation-delay:.12s">Fifteen years of communications strategy and change communications inside fintech, banking, and government. The last two and a half entirely on how companies explain AI to the people they answer to. The work runs from product launches to regulatory scrutiny to crisis, and it is global. I work with companies wherever the questions are hardest, not wherever I happen to be.</p>
+      <p class="diff" data-r style="animation-delay:.15s">Your communications team can write the statement. This is the answer underneath it, the one a regulator will not accept a press release for.</p>
+      <div class="author" data-r style="animation-delay:.18s">
+        <img src="videos/team-marta.jpg" alt="Marta Zalewska">
+        <div>
+          <div class="an">Marta Zalewska</div>
+          <div class="ar">Co-Founder &amp; Change Lead, AI Superpowers</div>
+          <a class="al" href="https://www.linkedin.com/in/martazalewskapr/" target="_blank" rel="noopener">Connect on LinkedIn &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND 4 · peach · proof -->
+  <section class="band band--peach">
+    <div class="wrap">
+      <p class="eyebrow" data-r>Proof under pressure</p>
+      <h2 class="session-name" data-r style="animation-delay:.05s">Where the answers have already held</h2>
+      <p class="session-lede" data-r style="animation-delay:.1s">A track record built holding one accurate message for banks and institutions where every word is scrutinised. A few that map to what your AI is about to face.</p>
+
+      <div class="cases" data-r style="animation-delay:.16s">
+        <div class="case">
+          <div class="cn">Nest Bank</div>
+          <div class="cc">Banking · Director of Media Relations</div>
+          <div class="cd">Owned the bank's communications strategy around AI and technology, building the executive thought-leadership program that positioned its C-suite as the authoritative voices on the subject rather than the ones answering for it.</div>
+        </div>
+        <div class="case">
+          <div class="cn">UBS</div>
+          <div class="cc">Global banking · Switzerland</div>
+          <div class="cd">Directed the communications and press-office strategy for one of the world's most scrutinised banks, holding a single accurate message across every spokesperson in an environment where every word is regulated.</div>
+        </div>
+        <div class="case">
+          <div class="cn">Aion Bank</div>
+          <div class="cc">Digital banking · UniCredit Group</div>
+          <div class="cd">Led the launch communications strategy for one of Poland's first fully digital banks, turning a complex digital-banking proposition into one clear narrative the market and the media adopted as their own.</div>
+        </div>
+        <div class="case">
+          <div class="cn">Shares</div>
+          <div class="cc">FinTech · Investing app · Europe</div>
+          <div class="cd">Led the brand's entry into a new market: the launch and positioning of a tech investment platform, and the thought-leadership program behind it. When the company restructured, owned the change communications through the optimisation, across CEE.</div>
+        </div>
+        <div class="case">
+          <div class="cn">Wealthon</div>
+          <div class="cc">FinTech · Business financing</div>
+          <div class="cd">Built the communications strategy from the ground up and grew the brand and its founder in parallel, turning a young business-financing FinTech and its CEO into a recognised market voice.</div>
+        </div>
+        <div class="case">
+          <div class="cn">Finiata</div>
+          <div class="cc">FinTech · SME finance</div>
+          <div class="cd">Set the communications strategy and ran agile, reactive PR, inserting the brand into the stories already shaping the agenda and earning meaningful coverage with no media budget.</div>
+        </div>
+      </div>
+
+      <div class="others" data-r>
+        <h3>Selected other clients</h3>
+        <p>Banking and finance with Citi Handlowy and PKO Leasing. Technology and travel with Expedia. Public sector with the Government of Oman. Consumer and healthcare with Carlsberg, Novartis, and Oatly.</p>
+        <p>Underneath most of it, the same discipline. Change management and internal communications that carry people through transformation, from AI adoption today to corporate restructuring earlier on.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND 5 · white · How Your AI Will Be Questioned -->
+  <section class="band band--white">
+    <div class="wrap">
+      <p class="eyebrow" data-r>C-suite sessions</p>
+      <h2 class="session-name" data-r style="animation-delay:.05s">How Your AI Will Be Questioned</h2>
+      <p class="session-lede" data-r style="animation-delay:.1s">A full working day with your board and C-suite, prepared before and followed through after. The regulator gets the most weight here, because they are the one questioner who can act on your answer instead of just printing it.</p>
+
+      <div class="modules" data-r style="animation-delay:.16s">
+        <div class="mod"><span class="num">01</span>
+          <div><div class="mt">What you'll have to explain, and to whom</div>
+            <div class="md">The disclosure expectations now landing on companies that deploy AI, put into plain language you can say out loud. Your lawyers handle the compliance. This handles how you talk about it.</div></div></div>
+        <div class="mod"><span class="num">02</span>
+          <div><div class="mt">The questions before they're asked</div>
+            <div class="md">The seven hardest questions coming at your AI, written down in front of you, while there's still time to answer them well.</div></div></div>
+        <div class="mod"><span class="num">03</span>
+          <div><div class="mt">The points where your story breaks</div>
+            <div class="md">The exact places your current position collapses under pressure, found in a closed room instead of a public one.</div></div></div>
+        <div class="mod"><span class="num">04</span>
+          <div><div class="mt">An answer to the question built to trap you</div>
+            <div class="md">A tested response to the hostile version of each question, so the difficult moment is one your team has already had.</div></div></div>
+        <div class="mod"><span class="num">05</span>
+          <div><div class="mt">The words that keep trust intact</div>
+            <div class="md">What you say to the employee asking about their job and the customer asking about their data, before either one fills the silence themselves.</div></div></div>
+        <div class="mod"><span class="num">06</span>
+          <div><div class="mt">One position, on paper, agreed</div>
+            <div class="md">A single document with one answer to every stakeholder question, signed off by the room. Your leadership stops improvising in public.</div></div></div>
+      </div>
+
+      <p class="close" data-r style="animation-delay:.2s">Six parts. One outcome. A leadership team that can answer for its AI in any room it enters.</p>
+      <p class="format" data-r style="animation-delay:.23s">A day in the room, the preparation before it, and a written position your leadership keeps and refines with me afterward.</p>
+      <p class="price" data-r style="animation-delay:.26s">From $30,000
+        <small>A full working day with your leadership, prepared and followed through</small>
+      </p>
+    </div>
+  </section>
+
+  <!-- BAND 6 · peach · Make the Rollout Stick -->
+  <section class="band band--peach">
+    <div class="wrap">
+      <p class="eyebrow" data-r>AI communications &amp; change</p>
+      <h2 class="session-name" data-r style="animation-delay:.05s">Make the Rollout Stick</h2>
+      <p class="session-lede" data-r style="animation-delay:.1s">The communications professional in the room from week one, not the week after launch. Six to twelve weeks turning an AI deployment into something your people actually use, and your stakeholders actually trust.</p>
+
+      <div class="modules" data-r style="animation-delay:.16s">
+        <div class="mod"><span class="num">01</span>
+          <div><div class="mt">Before a word goes out</div>
+            <div class="md">Map who the deployment touches and where trust will break. The fears that go unspoken, jobs, data, control. The message gets shaped before launch, not after the complaints start.</div></div></div>
+        <div class="mod"><span class="num">02</span>
+          <div><div class="mt">One story, every audience</div>
+            <div class="md">The single narrative of the deployment, built for employees, customers, regulators, and the board at once. Disclosure language, internal communications, and the answer each of them will come looking for.</div></div></div>
+        <div class="mod"><span class="num">03</span>
+          <div><div class="mt">The human side of the rollout</div>
+            <div class="md">The change communications that decide whether people use the tools or quietly ignore them. Internal champions, messages tied to real workflows, resistance handled before it hardens.</div></div></div>
+        <div class="mod"><span class="num">04</span>
+          <div><div class="mt">Then you run it without me</div>
+            <div class="md">Adoption tracked, the message refined against what actually surfaces, and your team left able to carry it. Keeping me in the room was never the point.</div></div></div>
+      </div>
+
+      <p class="close" data-r style="animation-delay:.2s">Four phases. One result. An organisation that adopted the AI instead of resisting it.</p>
+      <p class="price" data-r style="animation-delay:.24s">From $60,000
+        <small>Six to twelve weeks, built around your deployment</small>
+      </p>
+    </div>
+  </section>
+
+  <!-- BAND 7 · white · next step -->
+  <section class="band band--white" style="padding-top:clamp(44px,6vw,76px);padding-bottom:clamp(44px,6vw,76px);">
+    <div class="wrap">
+      <p class="next" data-r>Three ways in. Each one starts with a short call to see if we are the right fit.</p>
+      <a class="cta" data-r style="animation-delay:.06s" href="https://calendly.com/marta-aisuperpowers/30min" target="_blank" rel="noopener">Book a call &rarr;</a>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-contact">Warsaw · Muscat</div>
+        <div class="footer-tagline">"We build it. We train you. We leave."</div>
+    </div>
+</footer>
+
+<script>
+    // Hamburger menu
+    const hamburger = document.getElementById('navHamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileBackdrop = document.getElementById('mobileBackdrop');
+
+    function toggleMobileMenu() {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        mobileBackdrop.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+    }
+
+    hamburger.addEventListener('click', toggleMobileMenu);
+    mobileBackdrop.addEventListener('click', toggleMobileMenu);
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (mobileMenu.classList.contains('active')) {
+                toggleMobileMenu();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

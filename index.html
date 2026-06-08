@@ -795,14 +795,51 @@
 
         /* TEMPORARY: hide team photos + LinkedIn until reveal. Delete this block to restore. */
         .team-photo,
-        .team-linkedin {
+        .team-linkedin,
+        .team-linkedin-secondary {
             display: none !important;
         }
         .team-card {
             pointer-events: none;
             cursor: default;
         }
+        /* Marta's card stays clickable: links to AI Communications page */
+        .team-card-marta {
+            pointer-events: auto !important;
+            cursor: pointer !important;
+        }
         /* END TEMPORARY */
+
+        .team-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--orange);
+            transition: gap 0.3s;
+        }
+        .team-card:hover .team-cta {
+            gap: 10px;
+        }
+        .team-linkedin-secondary {
+            display: block;
+            margin-top: 10px;
+        }
+        .team-linkedin-secondary a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--gray);
+            text-decoration: none;
+            pointer-events: auto;
+        }
+        .team-linkedin-secondary a:hover {
+            color: var(--orange);
+        }
 
         /* Testimonials Section - 3 boxes visible, horizontal scroll, warm theme */
         .testimonials {
@@ -1370,6 +1407,7 @@
             <a href="#mirror">Why AI Fails</a>
             <a href="#method">How We Work</a>
             <a href="#solutions">What We Build</a>
+            <a href="ai-communications.html">AI Communications</a>
             <a href="#team">The Team</a>
             <a href="packages.html">Service Offerings</a>
             <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="nav-cta">See If We're the Right Fit</a>
@@ -1388,6 +1426,7 @@
     <a href="#mirror">Why AI Fails</a>
     <a href="#method">How We Work</a>
     <a href="#solutions">What We Build</a>
+    <a href="ai-communications.html">AI Communications</a>
     <a href="#team">The Team</a>
     <a href="packages.html">Service Offerings</a>
     <a href="https://calendly.com/daniel-aisuperpowers/30min" target="_blank" class="mobile-menu-cta">See If We're the Right Fit</a>
@@ -1545,6 +1584,101 @@
     </div>
 </section>
 
+<!-- AI Communications Teaser -->
+<section class="ai-comms-teaser">
+    <style>
+        .ai-comms-teaser {
+            background: var(--dark-navy);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .ai-comms-teaser::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--orange), transparent);
+        }
+        .ai-comms-teaser .section-label {
+            color: var(--orange);
+        }
+        .ai-comms-teaser h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            line-height: 1.15;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            max-width: 720px;
+        }
+        .ai-comms-teaser h2 em {
+            font-style: normal;
+            color: var(--orange);
+        }
+        .ai-comms-teaser .lede {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: rgba(255,255,255,0.85);
+            max-width: 640px;
+            margin-bottom: 16px;
+        }
+        .ai-comms-teaser .stakes {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--white);
+            font-weight: 600;
+            max-width: 580px;
+            margin-bottom: 36px;
+            padding-left: 18px;
+            border-left: 3px solid var(--orange);
+        }
+        .ai-comms-teaser .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 20px;
+        }
+        .ai-comms-teaser .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--orange);
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            padding: 16px 28px;
+            border-radius: 999px;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .ai-comms-teaser .cta-btn:hover {
+            background: var(--deep-orange);
+            transform: translateY(-2px);
+        }
+        .ai-comms-teaser .cta-note {
+            font-size: 0.85rem;
+            color: var(--gray-light);
+        }
+        @media (max-width: 768px) {
+            .ai-comms-teaser { padding: 70px 0; }
+        }
+    </style>
+    <div class="container">
+        <div class="section-label fade-in">AI Communications</div>
+        <h2 class="fade-in">Most companies launch AI before they <em>decide</em> what to say about it.</h2>
+        <p class="lede fade-in">By the time a regulator writes, an investor asks at the earnings call, or a customer wants to know how their data is being used, the story has already been written by someone outside the company.</p>
+        <p class="stakes fade-in">In a regulated industry, the wrong answer to the regulator is not a bad headline. It is the start of an investigation.</p>
+        <div class="cta-row fade-in">
+            <a href="ai-communications.html" class="cta-btn">
+                See How Your AI Will Be Questioned
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <span class="cta-note">Three ways in. Board-level. Regulated industries.</span>
+        </div>
+    </div>
+</section>
+
 <!-- Data Sovereignty Section -->
 <section class="ownership">
     <div class="container">
@@ -1694,14 +1828,20 @@
                 </span>
             </a>
 
-            <a href="https://www.linkedin.com/in/martazalewskapr/" target="_blank" class="team-card fade-in">
+            <a href="ai-communications.html" class="team-card team-card-marta fade-in">
                 <img src="videos/team-marta.jpg" alt="Marta Zalewska" class="team-photo">
                 <h3 class="team-name">Marta Zalewska</h3>
                 <div class="team-role">Co-Founder & Change Lead</div>
                 <p class="team-bio">The reason your people adopt AI instead of resisting it. Change management is her system.</p>
-                <span class="team-linkedin">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                    LinkedIn
+                <span class="team-cta">
+                    See AI Communications
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                </span>
+                <span class="team-linkedin-secondary">
+                    <a href="https://www.linkedin.com/in/martazalewskapr/" target="_blank" rel="noopener" onclick="event.stopPropagation();">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        LinkedIn
+                    </a>
                 </span>
             </a>
 
