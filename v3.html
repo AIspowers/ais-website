@@ -60,6 +60,12 @@
             box-shadow: 0 2px 20px rgba(0,0,0,0.05);
         }
 
+        nav .container.nav-content {
+            max-width: none;
+            margin: 0;
+            padding: 0 48px;
+        }
+
         .nav-content {
             display: flex;
             justify-content: space-between;
@@ -67,19 +73,16 @@
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--white);
-            transition: color 0.3s;
+            display: flex;
+            align-items: center;
         }
 
-        nav.scrolled .logo {
-            color: var(--navy);
+        .logo svg {
+            display: block;
         }
 
-        .logo span {
-            color: var(--orange);
+        nav.scrolled .logo svg text {
+            fill: var(--navy);
         }
 
         .nav-links {
@@ -149,29 +152,41 @@
             color: white;
         }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(249,115,22,0.2);
+        .hero-text p.hero-intro {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.75rem;
+            font-weight: 700;
             color: var(--orange);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 24px;
-            border: 1px solid rgba(249,115,22,0.3);
+            margin-bottom: 32px;
+            line-height: 1.2;
+            max-width: none;
+            opacity: 1;
+        }
+
+        .hero-quote {
+            margin-bottom: 32px;
+            max-width: 600px;
+        }
+
+        .hero-quote blockquote {
+            font-size: 1.75rem;
+            font-style: italic;
+            line-height: 1.4;
+            margin: 0 0 12px 0;
+            opacity: 0.95;
+        }
+
+        .hero-quote cite {
+            font-size: 0.95rem;
+            opacity: 0.7;
+            font-style: normal;
         }
 
         .hero-text h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             line-height: 1.1;
             margin-bottom: 24px;
-        }
-
-        .hero-text h1 .highlight {
-            background: linear-gradient(90deg, var(--orange), var(--peach));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--orange);
         }
 
         .hero-text p {
@@ -220,92 +235,111 @@
             background: rgba(255,255,255,0.1);
         }
 
-        /* Hero Dashboard Visualization */
+        /* Hero 5% vs 95% Visual */
         .hero-visual {
             position: relative;
         }
 
-        .dashboard-mock {
+        .data-divide-visual {
             background: rgba(255,255,255,0.05);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 24px;
+            border-radius: 24px;
+            padding: 40px;
             box-shadow: 0 40px 80px rgba(0,0,0,0.3);
         }
 
-        .dashboard-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .dashboard-title {
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-
-        .dashboard-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-
-        .dot-red { background: #EF4444; }
-        .dot-yellow { background: #EAB308; }
-        .dot-green { background: #22C55E; }
-
-        /* Animated Line Chart */
-        .line-chart {
-            height: 180px;
+        .pie-chart-container {
             position: relative;
-            margin-bottom: 24px;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 32px;
         }
 
-        .chart-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-        }
-
-        .chart-line svg {
+        .pie-chart {
             width: 100%;
             height: 100%;
+            transform: rotate(-90deg);
         }
 
-        .chart-path {
-            fill: none;
-            stroke: var(--orange);
-            stroke-width: 3;
-            stroke-linecap: round;
-            stroke-dasharray: 500;
-            stroke-dashoffset: 500;
-            animation: drawLine 2s ease-out forwards;
+        .slice-95 {
+            opacity: 0.6;
         }
 
-        .chart-area {
-            fill: url(#orangeGradient);
-            opacity: 0;
-            animation: fadeIn 1s ease-out 1s forwards;
+        .slice-5 {
+            filter: drop-shadow(0 0 10px rgba(249,115,22,0.5));
+            animation: pulseGlow 2s ease-in-out infinite;
         }
 
-        @keyframes drawLine {
-            to { stroke-dashoffset: 0; }
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(249,115,22,0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(249,115,22,0.8)); }
         }
 
-        @keyframes fadeIn {
-            to { opacity: 0.3; }
+        .pie-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+        }
+
+        .pie-center-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            line-height: 1;
+        }
+
+        .pie-center-label {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.8;
+            margin-top: 4px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divide-labels {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .divide-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .label-95 {
+            border-left: 3px solid rgba(255,255,255,0.3);
+        }
+
+        .label-5 {
+            border-left: 3px solid var(--orange);
+            background: rgba(249,115,22,0.1);
+        }
+
+        .label-percent {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.5);
+            min-width: 50px;
+        }
+
+        .label-5 .label-percent {
+            color: var(--orange);
+        }
+
+        .label-text {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.8);
         }
 
         .chart-grid {
@@ -423,6 +457,88 @@
             margin-top: 8px;
         }
 
+        /* AIS Proof Section */
+        .ais-proof-section {
+            margin-top: 80px;
+            padding-top: 80px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .ais-proof-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .ais-proof-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy);
+            margin: 12px 0 16px;
+        }
+
+        .ais-proof-subtitle {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .ais-proof-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .ais-proof-card {
+            background: #4B5563;
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ais-proof-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--orange);
+        }
+
+        .ais-proof-icon {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .ais-proof-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--orange);
+            line-height: 1;
+        }
+
+        .ais-proof-unit {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 8px;
+        }
+
+        .ais-proof-label {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .ais-proof-context {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+        }
+
         /* Visual Comparison Section */
         .comparison-section {
             padding: 120px 0;
@@ -440,30 +556,580 @@
             margin-right: auto;
         }
 
-        .comparison-visual {
-            display: grid;
-            grid-template-columns: 1fr 100px 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .comparison-side {
+        /* Comparison Table */
+        .comparison-table {
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
-            padding: 40px;
+            overflow: hidden;
         }
 
-        .comparison-side h3 {
-            font-size: 1.5rem;
-            margin-bottom: 32px;
+        .comparison-table-header {
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr 1.5fr 1fr;
+            background: rgba(255,255,255,0.1);
+            padding: 20px 24px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table-body {
+            padding: 8px;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1.5fr 1.5fr 1fr;
+            padding: 20px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            align-items: center;
+        }
+
+        .table-row:last-child {
+            border-bottom: none;
+        }
+
+        .table-col {
+            padding: 0 8px;
+        }
+
+        .col-task {
+            font-weight: 600;
+            color: white;
+        }
+
+        .col-before {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .col-after {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .col-result {
+            text-align: center;
+        }
+
+        .result-highlight {
+            background: var(--orange);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* Ready Data Showcase Section */
+        .showcase-section {
+            padding: 120px 0;
+            background: var(--cream);
+            overflow: hidden;
+        }
+
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .showcase-header h2 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .showcase-header h2 span {
+            color: var(--orange);
+        }
+
+        .showcase-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .showcase-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 100px;
+        }
+
+        .showcase-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .showcase-item.reverse {
+            direction: rtl;
+        }
+
+        .showcase-item.reverse > * {
+            direction: ltr;
+        }
+
+        .showcase-video-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+            background: var(--navy);
+        }
+
+        .showcase-video-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--navy);
             display: flex;
             align-items: center;
+            padding-left: 16px;
+            z-index: 2;
+        }
+
+        .showcase-video-wrapper::after {
+            content: '● ● ●';
+            position: absolute;
+            top: 12px;
+            left: 16px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.3);
+            z-index: 3;
+        }
+
+        .showcase-video-wrapper video {
+            width: 100%;
+            display: block;
+            margin-top: 40px;
+        }
+
+        /* Larger video for dashboard showcase */
+        .showcase-video-wrapper.large {
+            min-width: 550px;
+        }
+
+        /* Output Card - Below video with arrow */
+        .showcase-with-output {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .showcase-arrow {
+            display: flex;
+            align-items: center;
+            margin: 16px 0 16px 40px;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: all 0.4s ease-out;
+        }
+
+        .showcase-arrow.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .showcase-arrow svg {
+            width: 40px;
+            height: 40px;
+            color: var(--orange);
+        }
+
+        .showcase-output {
+            width: 220px;
+            margin-left: 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            transform: rotate(2deg) scale(0.9) translateY(-10px);
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s;
+        }
+
+        .showcase-output.visible {
+            opacity: 1;
+            transform: rotate(2deg) scale(1) translateY(0);
+        }
+
+        .showcase-output:hover {
+            transform: rotate(1deg) scale(1.03);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        .showcase-output img {
+            width: 100%;
+            display: block;
+        }
+
+        .showcase-output-label {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: var(--orange);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            z-index: 2;
+        }
+
+        /* Highlighted text */
+        .highlight-orange {
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        /* Spread Cards Effect - Fan from bottom like holding cards */
+        .spread-cards {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        .spread-card {
+            position: absolute;
+            width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            opacity: 0;
+            transform-origin: bottom center;
+            bottom: 20px;
+        }
+
+        .spread-card img {
+            width: 100%;
+            display: block;
+        }
+
+        .spread-card:nth-child(1) {
+            transform: rotate(-18deg);
+            z-index: 1;
+            left: calc(50% - 180px);
+        }
+
+        .spread-card:nth-child(2) {
+            transform: rotate(0deg);
+            z-index: 3;
+            left: calc(50% - 100px);
+        }
+
+        .spread-card:nth-child(3) {
+            transform: rotate(18deg);
+            z-index: 2;
+            left: calc(50% - 20px);
+        }
+
+        .spread-card.visible {
+            opacity: 1;
+        }
+
+        .spread-card:nth-child(1).visible {
+            transition-delay: 0s;
+        }
+
+        .spread-card:nth-child(2).visible {
+            transition-delay: 0.15s;
+        }
+
+        .spread-card:nth-child(3).visible {
+            transition-delay: 0.3s;
+        }
+
+        .spread-card:hover {
+            z-index: 10 !important;
+            transform: rotate(0deg) translateY(-20px) scale(1.08) !important;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+
+        @media (max-width: 1024px) {
+            .spread-cards {
+                height: 320px;
+            }
+
+            .spread-card {
+                width: 160px;
+            }
+
+            .spread-card:nth-child(1) {
+                left: calc(50% - 150px);
+                transform: rotate(-15deg);
+            }
+
+            .spread-card:nth-child(2) {
+                left: calc(50% - 80px);
+            }
+
+            .spread-card:nth-child(3) {
+                left: calc(50% - 10px);
+                transform: rotate(15deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .spread-cards {
+                height: 260px;
+            }
+
+            .spread-card {
+                width: 120px;
+            }
+
+            .spread-card:nth-child(1) {
+                left: calc(50% - 120px);
+                transform: rotate(-12deg);
+            }
+
+            .spread-card:nth-child(2) {
+                left: calc(50% - 60px);
+            }
+
+            .spread-card:nth-child(3) {
+                left: calc(50% - 0px);
+                transform: rotate(12deg);
+            }
+        }
+
+        .showcase-content {
+            padding: 20px 0;
+        }
+
+        .showcase-badge {
+            display: inline-block;
+            background: var(--orange);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .showcase-content h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .showcase-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        .showcase-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
-        .comparison-side h3 .icon {
+        .showcase-features li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
+
+        .showcase-features li::before {
+            content: '✓';
+            width: 24px;
+            height: 24px;
+            background: var(--light-peach);
+            color: var(--orange);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 1024px) {
+            .showcase-item,
+            .showcase-item.reverse {
+                grid-template-columns: 1fr;
+                direction: ltr;
+            }
+
+            .showcase-header h2 {
+                font-size: 2.5rem;
+            }
+
+            .showcase-output {
+                width: 180px;
+            }
+
+            .showcase-arrow {
+                margin-left: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .showcase-header h2 {
+                font-size: 2rem;
+            }
+
+            .showcase-content h3 {
+                font-size: 1.5rem;
+            }
+
+            .showcase-output {
+                width: 160px;
+                margin-left: 20px;
+            }
+
+            .showcase-arrow {
+                margin-left: 20px;
+            }
+        }
+
+        /* Why Us Section */
+        .why-us-section {
+            padding: 120px 0;
+            background: var(--light-gray);
+        }
+
+        .why-us-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .why-us-header h2 {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+
+        .why-us-header .tagline {
+            font-size: 1.3rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
+
+        .why-us-header .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            color: var(--navy);
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .why-us-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .why-us-column {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .why-us-column-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 32px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--light-peach);
+        }
+
+        .why-us-column-header .icon {
+            font-size: 1.5rem;
+        }
+
+        .why-us-column-header h3 {
+            font-size: 1.25rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--navy);
+        }
+
+        .why-us-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .why-us-item {
+            background: var(--light-gray);
+            border-radius: 12px;
+            padding: 20px 24px;
+            border-left: 4px solid var(--orange);
+        }
+
+        .why-us-item h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin-bottom: 6px;
+        }
+
+        .why-us-item p {
+            font-size: 0.9rem;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        .trust-bar {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0,0,0,0.08);
+        }
+
+        .trust-bar p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--navy);
+            font-weight: 500;
+        }
+
+        .trust-badge .badge-icon {
             width: 40px;
             height: 40px;
+            background: var(--light-peach);
             border-radius: 10px;
             display: flex;
             align-items: center;
@@ -471,72 +1137,24 @@
             font-size: 1.2rem;
         }
 
-        .comparison-side.before h3 .icon {
-            background: rgba(239,68,68,0.2);
-        }
+        @media (max-width: 900px) {
+            .why-us-grid {
+                grid-template-columns: 1fr;
+            }
 
-        .comparison-side.after h3 .icon {
-            background: rgba(34,197,94,0.2);
-        }
+            .why-us-header h2 {
+                font-size: 2.25rem;
+            }
 
-        /* Horizontal Bar Comparison */
-        .h-bar-group {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .h-bar-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .h-bar-label {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            opacity: 0.9;
-        }
-
-        .h-bar-track {
-            height: 24px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        .h-bar-fill {
-            height: 100%;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding-right: 12px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            animation: barExpand 1s ease-out forwards;
-        }
-
-        @keyframes barExpand {
-            from { width: 0; }
-        }
-
-        .h-bar-fill.bad { background: linear-gradient(90deg, #DC2626, #EF4444); }
-        .h-bar-fill.good { background: linear-gradient(90deg, var(--deep-orange), var(--orange)); }
-
-        .comparison-arrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--orange);
+            .trust-badges {
+                gap: 24px;
+            }
         }
 
         /* Services Accordion */
         .services-section {
             padding: 120px 0;
-            background: var(--light-gray);
+            background: var(--white);
         }
 
         .services-layout {
@@ -794,48 +1412,28 @@
             font-size: 0.95rem;
         }
 
-        /* Industries Marquee */
+        /* Industries Section */
         .industries-section {
             padding: 80px 0;
             background: var(--navy);
-            overflow: hidden;
         }
 
-        .industries-header {
+        .industries-content {
             text-align: center;
-            margin-bottom: 60px;
+            max-width: 800px;
+            margin: 0 auto;
             color: white;
         }
 
-        .industries-header h2 {
+        .industries-content h2 {
             font-size: 2rem;
+            margin-bottom: 24px;
         }
 
-        .marquee-container {
-            display: flex;
-            gap: 32px;
-            animation: marquee 30s linear infinite;
-        }
-
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .industry-pill {
-            background: rgba(255,255,255,0.1);
-            padding: 16px 32px;
-            border-radius: 50px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            white-space: nowrap;
-            color: white;
-            font-weight: 500;
-        }
-
-        .industry-pill .emoji {
-            font-size: 1.5rem;
+        .industries-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            opacity: 0.9;
         }
 
         /* CTA Section */
@@ -873,12 +1471,20 @@
             color: white;
         }
 
+        .cta-context {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-bottom: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
         .cta-content h2 {
             font-size: 3.5rem;
             margin-bottom: 24px;
         }
 
-        .cta-content p {
+        .cta-content p:not(.cta-context) {
             font-size: 1.3rem;
             opacity: 0.95;
             margin-bottom: 40px;
@@ -998,12 +1604,25 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .comparison-visual {
-                grid-template-columns: 1fr;
+            .ais-proof-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
-            .comparison-arrow {
-                transform: rotate(90deg);
+            .comparison-table-header,
+            .table-row {
+                grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+
+            .col-task {
+                grid-column: 1 / -1;
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .col-result {
+                text-align: left;
             }
 
             .services-layout {
@@ -1034,6 +1653,14 @@
 
             .counter-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .ais-proof-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ais-proof-number {
+                font-size: 2.5rem;
             }
 
             .counter-number {
@@ -1077,9 +1704,29 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="container nav-content">
-            <div class="logo">AI<span>Superpowers</span></div>
+            <div class="logo">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="300" height="60">
+                    <defs>
+                        <filter id="glow-nav" x="-50%" y="-50%" width="200%" height="200%">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge>
+                                <feMergeNode in="coloredBlur"/>
+                                <feMergeNode in="SourceGraphic"/>
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <g transform="translate(30, 40)">
+                        <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-nav)" opacity="0.7"/>
+                        <circle cx="0" cy="0" r="9" fill="#FFA000"/>
+                    </g>
+                    <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" letter-spacing="0.5">AIsuperpowers</text>
+                    <rect x="67" y="36" width="26" height="6" rx="3" ry="3" fill="#FF6F00" filter="url(#glow-nav)"/>
+                    <rect x="69" y="38" width="22" height="2" rx="1" ry="1" fill="#FFA000"/>
+                </svg>
+            </div>
             <div class="nav-links">
-                <a href="#services">Services</a>
+                <a href="#why-us">Why Us</a>
+                <a href="#services">How We Work</a>
                 <a href="#outcomes">Results</a>
                 <a href="#cta" class="nav-cta">Get Started</a>
             </div>
@@ -1091,56 +1738,41 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <div class="hero-badge">Data-First AI Solutions</div>
-                    <h1>Turn Messy Data Into <span class="highlight">Business Intelligence</span></h1>
-                    <p>Most AI projects fail because they start with the wrong foundation. We make your data AI-ready first, then build solutions that actually work.</p>
+                    <p class="hero-intro">At AIsuperpowers, We Fix What Everyone Else Ignores</p>
+                    <div class="hero-quote">
+                        <blockquote>"Only <span class="highlight-orange">5%</span> of executives have high confidence in their data. The other <span class="highlight-orange">95%</span> are making decisions on shaky ground."</blockquote>
+                        <cite>— HFS Research</cite>
+                    </div>
+                    <h1>We Fix That.</h1>
+                    <p>Your AI projects keep failing because your data isn't ready. We make it ready — then help you build solutions that actually work.</p>
                     <div class="hero-buttons">
-                        <a href="#cta" class="btn btn-primary">Start Assessment →</a>
+                        <a href="#cta" class="btn btn-primary">Join the 5% →</a>
                         <a href="#services" class="btn btn-ghost">See How It Works</a>
                     </div>
                 </div>
                 <div class="hero-visual">
-                    <div class="dashboard-mock">
-                        <div class="dashboard-header">
-                            <div class="dashboard-title">Data Quality Score</div>
-                            <div class="dashboard-dots">
-                                <div class="dot dot-red"></div>
-                                <div class="dot dot-yellow"></div>
-                                <div class="dot dot-green"></div>
+                    <div class="data-divide-visual">
+                        <div class="pie-chart-container">
+                            <svg viewBox="0 0 200 200" class="pie-chart">
+                                <circle cx="100" cy="100" r="90" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="2"/>
+                                <!-- 95% slice (the problem) -->
+                                <circle cx="100" cy="100" r="70" fill="transparent" stroke="rgba(255,255,255,0.3)" stroke-width="40" stroke-dasharray="417.8 21.99" stroke-dashoffset="110" class="slice-95"/>
+                                <!-- 5% slice (the solution) -->
+                                <circle cx="100" cy="100" r="70" fill="transparent" stroke="#F97316" stroke-width="40" stroke-dasharray="21.99 417.8" stroke-dashoffset="110" class="slice-5"/>
+                            </svg>
+                            <div class="pie-center">
+                                <span class="pie-center-number">5%</span>
+                                <span class="pie-center-label">Trust Their Data</span>
                             </div>
                         </div>
-                        <div class="line-chart">
-                            <div class="chart-grid">
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
-                                <div class="grid-line"></div>
+                        <div class="divide-labels">
+                            <div class="divide-label label-95">
+                                <span class="label-percent">95%</span>
+                                <span class="label-text">Making decisions on shaky ground</span>
                             </div>
-                            <div class="chart-line">
-                                <svg viewBox="0 0 400 180" preserveAspectRatio="none">
-                                    <defs>
-                                        <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                                            <stop offset="0%" style="stop-color:#F97316;stop-opacity:0.5" />
-                                            <stop offset="100%" style="stop-color:#F97316;stop-opacity:0" />
-                                        </linearGradient>
-                                    </defs>
-                                    <path class="chart-area" d="M0,150 L50,130 L100,140 L150,100 L200,110 L250,70 L300,50 L350,30 L400,20 L400,180 L0,180 Z"/>
-                                    <path class="chart-path" d="M0,150 L50,130 L100,140 L150,100 L200,110 L250,70 L300,50 L350,30 L400,20"/>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="mini-stats">
-                            <div class="mini-stat">
-                                <div class="mini-stat-value">94%</div>
-                                <div class="mini-stat-label">Accuracy</div>
-                            </div>
-                            <div class="mini-stat">
-                                <div class="mini-stat-value">2.3s</div>
-                                <div class="mini-stat-label">Response</div>
-                            </div>
-                            <div class="mini-stat">
-                                <div class="mini-stat-value">↑ 47%</div>
-                                <div class="mini-stat-label">Efficiency</div>
+                            <div class="divide-label label-5">
+                                <span class="label-percent">5%</span>
+                                <span class="label-text">Have confidence in their data</span>
                             </div>
                         </div>
                     </div>
@@ -1152,30 +1784,69 @@
     <!-- Problem Stats Section -->
     <section class="problem-stats">
         <div class="container">
-            <div class="section-label">The Problem</div>
-            <h2 class="section-title">Why Most AI Projects Never Deliver Results</h2>
-            <p class="section-subtitle">The data shows a clear pattern: it's not the AI that fails, it's the foundation it's built on.</p>
+            <div class="section-label">The Evidence</div>
+            <h2 class="section-title">Your Data Is Costing You More Than You Think</h2>
+            <p class="section-subtitle">The numbers don't lie. Bad data is silently draining your budget, time, and competitive edge.</p>
 
             <div class="counter-grid">
                 <div class="counter-card">
-                    <div class="counter-number">70%</div>
-                    <div class="counter-label">AI Projects Fail</div>
-                    <div class="counter-desc">Before reaching production</div>
+                    <div class="counter-number">$12.9M</div>
+                    <div class="counter-label">Lost Per Year</div>
+                    <div class="counter-desc">Average cost of poor data quality — Gartner</div>
+                </div>
+                <div class="counter-card">
+                    <div class="counter-number">47%</div>
+                    <div class="counter-label">Records Have Errors</div>
+                    <div class="counter-desc">Nearly half of new data is flawed — MIT Sloan</div>
                 </div>
                 <div class="counter-card">
                     <div class="counter-number">80%</div>
-                    <div class="counter-label">Time on Data</div>
-                    <div class="counter-desc">Spent cleaning, not building</div>
+                    <div class="counter-label">Time Wasted</div>
+                    <div class="counter-desc">Data teams cleaning, not building — Forbes</div>
                 </div>
                 <div class="counter-card">
-                    <div class="counter-number">3x</div>
-                    <div class="counter-label">Budget Overruns</div>
-                    <div class="counter-desc">Due to data surprises</div>
+                    <div class="counter-number">60%</div>
+                    <div class="counter-label">AI Projects Abandoned</div>
+                    <div class="counter-desc">Due to data issues alone — Gartner 2025</div>
                 </div>
-                <div class="counter-card">
-                    <div class="counter-number">6mo</div>
-                    <div class="counter-label">Average Delay</div>
-                    <div class="counter-desc">From data issues alone</div>
+            </div>
+
+            <!-- AIS Solutions Proof -->
+            <div class="ais-proof-section">
+                <div class="ais-proof-header">
+                    <div class="section-label" style="color: var(--orange);">Our Track Record</div>
+                    <h3 class="ais-proof-title">What Our Solutions Are Built to Deliver</h3>
+                    <p class="ais-proof-subtitle">Based on implementations across finance, telecom, government, and enterprise sectors</p>
+                </div>
+                <div class="ais-proof-grid">
+                    <div class="ais-proof-card">
+                        <div class="ais-proof-icon">⏱️</div>
+                        <div class="ais-proof-number">32+</div>
+                        <div class="ais-proof-unit">hours/week</div>
+                        <div class="ais-proof-label">Saved on Manual Reporting</div>
+                        <div class="ais-proof-context">Automated dashboards & KPI tracking</div>
+                    </div>
+                    <div class="ais-proof-card">
+                        <div class="ais-proof-icon">⚡</div>
+                        <div class="ais-proof-number">70%</div>
+                        <div class="ais-proof-unit">faster</div>
+                        <div class="ais-proof-label">Data Reconciliation</div>
+                        <div class="ais-proof-context">Invoice matching & error detection</div>
+                    </div>
+                    <div class="ais-proof-card">
+                        <div class="ais-proof-icon">🤖</div>
+                        <div class="ais-proof-number">24/7</div>
+                        <div class="ais-proof-unit">availability</div>
+                        <div class="ais-proof-label">Automated Support</div>
+                        <div class="ais-proof-context">AI chatbots in Arabic & English</div>
+                    </div>
+                    <div class="ais-proof-card">
+                        <div class="ais-proof-icon">🔍</div>
+                        <div class="ais-proof-number">Minutes</div>
+                        <div class="ais-proof-unit">vs days</div>
+                        <div class="ais-proof-label">Knowledge Retrieval</div>
+                        <div class="ais-proof-context">AI-powered document search</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1186,93 +1857,242 @@
         <div class="container">
             <div class="comparison-header">
                 <div class="section-label" style="color: var(--orange)">The Difference</div>
-                <h2 class="section-title" style="color: white">Traditional Approach vs. Data-First</h2>
+                <h2 class="section-title" style="color: white">See the Transformation</h2>
             </div>
 
-            <div class="comparison-visual">
-                <div class="comparison-side before">
-                    <h3><span class="icon">❌</span> Without Data Foundation</h3>
-                    <div class="h-bar-group">
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>Data Preparation</span>
-                                <span>70%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill bad" style="width: 70%"></div>
-                            </div>
+            <div class="comparison-table">
+                <div class="comparison-table-header">
+                    <div class="table-col col-task">Task</div>
+                    <div class="table-col col-before">❌ Without Foundation</div>
+                    <div class="table-col col-after">✓ With Our Approach</div>
+                    <div class="table-col col-result">The Result</div>
+                </div>
+                <div class="comparison-table-body">
+                    <div class="table-row">
+                        <div class="table-col col-task">Weekly Reporting</div>
+                        <div class="table-col col-before">32+ hours manual work</div>
+                        <div class="table-col col-after">< 1 hour automated</div>
+                        <div class="table-col col-result"><span class="result-highlight">97% time saved</span></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-col col-task">Data Reconciliation</div>
+                        <div class="table-col col-before">Days of spreadsheet work</div>
+                        <div class="table-col col-after">Minutes with automation</div>
+                        <div class="table-col col-result"><span class="result-highlight">70% faster</span></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-col col-task">Error Detection</div>
+                        <div class="table-col col-before">Reactive (after damage)</div>
+                        <div class="table-col col-after">Proactive (real-time)</div>
+                        <div class="table-col col-result"><span class="result-highlight">Minutes vs Days</span></div>
+                    </div>
+                    <div class="table-row">
+                        <div class="table-col col-task">AI Project Success</div>
+                        <div class="table-col col-before">40% deliver value</div>
+                        <div class="table-col col-after">85%+ with foundation</div>
+                        <div class="table-col col-result"><span class="result-highlight">2x success rate</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ready Data Showcase Section -->
+    <section class="showcase-section" id="showcase">
+        <div class="container">
+            <div class="showcase-header">
+                <div class="section-label">See It In Action</div>
+                <h2>What Happens When Your <span>Data Is Ready</span></h2>
+                <p>Real solutions we've built. Real automation running. Real results delivered.</p>
+            </div>
+
+            <div class="showcase-grid">
+                <!-- Automation Showcase -->
+                <div class="showcase-item">
+                    <div class="showcase-with-output">
+                        <div class="showcase-video-wrapper">
+                            <video autoplay loop muted playsinline>
+                                <source src="videos/n8n-automation.mp4" type="video/mp4">
+                            </video>
                         </div>
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>AI Development</span>
-                                <span>20%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill bad" style="width: 20%"></div>
-                            </div>
+                        <div class="showcase-arrow">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
                         </div>
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>Deployment & Testing</span>
-                                <span>10%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill bad" style="width: 10%"></div>
-                            </div>
+                        <div class="showcase-output">
+                            <div class="showcase-output-label">Output</div>
+                            <img src="videos/sf-report.png" alt="Salesforce Error Report">
                         </div>
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>Success Rate</span>
-                                <span>30%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill bad" style="width: 30%"></div>
-                            </div>
+                    </div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Automation</div>
+                        <h3>Get <span class="highlight-orange">Insights</span> from Your CRM While Drinking Your Morning Coffee</h3>
+                        <p>Automated workflows scan your CRM data overnight, identify critical issues, and deliver actionable insights before you start your day. No manual checking. No missed problems.</p>
+                        <ul class="showcase-features">
+                            <li>Critical errors flagged automatically</li>
+                            <li>Daily reports delivered to your inbox</li>
+                            <li>Zero manual data validation needed</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Dashboard Showcase -->
+                <div class="showcase-item reverse">
+                    <div class="showcase-video-wrapper large">
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/aibi-dashboard.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Intelligence</div>
+                        <h3>See Your <span class="highlight-orange">ENTIRE BUSINESS</span> at a Glance — Updated in Real Time</h3>
+                        <p>AI-powered dashboards that pull from all your data sources, surface insights automatically, and let you drill down into any metric instantly. Decision-making in seconds, not hours.</p>
+                        <ul class="showcase-features">
+                            <li>All data sources unified in one view</li>
+                            <li>AI highlights what needs attention</li>
+                            <li>Interactive drill-downs for any metric</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Knowledge Retrieval Showcase -->
+                <div class="showcase-item">
+                    <div class="showcase-video-wrapper large">
+                        <video autoplay loop muted playsinline>
+                            <source src="videos/rag-video.mov" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Knowledge</div>
+                        <h3>Years of Company Policy and Knowledge <span class="highlight-orange">RETRIEVAL</span> — One Click Away</h3>
+                        <p>Your company's institutional knowledge shouldn't live in someone's head or buried in dusty folders. We connect AI to your documents, policies, and procedures — making decades of expertise instantly searchable and actionable.</p>
+                        <ul class="showcase-features">
+                            <li>Instant answers from your own documents</li>
+                            <li>No more hunting through shared drives</li>
+                            <li>New employees onboard in days, not months</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Training & Certification Showcase -->
+                <div class="showcase-item reverse">
+                    <div class="spread-cards">
+                        <div class="spread-card">
+                            <img src="videos/training-card-1.jpeg" alt="AI Training - Context Window">
+                        </div>
+                        <div class="spread-card">
+                            <img src="videos/training-card-2.jpeg" alt="AI Training - Prompts">
+                        </div>
+                        <div class="spread-card">
+                            <img src="videos/training-card-3.jpeg" alt="AI Training - Guardrails">
+                        </div>
+                    </div>
+                    <div class="showcase-content">
+                        <div class="showcase-badge">Enablement</div>
+                        <h3>Train Your Team to Build <span class="highlight-orange">THEIR OWN</span> AI Solutions</h3>
+                        <p>Once your data is clean, we train and certify your people to build automations themselves. No more waiting on external developers or paying for custom software — your team becomes self-sufficient, creating solutions on demand.</p>
+                        <ul class="showcase-features">
+                            <li>Your employees become AI builders</li>
+                            <li>Stop outsourcing every automation</li>
+                            <li>Faster solutions at a fraction of the cost</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Case Studies CTA -->
+            <div class="showcase-cta" style="text-align: center; margin-top: 80px;">
+                <a href="case-studies.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 18px 40px;">
+                    See All Case Studies with $ Results &rarr;
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="why-us-section" id="why-us">
+        <div class="container">
+            <div class="why-us-header">
+                <div class="section-label">Why Choose Us</div>
+                <h2>Your Data Stays Yours. Your Team Gets Smarter.</h2>
+                <p class="tagline">We're not here to lock you into contracts or create dependency.</p>
+                <p class="quote">"We're here to solve your problem and make your team self-sufficient."</p>
+            </div>
+
+            <div class="why-us-grid">
+                <!-- Security First Column -->
+                <div class="why-us-column">
+                    <div class="why-us-column-header">
+                        <span class="icon">🔒</span>
+                        <h3>Security First</h3>
+                    </div>
+                    <div class="why-us-items">
+                        <div class="why-us-item">
+                            <h4>On-Premise AI</h4>
+                            <p>Runs on YOUR servers, not ours. Your infrastructure, your control.</p>
+                        </div>
+                        <div class="why-us-item">
+                            <h4>Zero Data Sharing</h4>
+                            <p>Your data never leaves your walls. No third-party APIs touching your information.</p>
+                        </div>
+                        <div class="why-us-item">
+                            <h4>Full Transparency</h4>
+                            <p>You own the code, no black boxes. Inspect, modify, or migrate anytime.</p>
+                        </div>
+                        <div class="why-us-item">
+                            <h4>Enterprise Ready</h4>
+                            <p>SOC2, GDPR-ready deployments. Built for regulated industries.</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="comparison-arrow">→</div>
+                <!-- VS Big Consultants Column -->
+                <div class="why-us-column">
+                    <div class="why-us-column-header">
+                        <span class="icon">🏢</span>
+                        <h3>Not Like Big Consultants</h3>
+                    </div>
+                    <div class="why-us-items">
+                        <div class="why-us-item">
+                            <h4>Start Small</h4>
+                            <p>Prove value first with a 2-week POC, then scale. No 6-month contracts upfront.</p>
+                        </div>
+                        <div class="why-us-item">
+                            <h4>Work WITH Your Systems</h4>
+                            <p>We integrate with what you have. No rip-and-replace, no forced migrations.</p>
+                        </div>
+                        <div class="why-us-item">
+                            <h4>Train Your Team</h4>
+                            <p>We teach your people to build and maintain solutions. Then we step back.</p>
+                        </div>
+                        <div class="why-us-item">
+                            <h4>Fixed Pricing</h4>
+                            <p>Clear scope, clear cost. No billable hour surprises or scope creep invoices.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                <div class="comparison-side after">
-                    <h3><span class="icon">✓</span> With Our Approach</h3>
-                    <div class="h-bar-group">
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>Data Preparation</span>
-                                <span>25%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill good" style="width: 25%"></div>
-                            </div>
-                        </div>
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>AI Development</span>
-                                <span>45%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill good" style="width: 45%"></div>
-                            </div>
-                        </div>
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>Deployment & Testing</span>
-                                <span>30%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill good" style="width: 30%"></div>
-                            </div>
-                        </div>
-                        <div class="h-bar-item">
-                            <div class="h-bar-label">
-                                <span>Success Rate</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="h-bar-track">
-                                <div class="h-bar-fill good" style="width: 90%"></div>
-                            </div>
-                        </div>
+            <div class="trust-bar">
+                <p>Trusted by Government & Enterprise</p>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <span class="badge-icon">🏛️</span>
+                        <span>Government</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="badge-icon">📡</span>
+                        <span>Telecom</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="badge-icon">📺</span>
+                        <span>AdTech</span>
+                    </div>
+                    <div class="trust-badge">
+                        <span class="badge-icon">💼</span>
+                        <span>Finance</span>
                     </div>
                 </div>
             </div>
@@ -1284,9 +2104,9 @@
         <div class="container">
             <div class="services-layout">
                 <div class="services-intro">
-                    <div class="section-label">How We Work</div>
-                    <h2 class="section-title">Three Phases to AI Success</h2>
-                    <p class="section-subtitle">Each phase builds on the last, reducing risk and ensuring measurable results before moving forward.</p>
+                    <div class="section-label">Our Methodology</div>
+                    <h2 class="section-title">The AIsuperpowers Framework</h2>
+                    <p class="section-subtitle">Our proven three-phase approach that reduces risk and ensures measurable results before moving forward.</p>
                 </div>
 
                 <div class="services-list">
@@ -1497,26 +2317,13 @@
         </div>
     </section>
 
-    <!-- Industries Marquee -->
+    <!-- Industries Section -->
     <section class="industries-section">
-        <div class="industries-header">
-            <div class="container">
-                <h2>Industries We Serve</h2>
+        <div class="container">
+            <div class="industries-content">
+                <h2>We Work Across Industries</h2>
+                <p>Data problems don't respect industry boundaries. Whether you're in government, telecom, finance, or operations — if your teams waste time on manual reporting, struggle to trust their data, or watch AI projects fail before they start — we can help. Our solutions are built around your specific challenges, not a one-size-fits-all template.</p>
             </div>
-        </div>
-        <div class="marquee-container">
-            <div class="industry-pill"><span class="emoji">📡</span> Telecommunications</div>
-            <div class="industry-pill"><span class="emoji">💼</span> Financial Services</div>
-            <div class="industry-pill"><span class="emoji">🏭</span> B2B Operations</div>
-            <div class="industry-pill"><span class="emoji">🏛️</span> Government & Public Sector</div>
-            <div class="industry-pill"><span class="emoji">🏥</span> Healthcare</div>
-            <div class="industry-pill"><span class="emoji">🚚</span> Logistics & Supply Chain</div>
-            <div class="industry-pill"><span class="emoji">📡</span> Telecommunications</div>
-            <div class="industry-pill"><span class="emoji">💼</span> Financial Services</div>
-            <div class="industry-pill"><span class="emoji">🏭</span> B2B Operations</div>
-            <div class="industry-pill"><span class="emoji">🏛️</span> Government & Public Sector</div>
-            <div class="industry-pill"><span class="emoji">🏥</span> Healthcare</div>
-            <div class="industry-pill"><span class="emoji">🚚</span> Logistics & Supply Chain</div>
         </div>
     </section>
 
@@ -1524,11 +2331,12 @@
     <section class="cta-section" id="cta">
         <div class="container">
             <div class="cta-content">
-                <h2>Ready to Fix Your Data Foundation?</h2>
-                <p>Book a free 30-minute consultation. We'll discuss your data challenges and show you exactly what's possible.</p>
+                <p class="cta-context">Only 5% of executives fully trust their data. The other 95% are guessing.</p>
+                <h2>Ready to Join the 5%?</h2>
+                <p>Stop making decisions on shaky ground. Book a free 30-minute data assessment call and find out exactly where you stand.</p>
                 <div class="cta-buttons">
-                    <a href="mailto:contact@aisuperpowers.com" class="btn btn-white">Book Free Consultation</a>
-                    <a href="#services" class="btn btn-outline-white">Learn More</a>
+                    <a href="mailto:contact@aisuperpowers.com" class="btn btn-white">Book Free Assessment</a>
+                    <a href="#services" class="btn btn-outline-white">See How We Help</a>
                 </div>
             </div>
         </div>
@@ -1539,8 +2347,27 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="logo">AI<span>Superpowers</span></div>
-                    <p>We make your messy data AI-ready without replacing what you already have. Security-first, results-focused.</p>
+                    <div class="logo">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="12 0 388 80" width="300" height="60">
+                            <defs>
+                                <filter id="glow-footer" x="-50%" y="-50%" width="200%" height="200%">
+                                    <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                                    <feMerge>
+                                        <feMergeNode in="coloredBlur"/>
+                                        <feMergeNode in="SourceGraphic"/>
+                                    </feMerge>
+                                </filter>
+                            </defs>
+                            <g transform="translate(30, 40)">
+                                <circle cx="0" cy="0" r="14" fill="#FF6F00" filter="url(#glow-footer)" opacity="0.7"/>
+                                <circle cx="0" cy="0" r="9" fill="#FFA000"/>
+                            </g>
+                            <text x="65" y="55" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="36" font-weight="bold" fill="#ffffff" letter-spacing="0.5">AIsuperpowers</text>
+                            <rect x="67" y="36" width="26" height="6" rx="3" ry="3" fill="#FF6F00" filter="url(#glow-footer)"/>
+                            <rect x="69" y="38" width="22" height="2" rx="1" ry="1" fill="#FFA000"/>
+                        </svg>
+                    </div>
+                    <p>We fix your data so AI actually works. Join the 5% of companies who trust their data.</p>
                 </div>
                 <div class="footer-links">
                     <h4>Services</h4>
@@ -1600,6 +2427,24 @@
                     accordion.classList.add('active');
                 }
             });
+        });
+
+        // Scroll-triggered animation for showcase output cards
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const showcaseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.showcase-output, .showcase-arrow, .spread-card').forEach(el => {
+            showcaseObserver.observe(el);
         });
     </script>
 </body>
